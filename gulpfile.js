@@ -1,14 +1,21 @@
 'use strict';
 
 var gulp = require('gulp');
-var jshint = require('gulp-eslint');
+var eslint = require('gulp-eslint');
 var jasmine = require('gulp-jasmine');
+var sass = require('gulp-sass');
 
 gulp.task('eslint', function() {
   gulp.src('./*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(jshint.reporter('fail'));
+    .pipe(eslint())
+    .pipe(eslint.reporter('default'))
+    .pipe(eslint.reporter('fail'));
+});
+
+gulp.task('sass', function () {
+    return gulp.src('./style/*.sass')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(gulp.dest('./style/'));
 });
 
 gulp.task('test', function() {
@@ -19,8 +26,9 @@ gulp.task('test', function() {
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['eslint']);
   gulp.watch('./*.js', ['test']);
+  gulp.watch('./*.sass', ['sass']);
 });
 
-gulp.task('ci', ['test', 'eslint']);
+gulp.task('ci', ['test', 'eslint', 'sass']);
 
 gulp.task('default', ['watch']);
