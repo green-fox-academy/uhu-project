@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/greenfox-academy/uhu-project#readme",
   "dependencies": {
+    "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-jasmine": "^2.2.1",
     "gulp-watch": "^4.3.5",
