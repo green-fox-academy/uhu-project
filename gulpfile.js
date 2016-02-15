@@ -25,9 +25,9 @@ gulp.task('eslint', function() {
 
 
 gulp.task('sass', function () {
-    return gulp.src('./style/*.sass')
+    return gulp.src('./views/style/*.sass')
     .pipe(sass.sync().on('error', sass.logError))
-    .pipe(gulp.dest('./style/'));
+    .pipe(gulp.dest('./views/style/'));
 });
 
 gulp.task('test', function() {
