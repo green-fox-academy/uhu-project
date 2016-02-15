@@ -1,10 +1,10 @@
 'use strict';
 
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
+var jshint = require('gulp-eslint');
 var jasmine = require('gulp-jasmine');
 
-gulp.task('jshint', function() {
+gulp.task('eslint', function() {
   gulp.src('./*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
@@ -17,10 +17,10 @@ gulp.task('test', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./*.js', ['jshint']);
+  gulp.watch('./*.js', ['eslint']);
   gulp.watch('./*.js', ['test']);
 });
 
-gulp.task('ci', ['test', 'jshint']);
+gulp.task('ci', ['test', 'eslint']);
 
 gulp.task('default', ['watch']);
