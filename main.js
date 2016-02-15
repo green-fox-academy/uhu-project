@@ -15,4 +15,8 @@ function helloWorld(req, res) {
 }
 
 app.get('/', helloWorld);
+app.get('/heartbeat', function(req, res){
+
+});
+
 app.listen(defaultPort, serverMessage);
