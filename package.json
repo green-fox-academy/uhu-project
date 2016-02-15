@@ -4,7 +4,7 @@
   "description": "TOM MARVOLO RIDDLE.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-jasmine": "^2.2.1",
+    "gulp-jshint": "^2.0.0",
     "gulp-watch": "^4.3.5",
     "jasmine": "^2.4.1",
     "jscs": "^2.9.0",
