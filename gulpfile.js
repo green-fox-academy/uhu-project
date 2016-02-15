@@ -23,7 +23,6 @@ gulp.task('eslint', function() {
   .pipe(eslint.failOnError());
 });
 
-
 gulp.task('sass', function () {
     return gulp.src('./style/*.sass')
     .pipe(sass.sync().on('error', sass.logError))
