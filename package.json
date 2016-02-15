@@ -23,11 +23,8 @@
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
     "gulp-jasmine": "^2.2.1",
-<<<<<<< HEAD
-=======
     "gulp-jshint": "^2.0.0",
     "gulp-sass": "^2.2.0",
->>>>>>> fab97bcd0874657f19df5def21ff5868bd84c179
     "gulp-watch": "^4.3.5",
     "jasmine": "^2.4.1",
     "jscs": "^2.9.0",
