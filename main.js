@@ -10,8 +10,8 @@ function serverMessage() {
   console.log('The server started.');
 }
 
-function helloWorld() {
-  console.log('Hello World');
+function helloWorld(req, res) {
+  res.send('Hello World');
 }
 
 app.get('/', helloWorld());
