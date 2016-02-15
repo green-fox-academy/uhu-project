@@ -12,6 +12,18 @@ gulp.task('eslint', function() {
     .pipe(eslint.reporter('fail'));
 });
 
+gulp.task('eslint', function() {
+  return gulp.src('').pipe(eslint({
+    'rules':{
+        'quotes': [1, 'single'],
+        'semi': [1, 'always']
+    }
+  }))
+  .pipe(eslint.format())
+  .pipe(eslint.failOnError());
+});
+
+
 gulp.task('sass', function () {
     return gulp.src('./style/*.sass')
     .pipe(sass.sync().on('error', sass.logError))
