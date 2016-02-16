@@ -30,6 +30,6 @@ gulp.task('watch', function() {
   gulp.watch('./*.sass', ['sass']);
 });
 
-gulp.task('ci', ['test', 'eslint', 'sass']);
+gulp.task('ci', ['test', 'sass']);
 
 gulp.task('default', ['watch']);
