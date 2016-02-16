@@ -2,7 +2,7 @@
   "name": "uhu-project",
   "version": "1.0.0",
   "description": "TOM MARVOLO RIDDLE.",
-  "main": "index.js",
+  "main": "UHU.js",
   "scripts": {
     "test": "jasmine"
   },
@@ -29,6 +29,7 @@
     "jscs": "^2.9.0",
     "karma": "^0.13.21",
     "karma-jasmine": "^0.3.7",
+    "pg": "^4.4.6",
     "supertest": "^1.2.0"
   }
 }
