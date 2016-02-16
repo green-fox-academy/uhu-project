@@ -5,22 +5,12 @@ var eslint = require('gulp-eslint');
 var jasmine = require('gulp-jasmine');
 var sass = require('gulp-sass');
 
-gulp.task('eslint', function() {
-  gulp.src('./*.js')
-    .pipe(eslint())
-    .pipe(eslint.reporter('default'))
-    .pipe(eslint.reporter('fail'));
-});
 
 gulp.task('eslint', function() {
-  return gulp.src('').pipe(eslint({
-    'rules':{
-        'quotes': [1, 'single'],
-        'semi': [1, 'always']
-    }
-  }))
-  .pipe(eslint.format())
-  .pipe(eslint.failOnError());
+  return gulp.src(['**/*.js','!node_modules/**', '!app/js/angular.min.js', '!spec/**'])
+      .pipe(eslint())
+      .pipe(eslint.format())
+      .pipe(eslint.failAfterError());
 });
 
 gulp.task('sass', function () {
@@ -29,9 +19,9 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./views/style/'));
 });
 
-gulp.task('test', function() {
-  gulp.src('test.js')
-  .pipe(jasmine());
+gulp.task('test', function () {
+  return gulp.src('spec/*.js')
+    .pipe(jasmine());
 });
 
 gulp.task('watch', function() {
