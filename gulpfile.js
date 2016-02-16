@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var jasmine = require('gulp-jasmine');
 var sass = require('gulp-sass');
+var Server = require('karma').Server;
 
 
 gulp.task('eslint', function() {
@@ -24,12 +25,19 @@ gulp.task('test', function () {
     .pipe(jasmine());
 });
 
+gulp.task('karma', function (done) {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
+
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['eslint']);
   gulp.watch('./*.js', ['test']);
   gulp.watch('./*.sass', ['sass']);
 });
 
-gulp.task('ci', ['test', 'sass']);
+gulp.task('ci', ['karma', 'test', 'sass']);
 
 gulp.task('default', ['watch']);
