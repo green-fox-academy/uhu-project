@@ -1,11 +1,7 @@
-describe("A suite", function() {
-  it("contains spec with an expectation", function() {
-    expect(true).toBe(true);
-  });
-});
+'use stict';
 
 describe("A suite", function() {
   it("contains spec with an expectation", function() {
-    expect(true).toBe(false);
+    expect(true).toBe(true);
   });
 });
