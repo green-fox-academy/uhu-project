@@ -15,4 +15,4 @@ app.get('/heartbeat', function (req, res) {
   res.send(res);
 });
 
-app.listen(process.env.PORT | defaultPort);
+app.listen(process.env.PORT || defaultPort);
