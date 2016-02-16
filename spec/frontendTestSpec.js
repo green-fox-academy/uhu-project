@@ -6,21 +6,19 @@ describe("A suite", function() {
   });
 });
 
-describe('MainController', function() {
-
+describe('MainController', function () {
   var $scope, $controller, MainController;
+
 
   beforeEach(module('UHU'));
 
-  beforeEach(inject(function($controller){
-      $scope = $scope.$new();
-      $controller = $controller;
-
-  MainController = $controller('MainController', {'$scope': $scope});
-}));
+  beforeEach(inject(function(_$controller_, $rootScope){
+    $scope = $rootScope.$new();
+    $controller = _$controller_;
+    MainController = $controller('MainController', {'$scope': $scope});
+  }));
 
   it('should exist', function() {
-      expect(MainController).toBeDefined()
-      expect(MainController).toBe();
-    });
+    expect(MainController).toBeDefined();
   });
+});
