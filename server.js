@@ -11,11 +11,17 @@ function myServer() {
   app.use(logger.logRequest);
   app.use(bodyParser.json());
   app.use(express.static('view'));
+
   app.get('/', helloWorld);
   app.get('/heartbeat', heartBeat.heartBeat);
+  app.post('/api/log', postLogs);
 
   function helloWorld(req, res) {
     res.send('Hello World');
+  };
+
+  function postLogs(req, res) {
+    res.send('logs');
   };
 
   return app;
