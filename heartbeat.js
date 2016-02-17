@@ -4,11 +4,11 @@ var pg = require('pg');
 var url = require('./config.js').DATABASE_URL;
 var Logs = require('./logs.js');
 
-function heartBeat(req, res) {
+function heartBeat(req, res, cb) {
   heartBeatQueryConnect('SELECT ok FROM heartbeat;', function(err, result) {
     if (err)
       {
-         logger.logErrors('heartBeatQueryCB error', err);
+         logger.logErrors('heartBeatQueryConnect error', err);
          res.status(500).json({error: err});
       }
       else
