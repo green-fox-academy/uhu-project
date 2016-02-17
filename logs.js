@@ -4,7 +4,8 @@ function Logs() {
   var date = new Date();
 
   this.logRequest = function(req, res, next) {
-    var logEvent = [new Date(), req.method, req.originalUrl];
+    var date = new Date();
+    var logEvent = ['Log Request', date.toISOString(), req.method, req.originalUrl];
     console.log(logEvent);
     next();
   };
