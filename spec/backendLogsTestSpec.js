@@ -21,4 +21,3 @@ describe('Logger', function() {
     logger.logInfo('message', 'status')
   });
 });
-

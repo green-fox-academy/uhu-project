@@ -13,36 +13,26 @@ function Logs(loggerFunction, InnerDate) {
   };
 
   this.logDebug = function(message, status) {
-    var date = new InnerDate();
-    var logEvent = ['DEBUG', date.toISOString(), message, status];
-    loggerFunction(logEvent.join(' '));
+    logCreator('DEBUG', message, status);
   };
 
   this.logInfo = function(message, status) {
-    var date = new InnerDate();
-    var logEvent = ['INFO', date.toISOString(), message, status];
-    loggerFunction(logEvent.join(' '));
+    logCreator('INFO', message, status);
   };
 
   this.logWarn = function(message, status) {
-    var date = new InnerDate();
-    var logEvent = ['WARN', date.toISOString(), message, status];
-    loggerFunction(logEvent.join(' '));
+    logCreator('WARN', message, status);
   };
 
   this.logErrors = function(message, error) {
-    var date = new innerDate();
-    var logEvent = ['ERROR', date.toISOString(), message, error];
-    loggerFunction(logEvent.join(' '));
+    logCreator('ERROR', message, error);
   };
 
-  // return {
-  //   logRequest: logRequest,
-  //   logDebug: logDebug,
-  //   logInfo: logInfo,
-  //   logWarn: logWarn,
-  //   logErrors: logErrors
-  // };
+  var logCreator = function(logMethod, message, status) {
+    var date = new InnerDate();
+    var logEvent = [logMethod, date.toISOString(), message, status];
+    loggerFunction(logEvent.join(' '));
+  };
 }
 
 module.exports = Logs;
