@@ -27,9 +27,9 @@ function Logs() {
     console.log(logEvent.join(' '));
   };
 
-  this.logErrors = function(error, status) {
+  this.logErrors = function(message, error) {
     var date = new Date();
-    var logEvent = ['ERROR', date.toISOString(), error, status];
+    var logEvent = ['ERROR', date.toISOString(), message, error];
     console.log(logEvent.join(' '));
   };
 }
