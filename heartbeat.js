@@ -9,6 +9,7 @@ function heartBeat(db) {
     db('SELECT ok FROM heartbeat;', function(err, result) {
       if (err)
         {
+           var logger = new Logs();
            logger.logErrors('heartBeatQueryConnect error', err);
            res.status(500).json({error: err});
         }
