@@ -2,7 +2,21 @@
 
 require('newrelic');
 var server = require('./server.js');
-var app = server.myServer();
+var pg = require('pg');
+var url = require('./config.js').DATABASE_URL;
+
+
+function heartBeatQueryConnect(query, cb) {
+  pg.connect(url, function(err, client, done) {
+    client.query(query, function(err, result) {
+      cb(err, result);
+      done();
+    });
+  });
+}
+
+
+var app = server.myServer(heartBeatQueryConnect);
 var port = require('./config.js').DEFAULT_PORT;
 var Logs = require('./logs.js');
 

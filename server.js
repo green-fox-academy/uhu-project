@@ -1,10 +1,10 @@
 'use strict';
 
-function myServer() {
+function myServer(db) {
   var bodyParser = require('body-parser');
   var express = require('express');
   var app = express();
-  var heartBeat = require('./heartbeat.js');
+  var heartbeat = require('./heartbeat.js');
   var Logs = require('./logs.js');
   var logger = new Logs();
 
@@ -12,7 +12,7 @@ function myServer() {
   app.use(bodyParser.json());
   app.use(express.static('view'));
   app.get('/', helloWorld);
-  app.get('/heartbeat', heartBeat.heartBeat);
+  app.get('/heartbeat', heartbeat.heartBeat(db));
 
   function helloWorld(req, res) {
     res.send('Hello World');

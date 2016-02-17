@@ -2,13 +2,17 @@
 
 var request = require('supertest');
 var server = require('../server.js');
-var app = server.myServer();
+var app = server.myServer(heartBeatQueryConnect);
 
 describe("A suite", function() {
   it("contains spec with an expectation", function() {
     expect(true).toBe(true);
   });
 });
+
+function heartBeatQueryConnect(query, cb) {
+  cb(null, [{}])
+}
 
 describe('GET /heartbeat', function(){
   it('should response with 200', function(done){
