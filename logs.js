@@ -6,23 +6,32 @@ function Logs() {
   this.logRequest = function(req, res, next) {
     var logEvent = [new Date(), req.method, req.originalUrl];
     console.log(logEvent);
-  }
+    next();
+  };
 
   this.logDebug = function(message, status) {
-    console.log('DEBUG: ', date, '\n', message, '\n', 'status:', status);
+    var date = new Date();
+    var logEvent = ['DEBUG', date.toISOString(), message, status];
+    console.log(logEvent.join(' '));
   };
 
   this.logInfo = function(message, status) {
-    console.log('INFO: ', date, '\n', message, '\n', 'status:', status);
+    var date = new Date();
+    var logEvent = ['INFO', date.toISOString(), message, status];
+    console.log(logEvent.join(' '));
   };
 
   this.logWarn = function(message, status) {
-    console.log('WARN: ', date, '\n', message, '\n', 'status:', status);
+    var date = new Date();
+    var logEvent = ['WARN', date.toISOString(), message, status];
+    console.log(logEvent.join(' '));
   };
 
   this.logErrors = function(error, status) {
-    console.log('ERROR: ', date, '\n', error, '\n', 'status:', status);
+    var date = new Date();
+    var logEvent = ['ERROR', date.toISOString(), error, status];
+    console.log(logEvent.join(' '));
   };
-};
+}
 
 module.exports = Logs;
