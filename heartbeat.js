@@ -4,13 +4,7 @@ var pg = require('pg');
 var url = require('./config.js').DATABASE_URL;
 
 function heartBeat(req, res) {
-  pg.connect(url, function(err, client, done) {
-    client.query('SELECT ok FROM heartbeat;', heartBeatQueryCB(err, result));
-  });
-};
-
-var heartBeatQueryCB = function(err, result) {
-      done();
+  heartBeatQueryConnect('SELECT ok FROM heartbeat;', function(err, result) {
       console.log(result);
       if (err)
       {
@@ -21,7 +15,17 @@ var heartBeatQueryCB = function(err, result) {
       {
          res.status(200).json(result.rows);
       }
-    };
+    })
+};
+             
+function heartBeatQueryConnect(query, cb) {
+    pg.connect(url, function(err, client, done) {
+      client.query(query, function(err, result) {
+        cb(err, result);
+        done();
+      });
+    });
+  }
 
 module.exports = {
   heartBeat: heartBeat
