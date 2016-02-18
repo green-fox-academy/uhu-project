@@ -4,10 +4,22 @@
   <meta charset="utf-8">
   <title>UHU-PROJECT</title>
   <link rel="stylesheet" href="./style/UHU-style.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
   <script src="../app/js/angular.min.js"></script>
+  <script src="../app/js/angular-ui-router.min.js"></script>
   <script src="../app/UHU.js"></script>
 </head>
 <body ng-controler="MainController">
-  <h1>Hello World!</h1> 
+  
+  <div class="header-menu">
+    <img class="header-logo" src="images/calgo@2x.png" alt="UHU Calgo Logo">
+    <nav>
+      <a href="" ui-sref="all">ALL CALLS</a>
+      <a href="" ui-sref="past">PAST CALLS</a>
+      <a href="" ui-sref="ongoing">ONGOING CALLS</a
+    </nav>
+    <div class="devider"></div>
+  </div>
+  <div ui-view></div>
 </body>
 </html>
