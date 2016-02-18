@@ -6,9 +6,7 @@ function Logs(loggerFunction, InnerDate) {
   InnerDate = InnerDate || Date;
 
   this.logRequest = function(req, res, next) {
-    var date = new InnerDate();
-    var logEvent = ['LOG REQUEST', date.toISOString(), req.method, req.originalUrl];
-    loggerFunction(logEvent.join(' '));
+    logCreator('LOG REQUEST', req.method, req.originalUrl);
     next();
   };
 
