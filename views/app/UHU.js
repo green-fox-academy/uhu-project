@@ -8,7 +8,7 @@ UHU.controller('MainController', function($scope) {
 
 UHU.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
-  
+
   $stateProvider
     .state('all', {
       url: '/all' ,
