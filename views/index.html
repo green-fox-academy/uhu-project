@@ -10,16 +10,15 @@
   <script src="../app/UHU.js"></script>
 </head>
 <body ng-controler="MainController">
-  
   <div class="header-menu">
-    <img class="header-logo" src="images/calgo@2x.png" alt="UHU Calgo Logo">
-    <nav>
+    <img class="header-logo" src="images/calgo.png" alt="UHU Calgo Logo">
+    <p class="main-menu">
       <a href="" ui-sref="all">ALL CALLS</a>
       <a href="" ui-sref="past">PAST CALLS</a>
-      <a href="" ui-sref="ongoing">ONGOING CALLS</a
-    </nav>
+      <a href="" ui-sref="ongoing">ONGOING CALLS</a>
+    </p>
     <div class="devider"></div>
   </div>
-  <div ui-view></div>
+  <div ui-view class="views"></div>
 </body>
 </html>
