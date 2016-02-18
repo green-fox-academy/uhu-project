@@ -5,9 +5,20 @@
   <title>UHU-PROJECT</title>
   <link rel="stylesheet" href="./style/UHU-style.css">
   <script src="../app/js/angular.min.js"></script>
+  <script src="../app/js/angular-ui-router.min.js"></script>
   <script src="../app/UHU.js"></script>
 </head>
 <body ng-controler="MainController">
+  <div ui-view></div>
+  <div>
+    <img src="images/calgo@2x.png">
+    <nav>
+      <a href="" ui-sref="all">ALL CALLS</a>
+      <a href="" ui-sref="past">PAST CALLS</a>
+      <a href="" ui-sref="ongoing">ONGOING CALLS</a
+    </nav>
+  </div>
+  <hr>
   <h1>Hello World!</h1> 
 </body>
 </html>
