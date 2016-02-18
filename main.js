@@ -21,5 +21,5 @@ var Logs = require('./logs.js');
 
 app.listen(port, function () {
   var logger = new Logs();
-  logger.logCreator('Listening on port', port);
+  logger.logInfo('Listening on port', port);
 });

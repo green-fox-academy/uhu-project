@@ -10,7 +10,7 @@ function heartBeat(db) {
       if (err)
         {
            var logger = new Logs();
-           logger.logCreator('heartBeatQueryConnect error', err, 'ERROR');
+           logger.logError('heartBeatQueryConnect error', err, 'ERROR');
            res.status(500).json({error: err});
         }
         else
