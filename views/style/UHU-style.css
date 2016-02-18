@@ -3,19 +3,22 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0 auto;
   text-align: center; }
-  body a {
-    display: inline-block;
-    margin: 0 0 0 30px;
-    text-decoration: none;
-    width: 130px; }
 
 .header-menu {
+  bottom-border: 10px solid #8DC640;
   height: 90px;
   font-weight: bold;
   left: 0px;
   margin: 0px auto;
   position: fixed;
   top: 0px; }
+
+.header-menu a {
+  color: #CECECE;
+  display: inline-block;
+  margin: 0 0 0 20px;
+  text-decoration: none;
+  width: 130px; }
 
 .main-menu {
   display: inline-block;
