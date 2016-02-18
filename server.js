@@ -28,7 +28,7 @@ function myServer(db) {
   }
 
   function logRequest(req, res, next) {
-    logger.logCreator(req.method, req.originalUrl);
+    logger.logInfo(req.method, req.originalUrl);
     next();
   }
 
