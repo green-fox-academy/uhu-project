@@ -1,34 +1,18 @@
 'use strict';
 
+var defaultLevel = require('./config.js').DEFAULT_LOGGINGLEVEL;
+
 function Logs(loggerFunction, InnerDate) {
 
-  loggerFunction = loggerFunction || console.log;
-  InnerDate = InnerDate || Date;
+  var loggerFunction = loggerFunction || console.log;
+  var InnerDate = InnerDate || Date;
 
-  this.logRequest = function(req, res, next) {
-    logCreator('LOG REQUEST', req.method, req.originalUrl);
-    next();
-  };
+  this.logCreator = function(message, status, loggingLevel) {
+    var loggingLevel = loggingLevel || defaultLevel;
+    var levels = ['INFO', 'DEBUG', 'WARN', 'ERROR'];
 
-  this.logDebug = function(message, status) {
-    logCreator('DEBUG', message, status);
-  };
-
-  this.logInfo = function(message, status) {
-    logCreator('INFO', message, status);
-  };
-
-  this.logWarn = function(message, status) {
-    logCreator('WARN', message, status);
-  };
-
-  this.logErrors = function(message, error) {
-    logCreator('ERROR', message, error);
-  };
-
-  var logCreator = function(logMethod, message, status) {
     var date = new InnerDate();
-    var logEvent = [logMethod, date.toISOString(), message, status];
+    var logEvent = [loggingLevel, date.toISOString(), message, status];
     loggerFunction(logEvent.join(' '));
   };
 }

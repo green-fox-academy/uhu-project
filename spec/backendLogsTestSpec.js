@@ -3,12 +3,12 @@
 var Logs = require('../logs.js');
 
 describe('Logger', function() {
-  it("logMethods shuld be defined", function() {
+  it("logCreator shuld be defined", function() {
   var logger = new Logs();
-  expect(logger.logInfo).toBeDefined();
+  expect(logger.logCreator).toBeDefined();
   });
 
-  it("tests console.log and date", function() {
+  it("tests console.log and date with default log level", function() {
     function fakeConsoleLog(log) {
       expect(log).toEqual('INFO date message status');
     }
@@ -18,6 +18,6 @@ describe('Logger', function() {
       }
     }
     var logger = new Logs(fakeConsoleLog, FakeDate);
-    logger.logInfo('message', 'status')
+    logger.logCreator('message', 'status')
   });
 });

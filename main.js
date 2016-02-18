@@ -15,12 +15,11 @@ function heartBeatQueryConnect(query, cb) {
   });
 }
 
-
 var app = server.myServer(heartBeatQueryConnect);
 var port = require('./config.js').DEFAULT_PORT;
 var Logs = require('./logs.js');
 
 app.listen(port, function () {
   var logger = new Logs();
-  logger.logInfo('Listening on port', port);
+  logger.logCreator('Listening on port', port);
 });

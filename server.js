@@ -9,7 +9,7 @@ function myServer(db) {
   var logger = new Logs();
   
 
-  app.use(logger.logRequest);
+  app.use(logRequest);
   app.use(bodyParser.json());
   app.use(express.static('view'));
 
@@ -24,6 +24,11 @@ function myServer(db) {
 
   function postLogs(req, res) {
     res.send('logs');
+  };
+
+  function logRequest(req, res, next) {
+    logger.logCreator(req.method, req.originalUrl);
+    next();
   };
 
   return app;

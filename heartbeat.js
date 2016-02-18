@@ -10,7 +10,7 @@ function heartBeat(db) {
       if (err)
         {
            var logger = new Logs();
-           logger.logErrors('heartBeatQueryConnect error', err);
+           logger.logCreator('heartBeatQueryConnect error', err, 'ERROR');
            res.status(500).json({error: err});
         }
         else
@@ -18,7 +18,7 @@ function heartBeat(db) {
            res.status(200).json(result.rows);
         }
       });
-    }
+    };
 }
 
 module.exports = {
