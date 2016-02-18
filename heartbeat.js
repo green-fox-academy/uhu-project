@@ -3,6 +3,7 @@
 var pg = require('pg');
 var Logs = require('./logs.js');
 var url = require('./config.js').DATABASE_URL;
+var frontendLog = require('./logwaker.js');
 
 function heartBeat(db) {
   return function (req, res) {
@@ -14,11 +15,12 @@ function heartBeat(db) {
            res.status(500).json({error: err});
         }
         else
-        {
-           res.status(200).json(result.rows);
-        }
-      });
-    };
+          {
+            res.status(200).json(result.rows);
+            frontendLog.newLogWaker('PAGE VIEW AT /heartbeat');
+          }
+    });
+  };
 }
 
 module.exports = {
