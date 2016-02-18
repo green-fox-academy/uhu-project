@@ -7,29 +7,22 @@ function myServer(db) {
   var heartbeat = require('./heartbeat.js');
   var Logs = require('./logs.js');
   var logger = new Logs();
-  
 
   app.use(logRequest);
   app.use(bodyParser.json());
-  app.use(express.static('view'));
+  app.use(express.static('views'));
 
-  app.get('/', helloWorld);
   app.get('/heartbeat', heartbeat.heartBeat(db));
   app.post('/api/log', postLogs);
 
-
-  function helloWorld(req, res) {
-    res.send('Hello World');
-  };
-
   function postLogs(req, res) {
     res.send('logs');
-  };
+  }
 
   function logRequest(req, res, next) {
     logger.logInfo(req.method, req.originalUrl);
     next();
-  };
+  }
 
   return app;
 }
