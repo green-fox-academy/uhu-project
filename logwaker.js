@@ -26,8 +26,6 @@ function newLogWaker(method, loggingLevel){
 
 }
 
-newLogWaker('get');
-
 module.exports = {
   newLogWaker: newLogWaker
 };
