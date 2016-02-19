@@ -13,10 +13,10 @@ body {
   position: fixed;
   top: 0px; }
 
-.header-menu a {
+.main-menu a {
   color: #CECECE;
   display: inline-block;
-  margin: 0 0 0 20px;
+  margin: 20px 0 0 20px;
   text-decoration: none;
   width: 130px; }
 
