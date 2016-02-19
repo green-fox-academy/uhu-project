@@ -4,7 +4,7 @@ body {
   margin: 0 auto;
   text-align: center; }
 
-.header-menu {
+.header {
   border-bottom: 8px solid #8DC640;
   min-height: 90px;
   max-height: auto;
@@ -22,9 +22,13 @@ body {
   text-decoration: none;
   width: 130px; }
 
+.main-menu li {
+  display: inline-block; }
+
 .main-menu {
   display: inline-block;
   font-size: 16px;
+  list-style-type: none;
   margin-left: 90px;
   margin-right: 20px;
   position: fixed;
