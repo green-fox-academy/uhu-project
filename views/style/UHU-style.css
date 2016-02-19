@@ -47,11 +47,25 @@ body {
   text-align: center;
   top: 130px; }
 
-.calls {
-  color: green; }
-
 .calls li {
-  list-style-type: none; }
+  list-style-type: none;
+  margin-bottom: 16px; }
 
 .calls li span {
+  display: inline-block;
   text-align: left; }
+
+.calls li span:nth-child(1) {
+  width: 60px; }
+
+.calls li span:nth-child(2) {
+  width: 60px; }
+
+.calls li span:nth-child(3) {
+  width: 140px; }
+
+.calls li span:nth-child(4) {
+  width: 100px; }
+
+.calls li span:nth-child(5) {
+  width: 140px; }
