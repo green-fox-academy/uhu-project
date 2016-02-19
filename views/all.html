@@ -1,5 +1,19 @@
 <div ng-controller="ListCtrl">
-    <ul>
-      <li ng-repeat="call in calls">{{call.status}} {{call.startTime}} {{call.elapsedTime}} {{call.endTime}} {{call.id}}</li>
+    <h2>ALL CALLS</h2>
+    <ul class="calls">
+      <li>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </li>
+      <li ng-repeat="call in calls">
+        <span>{{call.id}}</span> 
+        <span>{{call.status}}</span> 
+        <span>{{call.startTime}}</span> 
+        <span>{{call.elapsedTime}}</span> 
+        <span>{{call.endTime}}</span>
+      </li>
     </ul>
 </div>
