@@ -16,9 +16,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'app/js/angular.min.js',
+        'views/app/js/angular.min.js',
+        'views/app/js/angular-ui-router.min.js',
         'node_modules/angular-mocks/angular-mocks.js',
-        'app/UHU.js',
+        'views/app/UHU.js',
         'spec/frontend-test/*.js',
     ],
 
@@ -73,4 +74,3 @@ module.exports = function(config) {
     concurrency: Infinity
   });
 };
-

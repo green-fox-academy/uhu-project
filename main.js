@@ -5,7 +5,6 @@ var server = require('./server.js');
 var pg = require('pg');
 var url = require('./config.js').DATABASE_URL;
 
-
 function heartBeatQueryConnect(query, cb) {
   pg.connect(url, function(err, client, done) {
     client.query(query, function(err, result) {
