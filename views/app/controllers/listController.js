@@ -8,12 +8,26 @@ var UHU = angular.module('UHU').controller('ListCtrl', function($scope) {
 }
 });
 
-var now = moment().format('DD/MM/YYYY HH:MM');
+var start = moment().format('DD/MM/YYYY HH:MM');
+var end = moment().format('DD/MM/YYYY HH:MM');
 
 var calls = [
-    {status: 'ongoing', startTime: now, elapsedTime:'03:04:11', endTime: now, id: 1},
-    {status: 'ended', startTime: now, elapsedTime:'10:05:20', endTime: now, id: 2},
-    {status: 'ended'  , startTime: now, elapsedTime:'1:03:1', endTime: now, id: 3}
-];
+    {status: 'ongoing',
+     startTime: start,
+     elapsedTime:'03:04:11',
+     endTime: '',
+     id: 1},
 
+    {status: 'ended',
+     startTime: start,
+     elapsedTime:'10:05:20',
+     endTime: end,
+     id: 2},
+
+    {status: 'ended',
+     startTime: start,
+     elapsedTime:'1:03:1',
+     endTime: end,
+     id: 3}
+];
 
