@@ -37,7 +37,7 @@ body {
 .header-logo {
   display: inline-block;
   margin: 20px auto;
-  margin-left: 0px;
+  margin-left: 20px;
   position: fixed;
   left: 10px; }
 
@@ -46,3 +46,6 @@ body {
   position: fixed;
   text-align: center;
   top: 130px; }
+
+.calls {
+  color: green; }
