@@ -18,9 +18,9 @@ body {
 .main-menu a {
   color: #4A4A4A;
   display: inline-block;
-  margin: 20px 0 0 20px;
+  margin: 20px 20px 0 20px;
   text-decoration: none;
-  width: 130px; }
+  width: auto; }
 
 .main-menu li {
   display: inline-block; }
@@ -37,11 +37,12 @@ body {
 .header-logo {
   display: inline-block;
   margin: 20px auto;
-  margin-left: 20px;
+  margin-left: 0px;
   position: fixed;
   left: 10px; }
 
 .views {
+  margin: 0 auto;
   position: fixed;
   text-align: center;
   top: 130px; }
