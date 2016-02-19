@@ -16,7 +16,8 @@ function myServer(db) {
   app.post('/api/log', postLogs);
 
   function postLogs(req, res) {
-    res.send('logs');
+    console.log(req.body);
+    console.log(res);
   }
 
   function logRequest(req, res, next) {
