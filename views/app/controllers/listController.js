@@ -5,7 +5,7 @@ var UHU = angular.module('UHU').controller('ListCtrl', function($scope) {
   $scope.statusChanger = function(call) {
     var statusImageSrc = '/images/' + call.status + '.svg';
     return statusImageSrc; 
-}
+  }
 });
 
 var now = moment().format('DD/MM/YYYY HH:MM');
