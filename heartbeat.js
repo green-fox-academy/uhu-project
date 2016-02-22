@@ -3,7 +3,6 @@
 var pg = require('pg');
 var Logs = require('./logs.js');
 var url = require('./config.js').DATABASE_URL;
-var frontendLog = require('./logwaker.js');
 
 function heartBeat(db) {
   return function (req, res) {
