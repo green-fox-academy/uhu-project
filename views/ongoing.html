@@ -1,1 +1,19 @@
-ongoing
+<div ng-controller="ListCtrl">
+    <h1>ONGOING CALLS</h1>
+    <ul class="calls">
+      <li>
+        <span class="call-id"></span>
+        <span class="call-status"></span>
+        <span class="start-time">start time</span>
+        <span class="ellapsed-time">elapsed time</span>
+        <span class="end-time">end time</span>
+      </li>
+      <li ng-repeat="call in calls">
+        <span class="call-id">#{{call.id}}</span> 
+        <span class="call-status"><img src={{statusChanger(call)}}></span> 
+        <span class="start-time">{{call.startTime}}</span> 
+        <span class="ellapsed-time">{{call.elapsedTime}}</span> 
+        <span class="end-time">{{call.endTime}}</span>
+      </li>
+    </ul>
+</div>
