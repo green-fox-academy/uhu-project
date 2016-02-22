@@ -2,18 +2,18 @@
     <h1>ALL CALLS</h1>
     <ul class="calls">
       <li>
-        <span></span>
-        <span></span>
-        <span>start time</span>
-        <span>elapsed time</span>
-        <span>end time</span>
+        <span class="call-id"></span>
+        <span class="call-status"></span>
+        <span class="start-time">start time</span>
+        <span class="ellapsed-time">elapsed time</span>
+        <span class="end-time">end time</span>
       </li>
       <li ng-repeat="call in calls">
-        <span>#{{call.id}}</span> 
-        <span><img src={{statusChanger(call)}}></span> 
-        <span>{{call.startTime}}</span> 
-        <span>{{call.elapsedTime}}</span> 
-        <span>{{call.endTime}}</span>
+        <span class="call-id">#{{call.id}}</span> 
+        <span class="call-status"><img src={{statusChanger(call)}}></span> 
+        <span class="start-time">{{call.startTime}}</span> 
+        <span class="ellapsed-time">{{call.elapsedTime}}</span> 
+        <span class="end-time">{{call.endTime}}</span>
       </li>
     </ul>
 </div>
