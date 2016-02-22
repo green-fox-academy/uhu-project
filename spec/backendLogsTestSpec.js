@@ -42,17 +42,19 @@ describe('Logger', function() {
   });
 
   it("should test log method is above log level", function() {
-    function fakeConsoleLog(log) {
-      expect(log).not.toEqual('INFO date message status');
-    }
+    var FakeLoggingLevel = 'ERROR';
+    var fakeConsole = {
+      log: function() {}
+    };
+    spyOn(fakeConsole, 'log');
+
+    var logger = new Logs(fakeConsole.log, FakeDate, FakeLoggingLevel);
+    logger.logInfo('fiszfasz');
     function FakeDate() {
       FakeDate.prototype.toISOString = function() {
         return 'date';
       };
     }
-    var FakeLoggingLevel = 'ERROR';
-
-    var logger = new Logs(fakeConsoleLog, FakeDate, FakeLoggingLevel);
-    logger.logInfo('message', 'status');
+    expect(fakeConsole.log).not.toHaveBeenCalled();
   });
 });
