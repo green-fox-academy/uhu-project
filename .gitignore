@@ -1,4 +1,5 @@
 node_modules
+*.css
 *.swp
 *.swo
 .DS_Store
