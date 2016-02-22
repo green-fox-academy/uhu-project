@@ -17,7 +17,6 @@ function heartBeat(db) {
         else
           {
             res.status(200).json(result.rows);
-            frontendLog.newLogWaker('PAGE VIEW AT /heartbeat');
           }
     });
   };
