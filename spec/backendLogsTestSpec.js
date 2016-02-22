@@ -49,7 +49,7 @@ describe('Logger', function() {
     spyOn(fakeConsole, 'log');
 
     var logger = new Logs(fakeConsole.log, FakeDate, FakeLoggingLevel);
-    logger.logInfo('fiszfasz');
+    logger.logInfo('INFO date message status');
     function FakeDate() {
       FakeDate.prototype.toISOString = function() {
         return 'date';
