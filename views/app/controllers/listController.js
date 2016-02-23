@@ -7,7 +7,10 @@ UHU.controller('ListCtrl', function($scope) {
   $scope.statusChanger = function(call) {
     var statusImageSrc = '/images/' + call.status + '.svg';
     return statusImageSrc;
-  }
+  };
+  $scope.myFilter = function(call) {
+      console.log(call.status);   
+  };
 });
 
 var start = moment().format('DD/MM/YYYY HH:MM');
