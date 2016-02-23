@@ -6,3 +6,4 @@ node_modules
 .brackets.json
 *~
 newrelic_agent.log
+bundle.js
