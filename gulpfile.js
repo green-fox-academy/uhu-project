@@ -4,7 +4,7 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 
 var gulp = require('gulp');
-var eslint = require('gulp-eslint');
+//var eslint = require('gulp-eslint');
 var jasmine = require('gulp-jasmine');
 var sass = require('gulp-sass');
 var Server = require('karma').Server;
@@ -42,10 +42,10 @@ gulp.task('karma', function (done) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./*.js', ['eslint']);
+  //gulp.watch('./*.js', ['eslint']);
   gulp.watch('./*.js', ['test']);
   gulp.watch('./*.sass', ['sass']);
-  gulp.watch('./*.js', ['browserify']);
+  gulp.watch(['**/*.js', '!views/app/bundle.js'], ['browserify']);
 });
 
 gulp.task('ci', ['karma', 'test', 'sass', 'browserify']);
