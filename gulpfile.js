@@ -33,15 +33,6 @@ gulp.task('karma', function (done) {
   }, done).start();
 });
 
-gulp.task('bundle', function() {
-  gulp.src('./views/app/UHU.js')
-    .pipe(browserify({
-      insertGlobals : true,
-      debug : !gulp.env.production
-    }))
-    .pipe(gulp.dest('./build/js'))
-});
-
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['eslint']);
   gulp.watch('./*.js', ['test']);

@@ -1,7 +1,7 @@
 'use strict';
 
-var UHU = angular.module('UHU', ['ui.router']);
-var localURL = 'http://localhost:3000/';
+var UHU = require('./app');
+require('./controllers/listController');
 
 UHU.controller('MainController', function($scope, $http) {
     $http.post('/api/log', {url: window.location.origin}).then();
