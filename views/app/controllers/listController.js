@@ -9,7 +9,7 @@ UHU.controller('ListCtrl', function($scope) {
     return statusImageSrc;
   };
   $scope.myFilter = function(call, callStatus) {
-    return call.status.match(/callStatus/) ? true : false;  
+    return call.status.match(/callStatus/) ? true : false;
   };
 });
 

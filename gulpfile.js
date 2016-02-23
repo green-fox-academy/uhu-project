@@ -1,5 +1,6 @@
 'use strict';
 
+var browserify = require('gulp-browserify');
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var jasmine = require('gulp-jasmine');
@@ -36,8 +37,9 @@ gulp.task('watch', function() {
   gulp.watch('./*.js', ['eslint']);
   gulp.watch('./*.js', ['test']);
   gulp.watch('./*.sass', ['sass']);
+  gulp.watch('./*.js', ['bundle']);
 });
 
-gulp.task('ci', ['karma', 'test', 'sass']);
+gulp.task('ci', ['karma', 'test', 'sass', 'bundle']);
 
 gulp.task('default', ['watch']);
