@@ -1,6 +1,6 @@
 <div ng-controller="ListCtrl">
     <h1>ONGOING CALLS</h1>
-    <ul class="calls">
+    <ul class="calls" ng-if="calls.length">
       <li>
         <span class="call-id"></span>
         <span class="call-status"></span>
@@ -9,11 +9,12 @@
         <span class="end-time">end time</span>
       </li>
       <li ng-repeat="call in calls">
-        <span class="call-id">#{{call.id}}</span> 
-        <span class="call-status"><img src={{statusChanger(call)}}></span> 
-        <span class="start-time">{{call.startTime}}</span> 
-        <span class="ellapsed-time">{{call.elapsedTime}}</span> 
+        <span class="call-id">#{{call.id}}</span>
+        <span class="call-status"><img ng-src={{statusChanger(call)}}></span>
+        <span class="start-time">{{call.startTime}}</span>
+        <span class="ellapsed-time">{{call.elapsedTime}}</span>
         <span class="end-time">{{call.endTime}}</span>
       </li>
     </ul>
+    <div ng-if="calls.length === 0">No calls received yet<div>
 </div>
