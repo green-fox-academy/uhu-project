@@ -24,5 +24,3 @@ UHU.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'ongoing.html'
   });
 });
-
-//hp
