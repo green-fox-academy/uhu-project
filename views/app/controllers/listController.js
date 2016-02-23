@@ -1,10 +1,12 @@
 'use strict';
+var moment = require('moment');
+var UHU = require('../app');
 
-var UHU = angular.module('UHU').controller('ListCtrl', function($scope) {
+UHU.controller('ListCtrl', function($scope) {
   $scope.calls = calls;
   $scope.statusChanger = function(call) {
     var statusImageSrc = '/images/' + call.status + '.svg';
-    return statusImageSrc; 
+    return statusImageSrc;
   }
 });
 
@@ -29,8 +31,7 @@ var calls = [
      elapsedTime:'1:03:1',
      endTime: end,
      id: 3},
-  
-    {status: 'incoming',    
+
+    {status: 'incoming',
      id: 4}
 ];
-
