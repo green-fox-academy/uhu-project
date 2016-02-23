@@ -3,14 +3,32 @@
 var request = require('supertest');
 var server = require('../server.js');
 var app = server.myServer(heartBeatQueryConnect);
+var appError = server.myServer(errorHeartBeatQueryConnect);
 
 
 function heartBeatQueryConnect(query, cb) {
   cb(null, [{}])
 }
 
+function errorHeartBeatQueryConnect(query, cb) {
+  cb(err, [{}])
+}
+
 describe('GET /heartbeat', function(){
-  it('should response with 200', function(done){
+  it('should response with 500', function(done){
+    request(appError)
+    .get('/heartbeat')
+    .expect('Content-Type', /text/)
+    .expect(500)
+    .end(function(err, res) {
+      if (err) throw err;
+      done();
+      });
+    });
+});
+
+describe('GET /heartbeat', function(){
+  it('should response with 500', function(done){
     request(app)
     .get('/heartbeat')
     .set('Accept', 'application/json')
