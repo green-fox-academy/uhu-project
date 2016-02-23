@@ -12,7 +12,7 @@ var Server = require('karma').Server;
 gulp.task('browserify', function() {
   browserify('./views/app/UHU.js')
   .bundle()
-  .pipe(source('bundled.js'))
+  .pipe(source('bundle.js'))
   .pipe(gulp.dest('./views/app'));
 });
 
