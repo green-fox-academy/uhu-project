@@ -8,8 +8,8 @@ UHU.controller('ListCtrl', function($scope) {
     var statusImageSrc = '/images/' + call.status + '.svg';
     return statusImageSrc;
   };
-  $scope.myFilter = function(call) {
-      console.log(call.status);   
+  $scope.myFilter = function(call, callStatus) {
+    return call.status.match(/callStatus/) ? true : false;  
   };
 });
 
