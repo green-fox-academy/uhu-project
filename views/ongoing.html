@@ -8,7 +8,7 @@
         <span class="ellapsed-time">elapsed time</span>
         <span class="end-time">end time</span>
       </li>
-      <li ng-repeat="call in calls">
+      <li ng-repeat="call in calls | filter : {status : 'ongoing'}">
         <span class="call-id">#{{call.id}}</span>
         <span class="call-status"><img ng-src={{statusChanger(call)}}></span>
         <span class="start-time">{{call.startTime}}</span>
