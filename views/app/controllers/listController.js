@@ -3,10 +3,10 @@
 var moment = require('moment');
 var UHU = require('../app');
 var numeral = require('numeral');
+var count = 0;
 
 UHU.controller('ListCtrl', function($scope, $interval) {
   $scope.calls = calls;
-  var count = 0;
   $scope.statusChanger = function(call) {
     var statusImageSrc = '/images/' + call.status + '.svg';
     return statusImageSrc;

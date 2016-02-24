@@ -1,6 +1,6 @@
 'use strict';
 
-var Logs = require('../logs.js');
+var Logs = require('../server/logs.js');
 
 describe('Logger', function() {
   it("logMethodes shuld be defined", function() {
