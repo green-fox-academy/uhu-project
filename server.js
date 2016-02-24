@@ -16,8 +16,7 @@ function myServer(db) {
   app.post('/api/log', postLogs);
 
   function postLogs(req, res) {
-    logger.logInfo(req.body.data, '/api/log');
-    console.log(req.body, 'POST REQUEST SENT');
+    logger.logInfo('FRONTEND', JSON.stringify(req.body));
     res.send(req.body);
   }
 

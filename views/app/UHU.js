@@ -3,8 +3,21 @@
 var UHU = require('./app');
 require('./controllers/listController');
 
-UHU.controller('MainController', function($scope, $http) {
-    $http.post('/api/log', {url: window.location.origin}).then();
+UHU.controller('MainController', function($scope, $http, $location) {
+  $scope.$on(
+    '$locationChangeSuccess',
+    function handleLocationChangeEvent( event ) {
+      console.log( 'Page view:', location.href );
+      $http.post('/api/log', { url: location.href }).then();
+    }
+  );
+  $scope.$on(
+    '$stateChangeSuccess',
+    function handleRouteChangeEvent( event ) {
+      console.log( 'Route Changed:', $location.path());
+      $http.post('/api/log', { route: $location.path() }).then();
+    }
+  );
 });
 
 UHU.config(function($stateProvider, $urlRouterProvider) {
