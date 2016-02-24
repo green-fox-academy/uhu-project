@@ -29,7 +29,7 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./views/style/'));
 });
 
-gulp.task('test', function () {
+gulp.task('test', ['browserify'], function () {
   return gulp.src('spec/*.js')
     .pipe(jasmine());
 });
