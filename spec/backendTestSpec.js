@@ -1,7 +1,7 @@
 'use strict';
 
 var request = require('supertest');
-var server = require('../server.js');
+var server = require('../server/server.js');
 var app = server.myServer(heartBeatQueryConnect);
 var appError = server.myServer(errorHeartBeatQueryConnect);
 
