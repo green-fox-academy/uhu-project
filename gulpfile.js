@@ -7,7 +7,7 @@ var gulp = require('gulp');
 //var eslint = require('gulp-eslint');
 var jasmine = require('gulp-jasmine');
 var sass = require('gulp-sass');
-var Server = require('karma').Server;
+var karma = require('karma').Server;
 
 gulp.task('browserify', function() {
   browserify('./views/app/UHU.js')
@@ -29,16 +29,18 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./views/style/'));
 });
 
-gulp.task('test', function () {
+gulp.task('test', ['browserify'], function () {
   return gulp.src('spec/*.js')
     .pipe(jasmine());
 });
 
-gulp.task('karma', function (done) {
-  new Server({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, done).start();
+gulp.task('karma', function(done) {
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: true
+    }, function() {
+        done();
+    });
 });
 
 gulp.task('watch', function() {
