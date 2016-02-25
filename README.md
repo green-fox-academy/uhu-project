@@ -3,14 +3,7 @@
 
  CALGO CALL CENTER MONITORING APPLICATION 
 ---
-this is a monitoring application for the call center of the uhu systems
-kft. lkslkkfsdlé ..sdféá .sd.fésdfflsdfsdf. és akkor attila elment vadaszni,
-az evi meglotte, a zsolt hazavitte, kristof pedig mind megette :-) volt
-egyszer egy kiscicam, de a kiscicam ngyon beteg lett, ezert
-felgyujtottam es megettem. nagyon szomoru lettem utana, de szerencsere
-elkezdtem iskolaba jarni, ahol uj embereket ismertem meg, akiket megolhetek
-:-)
-
+this is a monitoring application for the call center of the uhu systems 
 
 First Step - node
 ---
