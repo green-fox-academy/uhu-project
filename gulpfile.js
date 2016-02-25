@@ -50,6 +50,6 @@ gulp.task('watch', function() {
   gulp.watch(['**/*.js', '!views/app/bundle.js'], ['browserify']);
 });
 
-gulp.task('ci', ['karma', 'test', 'sass', 'browserify']);
+gulp.task('ci', ['sass', 'browserify', 'karma', 'test']);
 
 gulp.task('default', ['watch']);

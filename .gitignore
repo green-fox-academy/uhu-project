@@ -7,4 +7,3 @@ node_modules
 *~
 newrelic_agent.log
 bundle.js
-bundled.js

@@ -20,16 +20,16 @@
     "angular-mocks": "^1.5.0",
     "angular-ui-router": "^0.2.18",
     "body-parser": "^1.15.0",
-    "browserify": "^13.0.0",
     "express": "^4.13.4",
-    "karma-bro": "^0.11.1",
     "moment": "^2.11.2",
     "newrelic": "^1.25.1",
+    "numeral": "^1.5.3",
     "pg": "^4.4.6",
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
     "angular": "^1.5.0",
+    "browserify": "^13.0.0",
     "eslint": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
@@ -41,6 +41,7 @@
     "karma": "^0.13.21",
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.7",
-    "supertest": "^1.2.0"
+    "supertest": "^1.2.0",
+    "watchify": "^3.7.0"
   }
 }
