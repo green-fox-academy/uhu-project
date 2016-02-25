@@ -12,7 +12,7 @@ elkezdtem iskolaba jarni, ahol uj embereket ismertem meg, akiket megolhetek
 :-)
 
 
-First Step
+First Step - node
 ---
 **Install:**
 
@@ -26,7 +26,7 @@ sudo npm install npm -g
 npm install -g
 ```
 
-Second Step
+Second Step - local database
 ---
  a local database is necessarry for a smooth development. we are using
  `postgreSQL`. [get it from here!](http://www.postgresql.org/download/)  
@@ -63,7 +63,7 @@ now you have it, with a simple select command test your table
 SELECT ok FROM heartbeat;
 ```
 
-Third Step
+Third Step - enviroment variables
 ---
 
 set a local enviroment variable to the following
@@ -72,3 +72,9 @@ export DATABASE_URL=postgres://postgres:postgres@localhost:5432/uhu
 export DEFAULT_LOGGINGLEVEL=INFO
 ```
 
+Final Step
+---
+start your local server (the main is already running [here](http://uhu-project.herokuapp.com/))
+```
+node main.js
+```
