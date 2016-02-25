@@ -4,9 +4,11 @@ var moment = require('moment');
 var UHU = require('../app');
 var numeral = require('numeral');
 var count = 0;
+var start = moment().add(1, 'H');
+var end = moment().add(2, 'H');
 
 UHU.controller('ListCtrl', function($scope, $interval) {
-  $scope.calls = calls;
+  $scope.calls = call;
   $scope.statusChanger = function(call) {
     var statusImageSrc = '/images/' + call.status + '.svg';
     return statusImageSrc;
@@ -30,7 +32,7 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   }, 1000);
 });
 
-var calls = [
+var call = [
     {status: 'ongoing',
      startTime: start, //.format('DD/MM/YYYY HH:MM'),
      elapsedTime: start,
@@ -64,6 +66,3 @@ UHU.service('newCallService', function(calls) {
       this.calls.push(call);
     }
   });
-
-var start = moment().add(1, 'H');
-var end = moment().add(2, 'H');
