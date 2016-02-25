@@ -1,5 +1,7 @@
 'use stict';
 
+
+
 describe("A suite", function() {
   it("contains spec with an expectation", function() {
     expect(true).toBe(true);
@@ -9,7 +11,6 @@ describe("A suite", function() {
 describe('MainController', function () {
   var $scope, $controller, MainController;
 
-
   beforeEach(module('UHU'));
 
   beforeEach(inject(function(_$controller_, $rootScope){
@@ -18,7 +19,21 @@ describe('MainController', function () {
     MainController = $controller('MainController', {'$scope': $scope});
   }));
 
-  it('should exist', function() {
+  it('should exist', function () {
     expect(MainController).toBeDefined();
+  });
+});
+
+describe('newCallService test', function () {
+  var newCallService;
+  beforeEach(function () {
+    module('UHU')
+    .inject(function(_newCallService_) {
+      newCallService = _newCallService_;
+    });
+  });
+
+  it('should exist', function () {
+    expect(newCallService).toBeDefined();
   });
 });

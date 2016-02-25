@@ -1,6 +1,9 @@
-'use strict';
+/*'use strict';
 
 var UHU = require('../app');
+var moment = require('moment');
+var start = moment().add(1, 'H');
+var end = moment().add(2, 'H');
 
 var calls = [
     {status: 'ongoing',
@@ -20,10 +23,10 @@ var calls = [
      elapsedTime: start,
      endTime: end,// .format('DD/MM/YYYY HH:MM'),
      id: 3},
-  
+
     {status: 'incoming',
      startTime: start,
-     elapsedTime: 0,    
+     elapsedTime: 0,
      id: 4}
 ];
 
@@ -36,3 +39,4 @@ UHU.service('newCallService', function(calls) {
       this.calls.push(call);
     }
   });
+  */
