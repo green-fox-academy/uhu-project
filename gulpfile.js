@@ -16,6 +16,7 @@ gulp.task('browserify', function() {
   .pipe(gulp.dest('./views/app'));
 });
 
+
 gulp.task('eslint', function() {
   return gulp.src(['**/*.js','!node_modules/**', '!app/js/angular.min.js', '!spec/**'])
       .pipe(eslint())
