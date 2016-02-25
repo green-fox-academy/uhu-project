@@ -10,7 +10,7 @@ function myServer(db) {
 
   app.use(logRequest);
   app.use(bodyParser.json());
-  app.use(express.static('../views'));
+  app.use(express.static(__dirname + '/../views'));
 
   app.get('/heartbeat', heartbeat.heartBeat(db));
   app.post('/api/log', postLogs);
