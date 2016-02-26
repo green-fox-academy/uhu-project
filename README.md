@@ -16,7 +16,13 @@ sudo npm install npm -g
 ```
    in the project directory run this command to get all the necessary packages
 ```
-npm install -g
+npm install 
+```
+
+and install gulp globally
+
+```
+npm install gulp -g
 ```
 
 Second Step - local database
@@ -45,11 +51,9 @@ CREATE DATABASE uhu;
 ```
 with `\connect uhu;` now you are at your local uhu database
 
-create table for the heartbeat method
+create table for the heartbeat method with an existing sql file
 ```
-CREATE TABLE heartbeat (
-ok boolean
-);
+psql -f tables.sql uhu
 ```
 now you have it, with a simple select command test your table
 ```
