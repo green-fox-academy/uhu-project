@@ -37,7 +37,6 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   }, 1000);
 });
 
-
 var calls = [
     {status: 'ongoing',
      startTime: start, //.format('DD/MM/YYYY HH:MM'),
