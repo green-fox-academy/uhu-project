@@ -16,6 +16,11 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   $scope.myFilter = function(call, callStatus) {
     return call.status.match(/callStatus/) ? true : false;
   };
+  $scope.timeFormatter = function(callTime) {
+    if (callTime != '') {
+      return callTime = callTime.format('DD/MM/YYYY HH:MM');
+    }
+  };
   $interval(function() {
     $scope.calls.forEach(function(call) {
       if (call.status === 'ended') {
@@ -34,26 +39,27 @@ UHU.controller('ListCtrl', function($scope, $interval) {
 
 var call = [
     {status: 'ongoing',
-     startTime: start, //.format('DD/MM/YYYY HH:MM'),
+     startTime: start,
      elapsedTime: start,
      endTime: '',
      id: 1},
 
     {status: 'ended',
-     startTime: start, //.format('DD/MM/YYYY HH:MM'),
+     startTime: start,
      elapsedTime: start,
-     endTime: end, //.format('DD/MM/YYYY HH:MM'),
+     endTime: end,
      id: 2},
 
     {status: 'ended',
-     startTime: start, //.format('DD/MM/YYYY HH:MM'),
+     startTime: start,
      elapsedTime: start,
-     endTime: end,// .format('DD/MM/YYYY HH:MM'),
+     endTime: end,
      id: 3},
 
     {status: 'incoming',
-     startTime: start,
+     startTime: '',
      elapsedTime: 0,
+     endTime: '',
      id: 4}
 ];
 
