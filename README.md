@@ -67,7 +67,7 @@ export DEFAULT_LOGGINGLEVEL=INFO
 
 Final Step
 ---
-start your local server (the main is already running [here](http://uhu-project.herokuapp.com/))
+start your local server (the main is already running [on heroku](http://uhu-project.herokuapp.com/))
 ```
 npm start
 ```
