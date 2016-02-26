@@ -3,13 +3,13 @@
 
  CALGO CALL CENTER MONITORING APPLICATION 
 ---
-this is a monitoring application for the call center of the uhu systems 
+A monitoring application for the call center of the uhu systems 
 
 First Step - node
 ---
 **Install:**
 
-1.  you need to install the lastest `node.js.` you can download it from [here!](https://nodejs.org/)
+1.  you need to install the latest `node.js.` you can download it from [here!](https://nodejs.org/)
 2.  `node.js` comes with `npm`. update `npm` with the following command
 ```
 sudo npm install npm -g
@@ -39,7 +39,7 @@ to change the password, use the following code
 ALTER USER postgres WITH PASSWORD 'postgres';
 ``` 
 after this, change back the aut method in `pg_hba.conf` to `md5`  
-to create the local database use normal sql commands, or here is the help
+to create the local database use normal sql commands, or use the following commands
 ```
 CREATE DATABASE uhu;
 ```
@@ -56,10 +56,10 @@ now you have it, with a simple select command test your table
 SELECT ok FROM heartbeat;
 ```
 
-Third Step - enviroment variables
+Third Step - environment variables
 ---
 
-set a local enviroment variable to the following
+set a local environment variable to the following
 ```
 export DATABASE_URL=postgres://postgres:postgres@localhost:5432/uhu
 export DEFAULT_LOGGINGLEVEL=INFO
