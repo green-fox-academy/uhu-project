@@ -10,7 +10,7 @@
       </li>
       <li ng-repeat="call in calls">
         <span class="call-id">#{{call.id}}</span>
-        <span class="call-status"><img ng-src={{statusChanger(call)}}></span>
+        <span class="call-status"><img width="24"ng-src={{statusChanger(call)}}></span>
         <span class="start-time">{{timeFormatter(call.startTime)}}</span>
         <span class="ellapsed-time">{{call.elapsedTime}}</span>
         <span class="end-time">{{timeFormatter(call.endTime)}}</span>
