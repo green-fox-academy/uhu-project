@@ -4,7 +4,8 @@
   "description": "TOM MARVOLO RIDDLE.",
   "main": "UHU.js",
   "scripts": {
-    "test": "gulp ci"
+    "test": "gulp ci",
+    "start": "node ./server/main.js"
   },
   "repository": {
     "type": "git",

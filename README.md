@@ -69,5 +69,5 @@ Final Step
 ---
 start your local server (the main is already running [here](http://uhu-project.herokuapp.com/))
 ```
-node main.js
+npm start
 ```
