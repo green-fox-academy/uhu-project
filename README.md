@@ -71,3 +71,7 @@ start your local server (the main is already running [here](http://uhu-project.h
 ```
 npm start
 ```
+you can access the site through your browser with the following url 
+```
+localhost:3000
+```

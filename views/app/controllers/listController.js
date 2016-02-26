@@ -21,12 +21,11 @@ UHU.controller('ListCtrl', function($scope, $interval) {
       return callTime = callTime.format('DD/MM/YYYY HH:MM');
     }
   };
-  var ellapsedTimer = $interval(function() {
+  var elapsedTimer = $interval(function() {
     $scope.calls.forEach(function(call) {
       if (call.status === 'ended') {
         var elapsedTime = (end - start)/1000;
-        var formattedElapsedTime = numeral(elapsedTime).format('00:00:00');
-        call.elapsedTime = formattedElapsedTime;
+        call.elapsedTime = numeral(elapsedTime).format('00:00:00');
       } else if (call.status === 'incoming') {
         call.elapsedTime = 'incoming';
       } else {
@@ -37,8 +36,8 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   }, 1000);
 
   $scope.$on("$destroy", function() {
-    if (ellapsedTimer) {
-        $interval.cancel(ellapsedTimer);
+    if (elapsedTimer) {
+        $interval.cancel(elapsedTimer);
     }
   });
 });
@@ -46,19 +45,19 @@ UHU.controller('ListCtrl', function($scope, $interval) {
 var calls = [
     {status: 'ongoing',
      startTime: start,
-     elapsedTime: start,
+     elapsedTime: 0,
      endTime: '',
      id: 1},
 
     {status: 'ended',
      startTime: start,
-     elapsedTime: start,
+     elapsedTime: 0,
      endTime: end,
      id: 2},
 
     {status: 'ended',
      startTime: start,
-     elapsedTime: start,
+     elapsedTime: 0,
      endTime: end,
      id: 3},
 
