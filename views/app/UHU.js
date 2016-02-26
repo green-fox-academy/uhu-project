@@ -2,9 +2,10 @@
 
 var UHU = require('./app');
 require('./controllers/listController');
+require('./controllers/newCallService');
 
 
-UHU.controller('MainController', function($scope, $http, $location) {
+UHU.controller('MainController', function($scope, $http, $location, newCallService) {
   $scope.$on(
     '$locationChangeSuccess',
     function handleLocationChangeEvent() {
@@ -19,6 +20,9 @@ UHU.controller('MainController', function($scope, $http, $location) {
       $http.post('/api/log', { route: $location.path() }).then();
     }
   );
+   $scope.addNewCall = function (call) {
+    newCallService.newCall(call);
+  }  
 });
 
 UHU.config(function($stateProvider, $urlRouterProvider, $locationProvider) {

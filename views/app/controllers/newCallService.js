@@ -2,8 +2,6 @@
 
 var UHU = require('../app');
 var moment = require('moment');
-var start = moment().add(1, 'H');
-var end = moment().add(2, 'H');
 
 UHU.service('newCallService', function(calls) {
     this.calls = calls;
