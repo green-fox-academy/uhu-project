@@ -21,7 +21,7 @@ UHU.controller('ListCtrl', function($scope, $interval) {
       return callTime = callTime.format('DD/MM/YYYY HH:MM');
     }
   };
-  $interval(function() {
+  var ellapsedTimer = $interval(function() {
     $scope.calls.forEach(function(call) {
       if (call.status === 'ended') {
         var elapsedTime = (end - start)/1000;
@@ -35,31 +35,37 @@ UHU.controller('ListCtrl', function($scope, $interval) {
       }
     });
   }, 1000);
-});
 
+  $scope.$on("$destroy", function() {
+    if (ellapsedTimer) {
+        $interval.cancel(ellapsedTimer);
+    }
+  });
+});
 
 var calls = [
     {status: 'ongoing',
-     startTime: start, //.format('DD/MM/YYYY HH:MM'),
+     startTime: start,
      elapsedTime: start,
      endTime: '',
      id: 1},
 
     {status: 'ended',
-     startTime: start, //.format('DD/MM/YYYY HH:MM'),
+     startTime: start,
      elapsedTime: start,
-     endTime: end, //.format('DD/MM/YYYY HH:MM'),
+     endTime: end,
      id: 2},
 
     {status: 'ended',
-     startTime: start, //.format('DD/MM/YYYY HH:MM'),
+     startTime: start,
      elapsedTime: start,
-     endTime: end,// .format('DD/MM/YYYY HH:MM'),
+     endTime: end,
      id: 3},
 
     {status: 'incoming',
-     startTime: start,
+     startTime: '',
      elapsedTime: 0,
+     endTime: '',
      id: 4}
 ];
 
