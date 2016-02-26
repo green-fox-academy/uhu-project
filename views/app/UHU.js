@@ -21,7 +21,7 @@ UHU.controller('MainController', function($scope, $http, $location) {
   );
 });
 
-UHU.config(function($stateProvider, $urlRouterProvider) {
+UHU.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
@@ -37,4 +37,5 @@ UHU.config(function($stateProvider, $urlRouterProvider) {
     url: '/ongoing' ,
     templateUrl: 'ongoing.html'
   });
+  $locationProvider.html5Mode(true);
 });
