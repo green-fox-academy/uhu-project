@@ -7,14 +7,14 @@ require('./controllers/listController');
 UHU.controller('MainController', function($scope, $http, $location) {
   $scope.$on(
     '$locationChangeSuccess',
-    function handleLocationChangeEvent( event ) {
+    function handleLocationChangeEvent() {
       console.log( 'Page view:', location.href );
       $http.post('/api/log', { url: location.href }).then();
     }
   );
   $scope.$on(
     '$stateChangeSuccess',
-    function handleRouteChangeEvent( event ) {
+    function handleRouteChangeEvent() {
       console.log( 'Route Changed:', $location.path());
       $http.post('/api/log', { route: $location.path() }).then();
     }
