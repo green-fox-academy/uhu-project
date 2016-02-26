@@ -24,7 +24,7 @@ describe('MainController', function () {
   });
 });
 
-/*describe('newCallService test', function () {
+describe('newCallService test', function () {
   var newCallService;
   beforeEach(function () {
     module('UHU')
@@ -37,4 +37,3 @@ describe('MainController', function () {
     expect(newCallService).toBeDefined();
   });
 });
-*/

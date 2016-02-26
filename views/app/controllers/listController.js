@@ -8,7 +8,7 @@ var start = moment().add(1, 'H');
 var end = moment().add(2, 'H');
 
 UHU.controller('ListCtrl', function($scope, $interval) {
-  $scope.calls = call;
+  $scope.calls = calls;
   $scope.statusChanger = function(call) {
     var statusImageSrc = '/images/' + call.status + '.svg';
     return statusImageSrc;
@@ -37,38 +37,30 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   }, 1000);
 });
 
-var call = [
+
+var calls = [
     {status: 'ongoing',
-     startTime: start,
+     startTime: start, //.format('DD/MM/YYYY HH:MM'),
      elapsedTime: start,
      endTime: '',
      id: 1},
 
     {status: 'ended',
-     startTime: start,
+     startTime: start, //.format('DD/MM/YYYY HH:MM'),
      elapsedTime: start,
-     endTime: end,
+     endTime: end, //.format('DD/MM/YYYY HH:MM'),
      id: 2},
 
     {status: 'ended',
-     startTime: start,
+     startTime: start, //.format('DD/MM/YYYY HH:MM'),
      elapsedTime: start,
-     endTime: end,
+     endTime: end,// .format('DD/MM/YYYY HH:MM'),
      id: 3},
 
     {status: 'incoming',
-     startTime: '',
+     startTime: start,
      elapsedTime: 0,
-     endTime: '',
      id: 4}
 ];
 
-UHU.service('newCallService', function(calls) {
-    this.calls = calls;
-    this.getCalls = function() {
-      return this.calls;
-    }
-    this.newCall = function(call) {
-      this.calls.push(call);
-    }
-  });
+UHU.value('calls', calls);
