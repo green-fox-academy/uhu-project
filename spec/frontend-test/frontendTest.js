@@ -54,6 +54,22 @@ describe('ListCtrl', function () {
   it('should exist', function () {
     expect(ListCtrl).toBeDefined();
   });
+
+  it('calls should be an object', function () {
+    expect($scope.calls).toBeDefined({});
+  });
+
+  it('calls status should be ended', function () {
+    expect($scope.calls[0].status).toEqual('ongoing');
+  });
+
+  it('statusChanger should return with statusImageSrc', function () {
+    expect($scope.statusChanger).toBeDefined('statusImageSrc');
+  });
+
+  it('timeFormatter should return with callTime', function () {
+    expect($scope.timeFormatter).toBeDefined('callTime');
+  });
 });
 
 describe('newCallService test', function () {
