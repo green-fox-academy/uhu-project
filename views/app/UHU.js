@@ -26,7 +26,7 @@ UHU.controller('MainController', function($scope, $http, $location, newCallServi
 });
 
 UHU.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/index.html');
 
   $stateProvider
   .state('all', {
