@@ -82,4 +82,8 @@ describe('newCallService test', function () {
   it('should exist', function () {
     expect(newCallService).toBeDefined();
   });
+
+  it('getCalls shoul return with this.calls', function () {
+    expect(newCallService.getCalls).toBeDefined(this.calls);
+  });
 });
