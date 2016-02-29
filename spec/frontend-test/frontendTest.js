@@ -24,6 +24,38 @@ describe('MainController', function () {
   });
 });
 
+describe('addNewCall', function () {
+  var $scope, $controller, addNewCall;
+
+  beforeEach(module('UHU'));
+
+  beforeEach(inject(function(_$controller_, $rootScope){
+    $scope = $rootScope.$new();
+    $controller = _$controller_;
+    addNewCall = $controller('addNewCall', {'$scope': $scope});
+  }));
+
+  it('should exist', function () {
+    expect(addNewCall).toBeDefined();
+  });
+});
+
+describe('ListCtrl', function () {
+  var $scope, $controller, ListCtrl;
+
+  beforeEach(module('UHU'));
+
+  beforeEach(inject(function(_$controller_, $rootScope){
+    $scope = $rootScope.$new();
+    $controller = _$controller_;
+    ListCtrl = $controller('ListCtrl', {'$scope': $scope});
+  }));
+
+  it('should exist', function () {
+    expect(ListCtrl).toBeDefined();
+  });
+});
+
 describe('newCallService test', function () {
   var newCallService;
   beforeEach(module('UHU'));
