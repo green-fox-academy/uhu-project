@@ -24,17 +24,14 @@ describe('MainController', function () {
   });
 });
 
-/*describe('newCallService test', function () {
+describe('newCallService test', function () {
   var newCallService;
-  beforeEach(function () {
-    module('UHU')
-    .inject(function(_newCallService_) {
+  beforeEach(module('UHU'));
+  beforeEach(inject(function(_newCallService_) {
       newCallService = _newCallService_;
-    });
-  });
+    }));
 
   it('should exist', function () {
     expect(newCallService).toBeDefined();
   });
 });
-*/
