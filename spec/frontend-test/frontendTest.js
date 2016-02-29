@@ -84,10 +84,16 @@ describe('newCallService test', function () {
   });
 
   it('getCalls should return with this.calls', function () {
-    expect(newCallService.getCalls).toBeDefined(this.calls);
+    expect(newCallService.getCalls).toBeDefined();
   });
 
   it('newCall should return with this.calls', function () {
-    expect(newCallService.newCall).toBeDefined(this.calls);
+    expect(newCallService.newCall).toBeDefined();
   });
+
+  it('newCall should push call to calls', function () {
+    var call = {};
+    newCallService.newCall(call);
+    expect(newCallService.calls.length).toBe(5);
+   });
 });
