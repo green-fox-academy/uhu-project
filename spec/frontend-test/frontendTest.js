@@ -55,8 +55,12 @@ describe('ListCtrl', function () {
     expect(ListCtrl).toBeDefined();
   });
 
-  it('calls shoul be an object', function () {
+  it('calls should be an object', function () {
     expect($scope.calls).toBeDefined({});
+  });
+
+  it('calls status should be ended', function () {
+    expect($scope.calls[0].status).toEqual('ongoing');
   });
 });
 
