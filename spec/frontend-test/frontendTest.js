@@ -54,6 +54,10 @@ describe('ListCtrl', function () {
   it('should exist', function () {
     expect(ListCtrl).toBeDefined();
   });
+
+  it('calls shoul be an object', function () {
+    expect($scope.calls).toBeDefined({});
+  });
 });
 
 describe('newCallService test', function () {
