@@ -96,4 +96,10 @@ describe('newCallService test', function () {
     newCallService.newCall(call);
     expect(newCallService.calls.length).toBe(5);
    });
+
+   it('getCalls should be 5', function () {
+     var calls = newCallService.getCalls;
+     newCallService.getCalls();
+     expect(newCallService.calls.length).toBe(5);
+    });
 });
