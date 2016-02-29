@@ -9,6 +9,8 @@ UHU.service('newCallService', function(calls) {
       return this.calls;
     }
     this.newCall = function(call) {
+      call.id = this.calls.length + 1;
+      call.status = 'incoming';
       this.calls.push(call);
     }
   });

@@ -13,9 +13,6 @@ UHU.controller('ListCtrl', function($scope, $interval) {
     var statusImageSrc = '/images/' + call.status + '.svg';
     return statusImageSrc;
   };
-  $scope.myFilter = function(call, callStatus) {
-    return call.status.match(/callStatus/) ? true : false;
-  };
   $scope.timeFormatter = function(callTime) {
     if (callTime != '') {
       return callTime = callTime.format('DD/MM/YYYY HH:MM');
@@ -69,3 +66,10 @@ var calls = [
 ];
 
 UHU.value('calls', calls);
+
+UHU.controller('addNewCall', function($scope, newCallService) {
+  var call = {};
+  $scope.newCall = function (calls) {
+    newCallService.newCall(call);
+  }  
+});
