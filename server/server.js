@@ -12,13 +12,13 @@ function myServer(db) {
   app.use(logRequest);
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../views'));
-  
-  app.route('/*').get(function(req, res) { 
-    res.sendFile(path.resolve('../views/index.html')); 
-  });
 
   app.get('/heartbeat', heartbeat.heartBeat(db));
   app.post('/api/log', postLogs);
+
+  app.route('/*').get(function(req, res) {
+    res.sendFile(path.resolve('../views/index.html'));
+  });
 
   function postLogs(req, res) {
     logger.logInfo('FRONTEND', JSON.stringify(req.body));
