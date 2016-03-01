@@ -12,7 +12,14 @@
 </head>
 <body ng-controller="MainController">
   <div class="header">
-    <img class="header-logo" src="images/calgo.png" alt="UHU Calgo Logo" ng-click="addNewCall({status: 'incoming'})">
+    <img class="header-logo" src="images/calgo.png" alt="UHU Calgo Logo" ng-click="addNewCall({                   status: 'incoming',
+              callbegin : '',
+              elapsedTime: 0,
+              source: 555-777-5,
+              destination: 888-999-0,
+              userId: '2',
+              gateway: 'Westel',
+              callid: 6})">
     <ul class="main-menu">
       <li><a href="" ui-sref="all" ui-sref-active="selected-route">ALL CALLS</a></li>
       <li><a href="" ui-sref="ongoing" ui-sref-active="selected-route">ONGOING CALLS</a></li>

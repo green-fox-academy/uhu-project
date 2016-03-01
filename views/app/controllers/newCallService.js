@@ -8,9 +8,18 @@ UHU.service('newCallService', function(calls) {
     this.getCalls = function() {
       return this.calls;
     }
-    this.newCall = function(call) {
-      call.id = this.calls.length + 1;
+    this.newCall = function(newCall) { 
+      var call = {};
+      if ((calls.filter(function (call) { return call.id === newCall.id})).length === 0) {
+      call.startTime = newCall.callbegin;
+      call.id = newCall.callid;
       call.status = 'incoming';
+      call.suorce = newCall.source;
+      call.destination = newCall.destination;
+      call.gateway = newCall.gateway;
+      call.user = newCall.user;
+      call.ellapsedTime = 0;
       this.calls.push(call);
+      }
     }
   });
