@@ -8,6 +8,7 @@ function myServer(db) {
   var Logs = require('./logs.js');
   var logger = new Logs();
   var path = require('path');
+ // var NewCall = require('./call.js');
 
   app.use(logRequest);
   app.use(bodyParser.json());
@@ -15,10 +16,18 @@ function myServer(db) {
 
   app.get('/heartbeat', heartbeat.heartBeat(db));
   app.post('/api/log', postLogs);
+  app.post('api/call', newCall);
 
   app.route('/*').get(function(req, res) {
-    res.sendFile(path.resolve('../views/index.html'));
+    res.sendFile(path.resolve(__dirname, '../views/index.html'));
   });
+
+  function newCall(req, res) {
+    logger.logInfo('CALL', JSON.stringify(req.body));
+
+    var newcall = new NewCall(req.body);
+    res.send(newcall.returnCall());
+  }
 
   function postLogs(req, res) {
     logger.logInfo('FRONTEND', JSON.stringify(req.body));

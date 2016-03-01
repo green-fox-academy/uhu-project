@@ -30,12 +30,16 @@ UHU.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $stateProvider
   .state('all', {
-    url: '/all' ,
+    url: '/' ,
     templateUrl: 'all.html'
   })
   .state('past', {
     url: '/past' ,
     templateUrl: 'past.html'
+  })
+  .state('incoming', {
+    url: '/incoming' ,
+    templateUrl: 'incoming.html'
   })
   .state('ongoing', {
     url: '/ongoing' ,
