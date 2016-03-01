@@ -22,7 +22,7 @@ UHU.controller('MainController', function($scope, $http, $location, newCallServi
   );
    $scope.addNewCall = function (call) {
     newCallService.newCall(call);
-  }
+  };
 });
 
 UHU.config(function($stateProvider, $urlRouterProvider, $locationProvider) {

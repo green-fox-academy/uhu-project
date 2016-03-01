@@ -62,11 +62,11 @@ describe('ListCtrl', function () {
   });
 
   it('statusChanger should return with statusImageSrc', function () {
-    expect($scope.statusChanger).toBeDefined('statusImageSrc');
+    expect($scope.statusChanger).toBeDefined();
   });
 
   it('timeFormatter should return with callTime', function () {
-    expect($scope.timeFormatter).toBeDefined('callTime');
+    expect($scope.timeFormatter).toBeDefined();
   });
 });
 

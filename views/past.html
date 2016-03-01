@@ -7,6 +7,10 @@
         <span class="start-time">start time</span>
         <span class="ellapsed-time">elapsed time</span>
         <span class="end-time">end time</span>
+        <span class="source-number">source</span>
+        <span class="destination-number">destination</span>
+        <span class="user-Id">user id</span>
+        <span class="gateway-call">gateway</span>
       </li>
       <li ng-repeat="call in calls | filter: {status : 'ended'}">
         <span class="call-id">#{{call.id}}</span>
@@ -14,6 +18,10 @@
         <span class="start-time">{{timeFormatter(call.startTime)}}</span>
         <span class="ellapsed-time">{{call.elapsedTime}}</span>
         <span class="end-time">{{timeFormatter(call.endTime)}}</span>
+        <span class="source-number">{{call.source}}</span>
+        <span class="destination-number">{{call.destination}}</span>
+        <span class="user-Id">{{call.userId}}</span>
+        <span class="gateway-call">{{call.gateway}}</span>
       </li>
     </ul>
     <div ng-if="calls.length === 0">No calls received yet<div>
