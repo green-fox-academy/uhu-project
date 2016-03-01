@@ -3,7 +3,7 @@
 var UHU = require('./app');
 require('./controllers/listController');
 require('./controllers/newCallService');
-
+require('./controllers/addNewCallController');
 
 UHU.controller('MainController', function($scope, $http, $location, newCallService) {
   $scope.$on(
@@ -22,7 +22,7 @@ UHU.controller('MainController', function($scope, $http, $location, newCallServi
   );
    $scope.addNewCall = function (call) {
     newCallService.newCall(call);
-  }  
+  }
 });
 
 UHU.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
