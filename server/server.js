@@ -8,7 +8,7 @@ function myServer(db) {
   var Logs = require('./logs.js');
   var logger = new Logs();
   var path = require('path');
-  var NewCall = require('./call.js');
+ // var NewCall = require('./call.js');
 
   app.use(logRequest);
   app.use(bodyParser.json());
