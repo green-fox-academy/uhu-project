@@ -4,8 +4,8 @@ var moment = require('moment');
 var UHU = require('../app');
 var numeral = require('numeral');
 var count = 0;
-var start = moment().add(1, 'H');
-var end = moment().add(2, 'H');
+var start = moment();
+var end = moment().add(1, 'H');
 
 UHU.controller('ListCtrl', function($scope, $interval) {
   $scope.calls = calls;
@@ -26,11 +26,12 @@ UHU.controller('ListCtrl', function($scope, $interval) {
       } else if (call.status === 'incoming') {
         call.elapsedTime = 'incoming';
       } else {
-        count += 1;
-        call.elapsedTime = numeral(count).format('00:00:00');
+        var timeNow = new Date()
+        var diff = (timeNow - start)/1000
+        call.elapsedTime = numeral(diff).format('00:00:00');
       }
     });
-  }, 1000);
+  }, 100);
 
   $scope.$on("$destroy", function() {
     if (elapsedTimer) {
