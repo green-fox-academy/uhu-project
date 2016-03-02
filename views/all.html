@@ -1,12 +1,9 @@
 <div ng-controller="ListCtrl">
-    <h1>ALL CALLS</h1>
-
-    <table id="selectedItem">
-      <tr>
-        <td>User id</td>
-        <td><select ng-model="sortUserId" ng-options="call.userId for call in calls | unique: 'userId'"></select></td>
-      </tr>
-    </table>
+    <h1>
+      <span class="view-type">ALL CALLS</span>
+      <span class="option-menu">User id: 
+      <select ng-model="sortUserId" ng-options="call.userId for call in calls | unique: 'userId'"></select></span>      
+    </h1>
     <ul class="calls" ng-if="calls.length">
       <li>
         <span class="call-id"></span>
