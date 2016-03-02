@@ -1,6 +1,6 @@
 <div ng-controller="ListCtrl">
     <h1>ALL CALLS</h1>
-    
+
     <table id="selectedItem">
       <tr>
         <td>User id</td>
@@ -19,7 +19,7 @@
         <span class="user-Id">user id</span>
         <span class="gateway-call">gateway</span>
       </li>
-      <li ng-repeat="call in calls | filter: {userId: sortUserId}">
+      <li ng-repeat="call in calls | filter: {userId: sortUserId.userId}">
         <span class="call-id">#{{call.id}}</span>
         <span class="call-status"><img width="24" ng-src={{statusChanger(call)}}></span>
         <span class="start-time">{{timeFormatter(call.startTime)}}</span>

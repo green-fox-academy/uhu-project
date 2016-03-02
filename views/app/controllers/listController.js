@@ -73,9 +73,9 @@ var calls = [
      id: 3},
 
     {status: 'incoming',
-     startTime: start,
+     startTime: '',
      elapsedTime: 0,
-     endTime: end,
+     endTime: '',
      source: '555-717-2',
      destination: '888-999-0',
      userId: 'hububu',
