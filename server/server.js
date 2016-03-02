@@ -8,7 +8,9 @@ function myServer(db) {
   var Logs = require('./logs.js');
   var logger = new Logs();
   var path = require('path');
- // var NewCall = require('./call.js');
+  var server = require('http').createServer(app);
+  var io = require('socket.io')(server);
+  var NewCall = require('./call.js');
 
   app.use(logRequest);
   app.use(bodyParser.json());
@@ -16,7 +18,7 @@ function myServer(db) {
 
   app.get('/heartbeat', heartbeat.heartBeat(db));
   app.post('/api/log', postLogs);
-  app.post('api/call', newCall);
+  app.post('/api/call', newCall);
 
   app.route('/*').get(function(req, res) {
     res.sendFile(path.resolve(__dirname, '../views/index.html'));
@@ -24,9 +26,9 @@ function myServer(db) {
 
   function newCall(req, res) {
     logger.logInfo('CALL', JSON.stringify(req.body));
-
     var newcall = new NewCall(req.body);
     res.send(newcall.returnCall());
+    io.emit('calls', newcall.returnCall());
   }
 
   function postLogs(req, res) {
@@ -38,6 +40,7 @@ function myServer(db) {
     logger.logInfo(req.method, req.originalUrl);
     next();
   }
+  server.listen(4200);
 
   return app;
 }
