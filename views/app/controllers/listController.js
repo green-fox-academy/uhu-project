@@ -4,8 +4,8 @@ var moment = require('moment');
 var UHU = require('../app');
 var numeral = require('numeral');
 var count = 0;
-var start = moment().add(1, 'H');
-var end = moment().add(2, 'H');
+var start = moment();
+var end = moment().add(1, 'H');
 
 UHU.controller('ListCtrl', function($scope, $interval) {
   $scope.calls = calls;
@@ -26,11 +26,12 @@ UHU.controller('ListCtrl', function($scope, $interval) {
       } else if (call.status === 'incoming') {
         call.elapsedTime = 'incoming';
       } else {
-        count += 1;
-        call.elapsedTime = numeral(count).format('00:00:00');
+        var timeNow = new Date()
+        var diff = (timeNow - start)/1000
+        call.elapsedTime = numeral(diff).format('00:00:00');
       }
     });
-  }, 1000);
+  }, 100);
 
   $scope.$on("$destroy", function() {
     if (elapsedTimer) {
@@ -39,6 +40,7 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   });
 });
 
+
 var calls = [
     {status: 'ongoing',
      startTime: start,
@@ -46,7 +48,7 @@ var calls = [
      endTime: '',
      source: 555-777-5,
      destination: 888-999-0,
-     userId: '1',
+     userId: 'mcdonalds',
      gateway: 'PannonGSM',
      id: 1},
 
@@ -56,7 +58,7 @@ var calls = [
      endTime: end,
      source: 555-777-5,
      destination: 888-999-0,
-     userId: '2',
+     userId: 'burger king',
      gateway: 'Westel',
      id: 2},
 
@@ -66,7 +68,7 @@ var calls = [
      endTime: end,
      source: 555-777-5,
      destination: 888-999-0,
-     userId: '3',
+     userId: 'kfc',
      gateway: 'TescoMobile',
      id: 3},
 
@@ -76,7 +78,7 @@ var calls = [
      endTime: '',
      source: 555-777-5,
      destination: 888-999-0,
-     userId: '4',
+     userId: 'hububu',
      gateway: 'UPCMobile',
      id: 4}
 ];
