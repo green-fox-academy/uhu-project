@@ -3,7 +3,6 @@
 var moment = require('moment');
 var UHU = require('../app');
 var numeral = require('numeral');
-var count = 0;
 var start = moment();
 var end = moment().add(1, 'H');
 

@@ -3,7 +3,8 @@
 var UHU = require('../app');
 var moment = require('moment');
 
-UHU.service('newCallService', function(calls) {
+UHU.service('newCallService', function(calls, $rootScope) {
+    var _this = this;
     this.calls = calls;
     this.getCalls = function() {
       return this.calls;
@@ -22,4 +23,10 @@ UHU.service('newCallService', function(calls) {
       this.calls.push(call);
       }
     }
+    var socket = io.connect('http://localhost:4200');
+    socket.on('calls', function(data) {
+      $rootScope.$apply(function () {
+        _this.newCall(data);
+      });
+    });
   });
