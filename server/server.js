@@ -40,7 +40,7 @@ function myServer(db) {
     logger.logInfo(req.method, req.originalUrl);
     next();
   }
-  server.listen(4200);
+  // server.listen(4200);
 
   return app;
 }
