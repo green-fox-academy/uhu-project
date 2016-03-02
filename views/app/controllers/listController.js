@@ -39,6 +39,7 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   });
 });
 
+
 var calls = [
     {status: 'ongoing',
      startTime: start,
@@ -46,7 +47,7 @@ var calls = [
      endTime: '',
      source: 555-777-5,
      destination: 888-999-0,
-     userId: '1',
+     userId: 'mcdonalds',
      gateway: 'PannonGSM',
      id: 1},
 
@@ -56,7 +57,7 @@ var calls = [
      endTime: end,
      source: 555-777-5,
      destination: 888-999-0,
-     userId: '2',
+     userId: 'burger king',
      gateway: 'Westel',
      id: 2},
 
@@ -66,7 +67,7 @@ var calls = [
      endTime: end,
      source: 555-777-5,
      destination: 888-999-0,
-     userId: '3',
+     userId: 'kfc',
      gateway: 'TescoMobile',
      id: 3},
 
@@ -76,7 +77,7 @@ var calls = [
      endTime: '',
      source: 555-777-5,
      destination: 888-999-0,
-     userId: '4',
+     userId: 'hububu',
      gateway: 'UPCMobile',
      id: 4}
 ];

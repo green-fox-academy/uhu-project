@@ -1,7 +1,7 @@
 <div ng-controller="ListCtrl">
     <h1>ALL CALLS</h1>
-    <label>Search: <input type="text" ng-model="user"></label>
-    <table id="searchFilter">
+    <select ng-model="sortUserId" ng-options="call.userId for call in calls | unique: 'userId'"></select>
+    <table id="selectedItem">
       <tr><th>User id</th></tr>
     </table>
     <ul class="calls" ng-if="calls.length">
@@ -15,7 +15,7 @@
         <span class="user-Id">user id</span>
         <span class="gateway-call">gateway</span>
       </li>
-      <li ng-repeat="call in calls | filter : {userId : user}">
+      <li ng-repeat="call in calls | filter: sortUserId | orderBy: 'userId':true">
         <span class="call-id">#{{call.id}}</span>
         <span class="call-status"><img width="24"ng-src={{statusChanger(call)}}></span>
         <span class="start-time">{{timeFormatter(call.startTime)}}</span>
