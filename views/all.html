@@ -1,26 +1,27 @@
 <div ng-controller="ListCtrl">
-    <h1>ALL CALLS</h1>
-    <select ng-model="sortUserId" ng-options="call.userId for call in calls | unique: 'userId'"></select>
-    <table id="selectedItem">
-      <tr><th>User id</th></tr>
-    </table>
+    <h1>
+      <span class="view-type">ALL CALLS</span>
+      <span class="option-menu">User id: 
+      <select ng-model="sortUserId" ng-options="call.userId for call in calls | unique: 'userId'"></select></span>      
+    </h1>
     <ul class="calls" ng-if="calls.length">
       <li>
         <span class="call-id"></span>
         <span class="call-status"></span>
         <span class="start-time">start time</span>
         <span class="ellapsed-time">elapsed time</span>
+        <span class="end-time">end time</span>
         <span class="source-number">source</span>
         <span class="destination-number">destination</span>
         <span class="user-Id">user id</span>
         <span class="gateway-call">gateway</span>
       </li>
-      <li ng-repeat="call in calls | filter: sortUserId | orderBy: 'userId':true">
+      <li ng-repeat="call in calls | filter: {userId: sortUserId.userId}">
         <span class="call-id">#{{call.id}}</span>
-        <span class="call-status"><img width="24"ng-src={{statusChanger(call)}}></span>
+        <span class="call-status"><img width="24" ng-src={{statusChanger(call)}}></span>
         <span class="start-time">{{timeFormatter(call.startTime)}}</span>
         <span class="ellapsed-time">{{call.elapsedTime}}</span>
-        <span class="end-time">{{timeFormatter(call.endTime)}}</span>
+        <span class="end-time">{{timeFormatter(call.startTime)}}</span>
         <span class="source-number">{{call.source}}</span>
         <span class="destination-number">{{call.destination}}</span>
         <span class="user-Id">{{call.userId}}</span>

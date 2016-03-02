@@ -6,21 +6,38 @@ require('./controllers/newCallService');
 require('./controllers/addNewCallController');
 
 UHU.controller('MainController', function($scope, $http, $location, newCallService) {
+
+  $scope.successCbLoc = function() {
+    console.log( 'Page view:', location.href );
+  };
+  $scope.successCbRoute = function() {
+    console.log( 'Route Changed:', $location.path());
+  };
+  $scope.errorCbLoc = function() {
+    console.log( 'Error at:', location.href );
+  };
+  $scope.errorCbRoute = function() {
+    console.log( 'Route change ERROR at:', $location.path());
+  };
+
   $scope.$on(
     '$locationChangeSuccess',
     function handleLocationChangeEvent() {
-      console.log( 'Page view:', location.href );
-      $http.post('/api/log', { url: location.href }).then();
+      var locUrl = { url: location.href };
+      $http.post('/api/log', locUrl).then($scope.successCbLoc,
+                                          $scope.errorCbLoc);
     }
   );
   $scope.$on(
     '$stateChangeSuccess',
     function handleRouteChangeEvent() {
-      console.log( 'Route Changed:', $location.path());
-      $http.post('/api/log', { route: $location.path() }).then();
+      var routeUrl = { route: $location.path() };
+      $http.post('/api/log', routeUrl).then($scope.successCbRoute,
+                                            $scope.errorCbRoute);
     }
   );
-   $scope.addNewCall = function (call) {
+
+  $scope.addNewCall = function (call) {
     newCallService.newCall(call);
   };
 });
