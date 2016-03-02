@@ -16,9 +16,9 @@
         <span class="user-Id">user id</span>
         <span class="gateway-call">gateway</span>
       </li>
-      <li ng-repeat="call in calls | filter: sortUserId | orderBy: 'userId':true">
+      <li ng-repeat="call in calls | filter: {userId: sortUserId}">
         <span class="call-id">#{{call.id}}</span>
-        <span class="call-status"><img width="24"ng-src={{statusChanger(call)}}></span>
+        <span class="call-status"><img width="24" ng-src={{statusChanger(call)}}></span>
         <span class="start-time">{{dateFormatter(call.startTime)}}</span>
         <span class="ellapsed-time">{{timeFormatter(call.elapsedTime)}}</span>
         <span class="end-time">{{dateFormatter(call.endTime)}}</span>
