@@ -9,7 +9,7 @@ function myServer(db) {
   var logger = new Logs();
   var path = require('path');
   var server = require('http').createServer(app);
-  var io = require('socket.io')(server);
+  var io = require('socket.io').listen(server);
   var NewCall = require('./call.js');
 
   app.use(logRequest);
@@ -28,7 +28,8 @@ function myServer(db) {
     logger.logInfo('CALL', JSON.stringify(req.body));
     var newcall = new NewCall(req.body);
     res.send(newcall.returnCall());
-    io.emit('calls', newcall.returnCall());
+    io.emit('calls', req.body);
+    console.log(newcall.returnCall())
   }
 
   function postLogs(req, res) {
@@ -40,9 +41,10 @@ function myServer(db) {
     logger.logInfo(req.method, req.originalUrl);
     next();
   }
-  // server.listen(4200);
+  
 
-  return app;
+
+  return {app: app, server: server};
 }
 
 module.exports = {

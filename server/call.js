@@ -29,7 +29,7 @@ NewCall.prototype.isValidObject =  function() {
            isUndefined(_this.callBone.gateway);
   }
 
-  if (checkObjectIsUndefined) {
+  if (checkObjectIsUndefined()) {
     return false;
   } else return true;
 
@@ -40,6 +40,22 @@ NewCall.prototype.returnCall = function() {
 };
 
 NewCall.prototype.setState = function() {
+  function isUndefined(key) {
+    return key === '' || key === undefined;
+  }
+
+  var incomingcall = !isUndefined(this.callBone.callbegin) ||
+                      isUndefined(this.callBone.callanswer) ||
+                      isUndefined(this.callBone.callend);
+
+  var ongoingcall = !isUndefined(this.callBone.callbegin) ||
+                    !isUndefined(this.callBone.callanswer) ||
+                     isUndefined(this.callBone.callend);
+
+  var pastcall = !isUndefined(this.callBone.callbegin) ||
+                 !isUndefined(this.callBone.callanswer) ||
+                 !isUndefined(this.callBone.callend);
+
 };
 
 module.exports = NewCall;
