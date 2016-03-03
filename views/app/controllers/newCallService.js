@@ -8,21 +8,24 @@ UHU.service('newCallService', function(calls, $rootScope) {
     this.calls = calls;
     this.getCalls = function() {
       return this.calls;
-    }
+    };
     this.newCall = function(newCall) { 
-      var call = {};
-      if ((calls.filter(function (call) { return call.id === newCall.callid })).length === 0) {
-      call.startTime = newCall.callbegin;
-      call.id = newCall.callid;
-      call.status = 'incoming';
-      call.source = newCall.source;
-      call.destination = newCall.destination;
-      call.gateway = newCall.gateway;
-      call.user = newCall.user;
-      call.ellapsedTime = 0;
-      this.calls.push(call);
+      var filteredCalls = calls.filter(function (call) { return call.id === newCall.callid });
+      if (filteredCalls.length === 0) {
+        var call = {};
+        call.id = newCall.callid;
+        call.startTime = newCall.callbegin;
+        call.status = 'incoming';
+        call.source = newCall.source;
+        call.destination = newCall.destination;
+        call.gateway = newCall.gateway;
+        call.userId = newCall.userId;
+        call.ellapsedTime = 0;
+        this.calls.push(call);
+      } else {
+        (filteredCalls[0]) = newCall;
       }
-    }
+    };
     var socket = io.connect('http://localhost:4200');
     socket.on('calls', function(data) {
       $rootScope.$apply(function () {
