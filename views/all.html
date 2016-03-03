@@ -2,8 +2,9 @@
     <h1>
       <span class="view-type">ALL CALLS</span>
       <span class="option-menu">User id:
-      <select ng-model="selectedUserId" ng-options="call.userId as call.userId for call in calls | unique:'userId'"></select>
-      {{selectedUserId}}
+      <select ng-model="selectedUserId" ng-options="call.userId as call.userId for call in calls | unique:'userId'">
+        <option value=""></option>
+      </select>
     </h1>
     <ul class="calls" ng-if="calls.length">
       <li>
