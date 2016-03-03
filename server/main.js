@@ -18,7 +18,9 @@ var app = server.myServer(heartBeatQueryConnect);
 var port = require('./config.js').DEFAULT_PORT;
 var Logs = require('./logs.js');
 
-app.listen(port, function () {
+app.app.listen(port, function () {
   var logger = new Logs();
   logger.logInfo('Listening on port', port);
 });
+
+app.server.listen(4200);
