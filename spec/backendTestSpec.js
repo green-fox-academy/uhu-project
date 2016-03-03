@@ -5,7 +5,6 @@ var server = require('../server/server.js');
 var app = server.myServer(heartBeatQueryConnect).app;
 var appError = server.myServer(errorHeartBeatQueryConnect).app;
 
-
 function heartBeatQueryConnect(query, cb) {
   cb(null, [{}]);
 }
