@@ -41,10 +41,10 @@ function myServer(db) {
     logger.logInfo(req.method, req.originalUrl);
     next();
   }
-  // server.listen(process.env.PORT || 4200);
+  
 
 
-  return app;
+  return {app: app, server: server};
 }
 
 module.exports = {
