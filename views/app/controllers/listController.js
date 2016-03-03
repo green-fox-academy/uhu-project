@@ -37,6 +37,14 @@ UHU.controller('ListCtrl', function($scope, $interval) {
         $interval.cancel(elapsedTimer);
     }
   });
+
+  var sortAllUsers = function (calls) {
+    var allUsers = new Set();
+    $scope.calls.forEach(function(call) {
+      allUsers.add(call.userId);
+    });
+    return Array.from(allUsers);
+  }(calls);
 });
 
 

@@ -1,8 +1,8 @@
 <div ng-controller="ListCtrl">
     <h1>
       <span class="view-type">ALL CALLS</span>
-      <span class="option-menu">User id: 
-      <select ng-model="sortUserId" ng-options="call.userId for call in calls | unique: 'userId'"></select></span>      
+      <span class="option-menu">User id:
+      <select ng-model="sortUserId" ng-options="users for allUsers in sortAllUsers()"></select>      
     </h1>
     <ul class="calls" ng-if="calls.length">
       <li>
