@@ -2,7 +2,8 @@
     <h1>
       <span class="view-type">ALL CALLS</span>
       <span class="option-menu">User id:
-      <select ng-model="sortUserId" ng-options="users for allUsers in sortAllUsers()"></select>      
+      <select ng-model="selectedUserId" ng-options="call.userId as call.userId for call in calls | unique:'userId'"></select>
+      {{selectedUserId}}
     </h1>
     <ul class="calls" ng-if="calls.length">
       <li>
@@ -16,7 +17,7 @@
         <span class="user-Id">user id</span>
         <span class="gateway-call">gateway</span>
       </li>
-      <li ng-repeat="call in calls | filter: {userId: sortUserId.userId}">
+      <li ng-repeat="call in calls | filter: {userId: selectedUserId}">
         <span class="call-id">#{{call.id}}</span>
         <span class="call-status"><img width="24" ng-src={{statusChanger(call)}}></span>
         <span class="start-time">{{timeFormatter(call.startTime)}}</span>
