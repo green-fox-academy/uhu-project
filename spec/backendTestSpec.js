@@ -2,16 +2,16 @@
 
 var request = require('supertest');
 var server = require('../server/server.js');
-var app = server.myServer(heartBeatQueryConnect);
-var appError = server.myServer(errorHeartBeatQueryConnect);
+var app = server.myServer(heartBeatQueryConnect).app;
+var appError = server.myServer(errorHeartBeatQueryConnect).app;
 
 
 function heartBeatQueryConnect(query, cb) {
-  cb(null, [{}])
+  cb(null, [{}]);
 }
 var err = {status: 500};
 function errorHeartBeatQueryConnect(query, cb) {
-  cb(err, [{}])
+  cb(err, [{}]);
 }
 
 describe('GET /heartbeat', function(){
