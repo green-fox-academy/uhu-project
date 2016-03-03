@@ -16,6 +16,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+        'https://cdn.socket.io/socket.io-1.4.5.js',
         'views/app/bundle.js',
         'spec/frontend-test/*.js'
     ],
