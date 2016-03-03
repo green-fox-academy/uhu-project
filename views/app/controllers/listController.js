@@ -37,6 +37,15 @@ UHU.controller('ListCtrl', function($scope, $interval) {
         $interval.cancel(elapsedTimer);
     }
   });
+
+  $scope.sortAllUsers = function () {
+    var allUsers = new Set();
+    $scope.calls.forEach(function(call) {
+      allUsers.add(call.userId);
+    });
+    console.log(allUsers);
+    return Array.from(allUsers);
+  }
 });
 
 
@@ -77,7 +86,7 @@ var calls = [
      endTime: '',
      source: '555-717-2',
      destination: '888-999-0',
-     userId: 'hububu',
+     userId: 'kfc',
      gateway: 'UPCMobile',
      id: 4}
 ];

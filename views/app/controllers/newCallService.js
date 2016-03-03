@@ -11,11 +11,11 @@ UHU.service('newCallService', function(calls, $rootScope) {
     }
     this.newCall = function(newCall) { 
       var call = {};
-      if ((calls.filter(function (call) { return call.id === newCall.id})).length === 0) {
+      if ((calls.filter(function (call) { return call.id === newCall.callid })).length === 0) {
       call.startTime = newCall.callbegin;
       call.id = newCall.callid;
       call.status = 'incoming';
-      call.suorce = newCall.source;
+      call.source = newCall.source;
       call.destination = newCall.destination;
       call.gateway = newCall.gateway;
       call.user = newCall.user;
