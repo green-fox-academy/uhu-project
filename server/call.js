@@ -65,11 +65,11 @@ NewCall.prototype.setState = function() {
                  !isUndefined(this.callBone.callend);
 
   if(incomingcall) {
-    this.callBone.state = 'incomingcall';
+    this.callBone.state = 'incoming';
   } else if (ongoingcall) {
-    this.callBone.state = 'ongoingcall';
+    this.callBone.state = 'ongoing';
   } else if (pastcall) {
-    this.callBone.state = 'pastcall';
+    this.callBone.state = 'past';
   } else {
     console.log('something went wrong');
   }
