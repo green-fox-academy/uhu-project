@@ -9,7 +9,8 @@ function NewCall(data) {
     source: data.source,
     destination: data.destination,
     user: data.user,
-    gateway: data.gateway
+    gateway: data.gateway,
+    state: ''
   };
 }
 
@@ -29,6 +30,7 @@ NewCall.prototype.isValidObject =  function() {
            isUndefined(_this.callBone.gateway);
   }
 
+  this.setState();
   if (checkObjectIsUndefined()) {
     return false;
   } else return true;
@@ -40,21 +42,34 @@ NewCall.prototype.returnCall = function() {
 };
 
 NewCall.prototype.setState = function() {
+
   function isUndefined(key) {
     return key === '' || key === undefined;
   }
 
-  var incomingcall = !isUndefined(this.callBone.callbegin) ||
-                      isUndefined(this.callBone.callanswer) ||
+  var incomingcall = !isUndefined(this.callBone.callbegin) &&
+                      isUndefined(this.callBone.callanswer) &&
                       isUndefined(this.callBone.callend);
 
-  var ongoingcall = !isUndefined(this.callBone.callbegin) ||
-                    !isUndefined(this.callBone.callanswer) ||
+  var ongoingcall = !isUndefined(this.callBone.callbegin) &&
+                    !isUndefined(this.callBone.callanswer) &&
                      isUndefined(this.callBone.callend);
 
-  var pastcall = !isUndefined(this.callBone.callbegin) ||
-                 !isUndefined(this.callBone.callanswer) ||
+  var pastcall = !isUndefined(this.callBone.callbegin) &&
+                 !isUndefined(this.callBone.callanswer) &&
                  !isUndefined(this.callBone.callend);
+
+  if(incomingcall) {
+    this.callBone.state = 'incomingcall';
+  } else if (ongoingcall) {
+    this.callBone.state = 'ongoingcall';
+  } else if (pastcall) {
+    this.callBone.state = 'pastcall';
+  } else {
+    console.log('something went wrong');
+  }
+
+  return this.callBone.state;
 
 };
 

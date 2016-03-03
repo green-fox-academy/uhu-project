@@ -4,18 +4,41 @@ var NewCall = require('./../server/call.js');
 
 describe('new call tests', function() {
   var testObject = {
-    callid: 'ize',
-    callbegin: 'ize',
-    callanswer: 'ize',
-    callend: 'ize',
-    source: 'ize',
-    destination: 'ize',
-    user: 'ize',
-    gateway: 'ize'
+    callid: 'test',
+    callbegin: 'test',
+    callanswer: 'test',
+    callend: 'test',
+    source: 'test',
+    destination: 'test',
+    user: 'test',
+    gateway: 'test',
+    state: 'pastcall'
   };
 
-  var badcall = new NewCall({});
+  var ongoingCallObject = {
+    callid: 'test',
+    callbegin: 'test',
+    callanswer: 'test',
+    source: 'test',
+    destination: 'test',
+    user: 'test',
+    gateway: 'test'
+  };
+
+  var incomingCallObject = {
+    callid: 'test',
+    callbegin: 'test',
+    source: 'test',
+    destination: 'test',
+    user: 'test',
+    gateway: 'test'
+  };
+
+
   var call = new NewCall(testObject);
+  var badcall = new NewCall({});
+  var ongoingcall = new NewCall(ongoingCallObject);
+  var incomingcall = new NewCall(incomingCallObject);
 
   it('the test should work', function() {
     expect(true).toBe(true);
@@ -26,6 +49,12 @@ describe('new call tests', function() {
     expect(typeof call.isValidObject).toBe('function');
     expect(typeof call.returnCall).toBe('function');
     expect(typeof call.setState).toBe('function');
+  });
+
+  it('should have a pastcall state', function() {
+    expect(call.setState()).toEqual('pastcall');
+    expect(ongoingcall.setState()).toEqual('ongoingcall');
+    expect(incomingcall.setState()).toEqual('incomingcall');
   });
 
   it('is an undefined object', function() {
