@@ -8,15 +8,6 @@ var end = moment().add(1, 'H');
 
 UHU.controller('ListCtrl', function($scope, $interval) {
   $scope.calls = calls;
-  $scope.statusChanger = function(call) {
-    var statusImageSrc = '/images/' + call.status + '.svg';
-    return statusImageSrc;
-  };
-  $scope.timeFormatter = function(callTime) {
-    if (callTime != '') {
-      return callTime = callTime.format('DD/MM/YYYY HH:MM');
-    }
-  };
   var elapsedTimer = $interval(function() {
     $scope.calls.forEach(function(call) {
       if (call.status === 'ended') {
@@ -37,17 +28,34 @@ UHU.controller('ListCtrl', function($scope, $interval) {
         $interval.cancel(elapsedTimer);
     }
   });
-
-  $scope.sortAllUsers = function () {
-    var allUsers = new Set();
-    $scope.calls.forEach(function(call) {
-      allUsers.add(call.userId);
-    });
-    console.log(allUsers);
-    return Array.from(allUsers);
-  }
 });
 
+UHU.directive('call', function () {
+  return {
+    restrict: 'E',
+    scope: { call: '=call' },
+    templateUrl: '../../template/repeatCalls.html',
+    link: function (scope) {
+      scope.timeFormatter = function(callTime) {
+        if (callTime != '') {
+          return callTime.format('DD/MM/YYYY HH:MM');
+        }
+      };
+      scope.statusChanger = function(call) {
+        var statusImageSrc = '/images/' + call.status + '.svg';
+        return statusImageSrc;
+      };
+    }
+  };
+});
+
+UHU.directive('listcalls', function () {
+  return {
+    restrict: 'E',
+    scope: { calls: '=calls' },
+    templateUrl: '../../template/listCalls.html'
+  };
+});
 
 var calls = [
     {status: 'ongoing',

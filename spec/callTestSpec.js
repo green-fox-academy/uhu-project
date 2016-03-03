@@ -4,7 +4,7 @@ var NewCall = require('./../server/call.js');
 
 describe('new call tests', function() {
   var testObject = {
-    callid: 'test',
+    callid: 4,
     callbegin: 'test',
     callanswer: 'test',
     callend: 'test',
@@ -12,7 +12,7 @@ describe('new call tests', function() {
     destination: 'test',
     user: 'test',
     gateway: 'test',
-    state: 'pastcall'
+    state: 'past'
   };
 
   var ongoingCallObject = {
@@ -52,9 +52,9 @@ describe('new call tests', function() {
   });
 
   it('should have a pastcall state', function() {
-    expect(call.setState()).toEqual('pastcall');
-    expect(ongoingcall.setState()).toEqual('ongoingcall');
-    expect(incomingcall.setState()).toEqual('incomingcall');
+    expect(call.setState()).toEqual('past');
+    expect(ongoingcall.setState()).toEqual('ongoing');
+    expect(incomingcall.setState()).toEqual('incoming');
   });
 
   it('is an undefined object', function() {
