@@ -7,19 +7,5 @@
         <option ng-repeat="call in calls  | unique:'userId'" value="{{call.userId}}">{{call.userId}}</option>
       </select>
     </h1>
-    <ul class="calls" ng-if="calls.length">
-      <li>
-        <span class="call-id"></span>
-        <span class="call-status"></span>
-        <span class="start-time">start time</span>
-        <span class="ellapsed-time">elapsed time</span>
-        <span class="end-time">end time</span>
-        <span class="source-number">source</span>
-        <span class="destination-number">destination</span>
-        <span class="user-Id">user id</span>
-        <span class="gateway-call">gateway</span>
-      </li>
-      <call ng-repeat="call in calls | filter: {userId: selectedUserId}" call="call"></call>
-    </ul>
-    <div ng-if="calls.length === 0">No calls received yet<div>
+    <listcalls calls="calls"></listcalls>
 </div>

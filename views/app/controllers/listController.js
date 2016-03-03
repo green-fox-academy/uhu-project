@@ -30,7 +30,7 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   });
 });
 
-UHU.directive('call', function() {
+UHU.directive('call', function () {
   return {
     restrict: 'E',
     scope: { call: '=call' },
@@ -44,8 +44,16 @@ UHU.directive('call', function() {
       scope.statusChanger = function(call) {
         var statusImageSrc = '/images/' + call.status + '.svg';
         return statusImageSrc;
-      }
+      };
     }
+  };
+});
+
+UHU.directive('listcalls', function () {
+  return {
+    restrict: 'E',
+    scope: { calls: '=calls' },
+    templateUrl: '../../template/listCalls.html'
   };
 });
 
