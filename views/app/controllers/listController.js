@@ -7,14 +7,7 @@ var start = moment();
 var end = moment().add(1, 'H');
 
 UHU.controller('ListCtrl', function($scope, $interval) {
-
-
   $scope.calls = calls;
-  $scope.statusChanger = function(call) {
-    var statusImageSrc = '/images/' + call.status + '.svg';
-    return statusImageSrc;
-  };
-
   var elapsedTimer = $interval(function() {
     $scope.calls.forEach(function(call) {
       if (call.status === 'ended') {
@@ -48,6 +41,10 @@ UHU.directive('call', function() {
           return callTime.format('DD/MM/YYYY HH:MM');
         }
       };
+      scope.statusChanger = function(call) {
+        var statusImageSrc = '/images/' + call.status + '.svg';
+        return statusImageSrc;
+      }
     }
   };
 });
