@@ -7,16 +7,14 @@ var start = moment();
 var end = moment().add(1, 'H');
 
 UHU.controller('ListCtrl', function($scope, $interval) {
+
+
   $scope.calls = calls;
   $scope.statusChanger = function(call) {
     var statusImageSrc = '/images/' + call.status + '.svg';
     return statusImageSrc;
   };
-  $scope.timeFormatter = function(callTime) {
-    if (callTime != '') {
-      return callTime = callTime.format('DD/MM/YYYY HH:MM');
-    }
-  };
+
   var elapsedTimer = $interval(function() {
     $scope.calls.forEach(function(call) {
       if (call.status === 'ended') {
@@ -39,6 +37,20 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   });
 });
 
+UHU.directive('call', function() {
+  return {
+    restrict: 'E',
+    scope: { call: '=call' },
+    templateUrl: '../../template/repeatCalls.html',
+    link: function (scope) {
+      scope.timeFormatter = function(callTime) {
+        if (callTime != '') {
+          return callTime.format('DD/MM/YYYY HH:MM');
+        }
+      };
+    }
+  };
+});
 
 var calls = [
     {status: 'ongoing',
