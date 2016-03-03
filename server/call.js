@@ -21,8 +21,8 @@ NewCall.prototype.isValidObject =  function() {
     return key === '' || key === undefined;
   }
 
-  function isInteger(){
-    return typeof _this.callBone.callid === 'number';
+  function isNotInteger(){
+    return typeof _this.callBone.callid !== 'number';
   }
 
   function checkObjectIsUndefined(){
@@ -35,8 +35,7 @@ NewCall.prototype.isValidObject =  function() {
   }
 
   this.setState();
-  console.log(isInteger());
-  if (checkObjectIsUndefined() || isInteger()) {
+  if (checkObjectIsUndefined() || isNotInteger()) {
     return false;
   } else return true;
 
