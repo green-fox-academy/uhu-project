@@ -22,8 +22,13 @@ UHU.service('newCallService', function(calls, $rootScope, $location) {
         call.userId = newCall.userId;
         call.ellapsedTime = 0;
         this.calls.push(call);
-      } else {
-        (filteredCalls[0]) = newCall;
+      } else if (newCall.callanswer and newCall.callend) {
+        call.status = 'ended';
+        call.startTime = newCall.callanswer;
+        call.endTime = newCall.callend;
+      } else if (newCall.callanswer and !newCall.callend) {
+        call.status = 'ongoing';
+        call.startTime = newCall.callanswer;
       }
     };
     
