@@ -9,7 +9,7 @@ UHU.service('newCallService', function(calls, $rootScope, $location) {
     this.getCalls = function() {
       return this.calls;
     };
-    this.newCall = function(newCall) { 
+    this.newCall = function(newCall) {
       var filteredCalls = calls.filter(function (call) { return call.id === newCall.callid });
       if (filteredCalls.length === 0) {
         var call = {};
@@ -22,16 +22,16 @@ UHU.service('newCallService', function(calls, $rootScope, $location) {
         call.userId = newCall.userId;
         call.ellapsedTime = 0;
         this.calls.push(call);
-      } else if (newCall.callanswer and newCall.callend) {
+      } else if (newCall.callanswer && newCall.callend) {
         call.status = 'ended';
         call.startTime = newCall.callanswer;
         call.endTime = newCall.callend;
-      } else if (newCall.callanswer and !newCall.callend) {
+      } else if (newCall.callanswer && !newCall.callend) {
         call.status = 'ongoing';
         call.startTime = newCall.callanswer;
       }
     };
-    
+
     function getBaseUrl() {
       return $location.protocol() + '://' + $location.host()
     }

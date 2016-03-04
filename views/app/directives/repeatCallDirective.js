@@ -7,11 +7,6 @@ UHU.directive('call', function () {
     scope: { call: '=call' },
     templateUrl: '../../template/repeatCalls.html',
     link: function (scope) {
-      scope.timeFormatter = function(callTime) {
-        if (callTime != '') {
-          return callTime.format('DD/MM/YYYY HH:MM');
-        }
-      };
       scope.statusChanger = function(call) {
         var statusImageSrc = '/images/' + call.status + '.svg';
         return statusImageSrc;
