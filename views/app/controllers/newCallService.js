@@ -15,7 +15,7 @@ UHU.service('newCallService', function(calls, $rootScope) {
         var call = {};
         call.id = newCall.callid;
         call.startTime = newCall.callbegin;
-        call.status = 'incoming';
+        call.status = newCall.status;
         call.source = newCall.source;
         call.destination = newCall.destination;
         call.gateway = newCall.gateway;
