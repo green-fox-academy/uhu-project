@@ -4,6 +4,8 @@ var UHU = require('./app');
 require('./controllers/listController');
 require('./controllers/newCallService');
 require('./controllers/addNewCallController');
+require('./directives/repeatCallDirective');
+require('./directives/listCallsDirective');
 
 UHU.controller('MainController', function($scope, $http, $location, newCallService) {
 

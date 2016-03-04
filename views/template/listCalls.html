@@ -11,7 +11,7 @@
     <span class="user-Id">user id</span>
     <span class="gateway-call">gateway</span>
   </li>
-  <call ng-repeat="call in calls | filter: {userId: selectedUserId}" call="call"></call>
+  <call ng-repeat="call in calls | filter: callFilter" call="call"></call>
 </ul>
 <div ng-if="calls.length === 0">No calls received yet<div>
 </div>

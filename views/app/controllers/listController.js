@@ -29,27 +29,9 @@ UHU.controller('ListCtrl', function($scope, $interval) {
         $interval.cancel(elapsedTimer);
     }
   });
-});
 
-UHU.directive('call', function () {
-  return {
-    restrict: 'E',
-    scope: { call: '=call' },
-    templateUrl: '../../template/repeatCalls.html',
-    link: function (scope) {
-      scope.statusChanger = function(call) {
-        var statusImageSrc = '/images/' + call.status + '.svg';
-        return statusImageSrc;
-      };
-    }
-  };
-});
-
-UHU.directive('listcalls', function () {
-  return {
-    restrict: 'E',
-    scope: { calls: '=calls' },
-    templateUrl: '../../template/listCalls.html'
+  $scope.callFilter = {
+    userId: ''
   };
 });
 
