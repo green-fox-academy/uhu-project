@@ -10,7 +10,7 @@ function NewCall(data) {
     destination: data.destination,
     user: data.user,
     gateway: data.gateway,
-    state: ''
+    status: ''
   };
 }
 
@@ -34,7 +34,7 @@ NewCall.prototype.isValidObject =  function() {
            isUndefined(_this.callBone.gateway);
   }
 
-  this.setState();
+  this.setStatus();
   if (checkObjectIsUndefined() || isNotInteger()) {
     return false;
   } else return true;
@@ -45,7 +45,7 @@ NewCall.prototype.returnCall = function() {
   return this.isValidObject() && this.callBone;
 };
 
-NewCall.prototype.setState = function() {
+NewCall.prototype.setStatus = function() {
 
   function isUndefined(key) {
     return key === '' || key === undefined;
@@ -64,16 +64,16 @@ NewCall.prototype.setState = function() {
                  !isUndefined(this.callBone.callend);
 
   if(incomingcall) {
-    this.callBone.state = 'incoming';
+    this.callBone.status = 'incoming';
   } else if (ongoingcall) {
-    this.callBone.state = 'ongoing';
+    this.callBone.status = 'ongoing';
   } else if (pastcall) {
-    this.callBone.state = 'past';
+    this.callBone.status = 'ended';
   } else {
     console.log('something went wrong');
   }
 
-  return this.callBone.state;
+  return this.callBone.status;
 
 };
 

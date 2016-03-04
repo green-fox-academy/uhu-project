@@ -12,7 +12,7 @@ describe('new call tests', function() {
     destination: 'test',
     user: 'test',
     gateway: 'test',
-    state: 'past'
+    status: 'ended'
   };
 
   var ongoingCallObject = {
@@ -48,13 +48,13 @@ describe('new call tests', function() {
   it('should be functions', function() {
     expect(typeof call.isValidObject).toBe('function');
     expect(typeof call.returnCall).toBe('function');
-    expect(typeof call.setState).toBe('function');
+    expect(typeof call.setStatus).toBe('function');
   });
 
-  it('should have a pastcall state', function() {
-    expect(call.setState()).toEqual('past');
-    expect(ongoingcall.setState()).toEqual('ongoing');
-    expect(incomingcall.setState()).toEqual('incoming');
+  it('should have a pastcall status', function() {
+    expect(call.setStatus()).toEqual('ended');
+    expect(ongoingcall.setStatus()).toEqual('ongoing');
+    expect(incomingcall.setStatus()).toEqual('incoming');
   });
 
   it('is an undefined object', function() {
