@@ -79,3 +79,11 @@ you can access the site through your browser with the following url
 ```
 localhost:3000
 ```
+you are able to send new calls to the application with the curl
+this is an example
+```
+curl localhost:3000/api/call -d '{"callid": 89, "callbegin": "03/03/2016
+08:02","callanswer": "03/03/2016 08:03", "callend": "03/03/2016 08:03",
+"source": "sour", "destination": "dest", "user": "user", "gateway": "gat"}'
+-H'Content-Type: application/json'
+```
