@@ -34,7 +34,6 @@ describe('new call tests', function() {
     gateway: 'test'
   };
 
-
   var call = new NewCall(testObject);
   var badcall = new NewCall({});
   var ongoingcall = new NewCall(ongoingCallObject);
@@ -47,6 +46,7 @@ describe('new call tests', function() {
 
   it('should be functions', function() {
     expect(typeof call.isValidObject).toBe('function');
+    expect(typeof call.isUndefined).toBe('function');
     expect(typeof call.returnCall).toBe('function');
     expect(typeof call.setStatus).toBe('function');
   });
@@ -55,6 +55,10 @@ describe('new call tests', function() {
     expect(call.setStatus()).toEqual('ended');
     expect(ongoingcall.setStatus()).toEqual('ongoing');
     expect(incomingcall.setStatus()).toEqual('incoming');
+  });
+
+  it('should be undefined', function() {
+    expect(call.isUndefined('')).toEqual(true);
   });
 
   it('is an undefined object', function() {
