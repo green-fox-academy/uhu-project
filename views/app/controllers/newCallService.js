@@ -26,7 +26,7 @@ UHU.service('newCallService', function(calls, $rootScope) {
         (filteredCalls[0]) = newCall;
       }
     };
-    var socket = io.connect('http://localhost:4200');
+    var socket = io.connect(window.location.href);
     socket.on('calls', function(data) {
       $rootScope.$apply(function () {
         _this.newCall(data);
