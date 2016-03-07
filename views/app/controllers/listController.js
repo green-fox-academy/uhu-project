@@ -9,7 +9,7 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
   var elapsedTimer = $interval(function() {
     $scope.calls.forEach(function(call) {
       if (call.status === 'past') {
-        var start = moment(call.startTime);
+        var start = moment(call.callanswer);
         var end = moment(call.endTime);
         var elapsedTime = (end - start)/1000;
         call.elapsedTime = numeral(elapsedTime).format('00:00:00');
@@ -17,7 +17,7 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
         call.elapsedTime = 'incoming';
       } else {
         var timeNow = new Date()
-        var start = moment(call.startTime);
+        var start = moment(call.callanswer);
         var diff = (timeNow - start)/1000
         call.elapsedTime = numeral(diff).format('00:00:00');
       }
@@ -32,13 +32,15 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
 
   $scope.callFilter =  {
     userId: '',
-    status: window.location.pathname.substring(1)
+    status: $location.path().substring(1)
   }
+  console.log($scope.callFilter);
+  
 });
 
 var calls = [
-    {status: 'ongoing' ,
-     startTime: '03/03/2016 10:24',
+    {status: 'ongoing',
+     callanswer: '03/03/2016 10:24',
      elapsedTime: 0,
      endTime: '',
      source: '555-777-4',
@@ -48,7 +50,7 @@ var calls = [
      id: 1},
 
     {status: 'past',
-     startTime: '12/02/2016 13:43',
+     callanswer: '12/02/2016 13:43',
      elapsedTime: 0,
      endTime: '12/02/2016 15:53',
      source: '555-777-5',
@@ -58,7 +60,7 @@ var calls = [
      id: 2},
 
     {status: 'past',
-     startTime: '01/03/2016 11:20',
+     callanswer: '01/03/2016 11:20',
      elapsedTime: 0,
      endTime: '01/03/2016 12:42',
      source: '555-777-1',
@@ -68,7 +70,7 @@ var calls = [
      id: 3},
 
     {status: 'incoming',
-     startTime: '',
+     callanswer: '',
      elapsedTime: 0,
      endTime: '',
      source: '555-717-2',
