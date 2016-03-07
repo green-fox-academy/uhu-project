@@ -1,18 +1,18 @@
 <div>
 <ul class="calls" ng-if="calls.length">
   <li>
-    <span class="call-id"></span>
-    <span class="call-status"></span>
-    <span class="start-time">start time</span>
-    <span class="ringing-time">ringing time</span>
-    <span class="ellapsed-time">elapsed time</span>
-    <span class="end-time">end time</span>
-    <span class="source-number">source</span>
-    <span class="destination-number">destination</span>
-    <span class="user-Id">user id</span>
-    <span class="gateway-call">gateway</span>
+    <span ng-click="orderer='id'" class="call-id" ng-init="orderer='id'"></span>
+    <span ng-click="orderer='status'" class="call-status"></span>
+    <span ng-click="orderer='startTime'" class="start-time">start time</span>
+    <span ng-click="orderer='ringingTime'" class="ringing-time">ringing time</span>
+    <span ng-click="orderer='elapsedTime'" class="elapsed-time">elapsed time</span>
+    <span ng-click="orderer='endTime'" class="end-time">end time</span>
+    <span ng-click="orderer='source'" class="source-number">source</span>
+    <span ng-click="orderer='destination'" class="destination-number">destination</span>
+    <span ng-click="orderer='userId'" class="user-Id">user id</span>
+    <span ng-click="orderer='gateway'" class="gateway-call">gateway</span>
   </li>
-  <call ng-repeat="call in calls | filter: callFilter" call="call"></call>
+  <call ng-repeat="call in calls | filter: callFilter | orderBy: orderer" call="call"></call>
 </ul>
 <div ng-if="calls.length === 0">No calls received yet<div>
 </div>
