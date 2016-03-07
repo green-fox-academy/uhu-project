@@ -108,3 +108,22 @@ describe('newCallService test', function () {
     expect(newCallService.calls.length).toBe(5);
    });
 });
+
+describe('tab names', function() {
+  var $compile,
+      $scope;
+
+  beforeEach(module('UHU'));
+  beforeEach(module('templates'));
+  beforeEach(inject(function(_$compile_, _$rootScope_){
+    $compile = _$compile_;
+    $scope = _$rootScope_.$new();
+  }));
+
+  it('Replaces the element with the appropriate content', function() {
+    $scope.call = {userId: "mcdonalds"};
+    var element = $compile('<call call="call"></call>')($scope);
+    $scope.$digest();
+    expect(element.html()).toContain("mcdonalds");
+  });
+});
