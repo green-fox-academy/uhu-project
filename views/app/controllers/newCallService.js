@@ -36,9 +36,10 @@ UHU.service('newCallService', function(calls, $rootScope, $location) {
       return $location.protocol() + '://' + $location.host();
     }
 
-    var socket = io.connect(getBaseUrl() + ':5000');
+    // var socket = io.connect(getBaseUrl() + ':5000');
+    var socket = io.connect('http://localhost:4200');
     console.log(getBaseUrl());
-    console.log(getBaseUrl() + ':5000');
+    console.log(getBaseUrl() + ':4200');
     socket.on('calls', function(data) {
       $rootScope.$apply(function () {
         _this.newCall(data);
