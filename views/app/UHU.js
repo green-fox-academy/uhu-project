@@ -63,6 +63,10 @@ UHU.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   .state('ongoing', {
     url: '/ongoing' ,
     templateUrl: 'ongoing.html'
+  })
+  .state('stats', {
+    url: '/stats' ,
+    templateUrl: 'stats.html'
   });
   $locationProvider.html5Mode(true);
 });
