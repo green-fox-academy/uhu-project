@@ -60,14 +60,6 @@ describe('ListCtrl', function () {
   it('calls status should be ended', function () {
     expect($scope.calls[0].status).toEqual('ongoing');
   });
-
-  it('statusChanger should return with statusImageSrc', function () {
-    expect($scope.statusChanger).toBeDefined();
-  });
-
-  it('timeFormatter should return with callTime', function () {
-    expect($scope.timeFormatter).toBeDefined();
-  });
 });
 
 describe('newCallService test', function () {
