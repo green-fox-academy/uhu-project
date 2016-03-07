@@ -140,4 +140,11 @@ describe('tab names', function() {
     $scope.$digest();
     expect(element.html()).toContain("ongoing.svg");
   });
+
+  it('Fill the object with the list of calls', function() {
+    $scope.call = {};
+    var element = $compile('<listcalls calls="calls"></listcalls>')($scope);
+    $scope.$digest();
+    expect(element.html()).toContain("calls.length");
+  });
 });
