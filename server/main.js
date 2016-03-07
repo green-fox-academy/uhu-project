@@ -23,5 +23,4 @@ app.app.listen(port, function () {
   logger.logInfo('Listening on port', port);
 });
 
-// app.server.listen(process.env.PORT || 4200);
-app.server.listen(5000);
+app.server.listen(4200);
