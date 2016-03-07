@@ -4,6 +4,7 @@ var UHU = require('./app');
 require('./controllers/listController');
 require('./controllers/newCallService');
 require('./controllers/addNewCallController');
+require('./controllers/chartController');
 require('./directives/repeatCallDirective');
 require('./directives/listCallsDirective');
 
@@ -63,10 +64,6 @@ UHU.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   .state('ongoing', {
     url: '/ongoing' ,
     templateUrl: 'ongoing.html'
-  })
-  .state('stats', {
-    url: '/stats' ,
-    templateUrl: 'stats.html'
   });
   $locationProvider.html5Mode(true);
 });
