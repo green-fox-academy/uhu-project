@@ -37,13 +37,8 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
 });
 
 var calls = [
-<<<<<<< HEAD
     {status: 'ongoing',
      callanswer: '03/03/2016 10:24',
-=======
-    {status: 'ongoing' ,
-     startTime: '03/03/2016 10:24',
->>>>>>> c26236c77d7d720e989304370169a565c391f8f0
      elapsedTime: 0,
      endTime: '',
      source: '555-777-4',
@@ -52,13 +47,8 @@ var calls = [
      gateway: 'PannonGSM',
      id: 1},
 
-<<<<<<< HEAD
-    {status: 'ended',
-     callanswer: '12/02/2016 13:43',
-=======
     {status: 'past',
-     startTime: '12/02/2016 13:43',
->>>>>>> c26236c77d7d720e989304370169a565c391f8f0
+     callanswer: '12/02/2016 13:43',
      elapsedTime: 0,
      endTime: '12/02/2016 15:53',
      source: '555-777-5',
@@ -67,13 +57,8 @@ var calls = [
      gateway: 'Westel',
      id: 2},
 
-<<<<<<< HEAD
-    {status: 'ended',
-     callanswer: '01/03/2016 11:20',
-=======
     {status: 'past',
-     startTime: '01/03/2016 11:20',
->>>>>>> c26236c77d7d720e989304370169a565c391f8f0
+     callanswer: '01/03/2016 11:20',
      elapsedTime: 0,
      endTime: '01/03/2016 12:42',
      source: '555-777-1',
