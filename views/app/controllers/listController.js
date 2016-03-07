@@ -31,7 +31,7 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
 
   function pastCallTimer(call){
     call.ringingTime = timer(call.callbegin, call.callanswer);
-    call.elapsedTime = timer(call.callanswer, call.callend);
+    call.elapsedTime = timer(call.callanswer, call.endTime);
   }
 
   function incomingCallTimer(call) {
@@ -53,9 +53,10 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
 
   $scope.callFilter =  {
     userId: '',
-    status: window.location.pathname.substring(1)
+    status: $location.path().substring(1)
   };
-});
+
+  });
 
 var calls = [
     {status: 'ongoing',
