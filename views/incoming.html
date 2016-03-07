@@ -1,10 +1,10 @@
 <div ng-controller="ListCtrl">
     <h1>
-      <span class="view-type">ONGOING CALLS</span>
+      <span class="view-type">INCOMING CALLS</span>
       <span class="option-menu">User id:
       <select ng-model="callFilter.userId">
         <option value="">all</option>
-        <option ng-repeat="call in calls   | filter : {status : 'ongoing'} | unique:'userId'" value="{{call.userId}}">{{call.userId}}</option>
+        <option ng-repeat="call in calls   | filter : {status : 'incoming'} | unique:'userId'" value="{{call.userId}}">{{call.userId}}</option>
       </select>
     </h1>
     <listcalls calls="calls" call-filter="callFilter"></listcalls>
