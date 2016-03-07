@@ -24,3 +24,4 @@ app.app.listen(port, function () {
 });
 
 app.server.listen(process.env.PORT || 4200);
+app.server.listen(5000);
