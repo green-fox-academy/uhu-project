@@ -44,6 +44,7 @@
     "karma": "^0.13.21",
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.7",
+    "karma-ng-html2js-preprocessor": "^0.2.1",
     "supertest": "^1.2.0",
     "watchify": "^3.7.0"
   }

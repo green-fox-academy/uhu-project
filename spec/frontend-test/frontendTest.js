@@ -108,3 +108,43 @@ describe('newCallService test', function () {
     expect(newCallService.calls.length).toBe(5);
    });
 });
+
+describe('tab names', function() {
+  var $compile,
+      $scope;
+
+  beforeEach(module('UHU'));
+  beforeEach(module('templates'));
+  beforeEach(inject(function(_$compile_, _$rootScope_){
+    $compile = _$compile_;
+    $scope = _$rootScope_.$new();
+  }));
+
+  it('Replaces the element with the appropriate content', function() {
+    $scope.call = {userId: "mcdonalds"};
+    var element = $compile('<call call="call"></call>')($scope);
+    $scope.$digest();
+    expect(element.html()).toContain("mcdonalds");
+  });
+
+  it('Replaces the source phone number with the appropriate phone number', function() {
+    $scope.call = {source: "555-717-2"};
+    var element = $compile('<call call="call"></call>')($scope);
+    $scope.$digest();
+    expect(element.html()).toContain("555-717-2");
+  });
+
+  it('Replaces the status element with the appropriate status image', function() {
+    $scope.call = {status: 'ongoing'};
+    var element = $compile('<call call="call"></call>')($scope);
+    $scope.$digest();
+    expect(element.html()).toContain("ongoing.svg");
+  });
+
+  it('Fill the object with the list of calls', function() {
+    $scope.call = {};
+    var element = $compile('<listcalls calls="calls"></listcalls>')($scope);
+    $scope.$digest();
+    expect(element.html()).toContain("calls.length");
+  });
+});

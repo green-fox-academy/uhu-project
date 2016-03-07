@@ -18,7 +18,8 @@ module.exports = function(config) {
     files: [
         'https://cdn.socket.io/socket.io-1.4.5.js',
         'views/app/bundle.js',
-        'spec/frontend-test/*.js'
+        'spec/frontend-test/*.js',
+        'views/**/*.html'
     ],
 
 
@@ -30,6 +31,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      '**/*.html': ['ng-html2js']
     },
 
 
@@ -69,6 +71,13 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+    ngHtml2JsPreprocessor: {
+      // strip this from the file path
+      stripPrefix: 'views/',
+      moduleName: 'templates',
+      prependPrefix: '../../'
+    }
   });
 };
