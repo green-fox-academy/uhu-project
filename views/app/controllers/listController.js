@@ -6,35 +6,44 @@ var numeral = require('numeral');
 
 UHU.controller('ListCtrl', function($scope, $interval, $location) {
   $scope.calls = calls;
-  var whichTimer = $interval(function() {
+  var whichTimer = $interval(updateTimes, 100);
 
+  function updateTimes() {
+    $scope.calls.forEach(updateCallTime);
+  }
 
-    $scope.calls.forEach(function(call) {
-    var callbegin = moment(call.callbegin);
-    var callanswer = moment(call.callanswer);
-    var callend = moment(call.endTime);
+  function updateCallTime(call) {
+    if (call.status === 'past') {
+        pastCallTimer(call);
+    } else if (call.status === 'incoming') {
+        incomingCallTimer(call);
+    } else if (call.status === 'ongoing'){
+        ongoingCallTimer(call);
+    }
+  };
+
+  function timer(start, end) {
+    var momentStart = moment(start);
+    var momentEnd = moment(end);
+    var elapsedTime = (momentEnd - momentStart)/1000;
+    return numeral(elapsedTime).format('00:00:00');
+  };
+
+  function pastCallTimer(call){
+    call.ringingTime = timer(call.callbegin, call.callanswer);
+    call.elapsedTime = timer(call.callanswer, call.endTime);
+  }
+
+  function incomingCallTimer(call) {
     var timeNow = new Date();
-      if (call.status === 'past') {
-        timer('ringing', callbegin, callanswer);
-        timer('elapsed', callanswer, callend);
-      } else if (call.status === 'incoming') {
-        timer('ringing', callbegin, timeNow);
-      } else if (call.status === 'ongoing'){
-        timer('ringing', callbegin, callanswer);
-        timer('elapsed', callanswer, timeNow);
-      }
-      function timer(type, start, end) {
-        var elapsedTime = (end - start)/1000;
-        if (type === 'elapsed') {
-            call.elapsedTime = numeral(elapsedTime).format('00:00:00');
-        }
-        else if(type === 'ringing') {
-            call.ringingTime = numeral(elapsedTime).format('00:00:00');
-        }
-      };
-    });
-  }, 100);
+    call.ringingTime = timer(call.callbegin, timeNow);
+  }
 
+  function ongoingCallTimer(call){
+    var timeNow = new Date();
+    call.ringingTime = timer(call.callbegin, call.callanswer);
+    call.elapsedTime = timer(call.callanswer, timeNow);
+  }
 
   $scope.$on("$destroy", function() {
     if (elapsedTimer) {
@@ -45,9 +54,9 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
   $scope.callFilter =  {
     userId: '',
     status: $location.path().substring(1)
-  }
-  
-});
+  };
+
+  });
 
 var calls = [
     {status: 'ongoing',
@@ -65,7 +74,7 @@ var calls = [
      callbegin: '02/12/2016 13:38:22',
      callanswer: '02/12/2016 13:43',
      elapsedTime: 0,
-     endTime: '12/02/2016 15:53',
+     endTime: '02/12/2016 15:53',
      source: '555-777-5',
      destination: '888-999-0',
      userId: 'burger king',
