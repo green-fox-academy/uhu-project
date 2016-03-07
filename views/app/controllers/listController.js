@@ -6,7 +6,7 @@ var numeral = require('numeral');
 
 UHU.controller('ListCtrl', function($scope, $interval, $location) {
   $scope.calls = calls;
-  var whichTimer = $interval(updateTimes, 100);
+  var elapsedTimer = $interval(updateTimes, 100);
 
   function updateTimes() {
     $scope.calls.forEach(updateCallTime);
