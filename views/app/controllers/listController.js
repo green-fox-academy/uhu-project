@@ -4,7 +4,7 @@ var moment = require('moment');
 var UHU = require('../app');
 var numeral = require('numeral');
 
-UHU.controller('ListCtrl', function($scope, $interval) {
+UHU.controller('ListCtrl', function($scope, $interval, $location) {
   $scope.calls = calls;
   var elapsedTimer = $interval(function() {
     $scope.calls.forEach(function(call) {
@@ -31,7 +31,8 @@ UHU.controller('ListCtrl', function($scope, $interval) {
   });
 
   $scope.callFilter = {
-    userId: ''
+    userId: '',
+    status: window.location.pathname.substring(1)
   };
 });
 
