@@ -126,4 +126,18 @@ describe('tab names', function() {
     $scope.$digest();
     expect(element.html()).toContain("mcdonalds");
   });
+
+  it('Replaces the element with the appropriate content', function() {
+    $scope.call = {source: "555-717-2"};
+    var element = $compile('<call call="call"></call>')($scope);
+    $scope.$digest();
+    expect(element.html()).toContain("555-717-2");
+  });
+
+  it('Replaces the element with the appropriate content', function() {
+    $scope.call = {status: 'ongoing'};
+    var element = $compile('<call call="call"></call>')($scope);
+    $scope.$digest();
+    expect(element.html()).toContain("ongoing.svg");
+  });
 });
