@@ -14,7 +14,8 @@ UHU.service('newCallService', function(calls, $rootScope, $location) {
       if (filteredCalls.length === 0) {
         var call = {};
         call.id = newCall.callid;
-        call.startTime = newCall.callbegin;
+        call.callbegin = newCall.callbegin;
+        call.callanswer = newCall.callanswer;
         call.status = 'incoming';
         call.source = newCall.source;
         call.destination = newCall.destination;
@@ -24,11 +25,11 @@ UHU.service('newCallService', function(calls, $rootScope, $location) {
         this.calls.push(call);
       } else if (newCall.callanswer && newCall.callend) {
         call.status = 'ended';
-        call.startTime = newCall.callanswer;
+        call.callanswer = newCall.callanswer;
         call.endTime = newCall.callend;
       } else if (newCall.callanswer && !newCall.callend) {
         call.status = 'ongoing';
-        call.startTime = newCall.callanswer;
+        call.callanswer = newCall.callanswer;
       }
     };
 
