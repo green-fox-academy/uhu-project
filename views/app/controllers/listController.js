@@ -34,7 +34,6 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
     userId: '',
     status: $location.path().substring(1)
   }
-  console.log($scope.callFilter);
   
 });
 
