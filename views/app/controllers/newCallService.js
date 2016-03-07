@@ -23,7 +23,7 @@ UHU.service('newCallService', function(calls, $rootScope, $location) {
         call.ellapsedTime = 0;
         this.calls.push(call);
       } else if (newCall.callanswer && newCall.callend) {
-        call.status = 'ended';
+        call.status = 'past';
         call.startTime = newCall.callanswer;
         call.endTime = newCall.callend;
       } else if (newCall.callanswer && !newCall.callend) {
