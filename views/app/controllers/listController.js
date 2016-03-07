@@ -6,23 +6,35 @@ var numeral = require('numeral');
 
 UHU.controller('ListCtrl', function($scope, $interval, $location) {
   $scope.calls = calls;
-  var elapsedTimer = $interval(function() {
+  var whichTimer = $interval(function() {
+
+
     $scope.calls.forEach(function(call) {
+    var callbegin = moment(call.callbegin);
+    var callanswer = moment(call.callanswer);
+    var callend = moment(call.endTime);
+    var timeNow = new Date();
       if (call.status === 'past') {
-        var start = moment(call.callanswer);
-        var end = moment(call.endTime);
-        var elapsedTime = (end - start)/1000;
-        call.elapsedTime = numeral(elapsedTime).format('00:00:00');
+        timer('ringing', callbegin, callanswer);
+        timer('elapsed', callanswer, callend);
       } else if (call.status === 'incoming') {
-        call.elapsedTime = 'incoming';
-      } else {
-        var timeNow = new Date()
-        var start = moment(call.callanswer);
-        var diff = (timeNow - start)/1000
-        call.elapsedTime = numeral(diff).format('00:00:00');
+        timer('ringing', callbegin, timeNow);
+      } else if (call.status === 'ongoing'){
+        timer('ringing', callbegin, callanswer);
+        timer('elapsed', callanswer, timeNow);
       }
+      function timer(type, start, end) {
+        var elapsedTime = (end - start)/1000;
+        if (type === 'elapsed') {
+            call.elapsedTime = numeral(elapsedTime).format('00:00:00');
+        }
+        else if(type === 'ringing') {
+            call.ringingTime = numeral(elapsedTime).format('00:00:00');
+        }
+      };
     });
   }, 100);
+
 
   $scope.$on("$destroy", function() {
     if (elapsedTimer) {
@@ -39,7 +51,8 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
 
 var calls = [
     {status: 'ongoing',
-     callanswer: '03/03/2016 10:24',
+     callbegin: '03/07/2016 10:20:19',
+     callanswer: '03/07/2016 10:24',
      elapsedTime: 0,
      endTime: '',
      source: '555-777-4',
@@ -49,7 +62,8 @@ var calls = [
      id: 1},
 
     {status: 'past',
-     callanswer: '12/02/2016 13:43',
+     callbegin: '02/12/2016 13:38:22',
+     callanswer: '02/12/2016 13:43',
      elapsedTime: 0,
      endTime: '12/02/2016 15:53',
      source: '555-777-5',
@@ -59,6 +73,7 @@ var calls = [
      id: 2},
 
     {status: 'past',
+     callbegin: '01/03/2016 11:19:42',
      callanswer: '01/03/2016 11:20',
      elapsedTime: 0,
      endTime: '01/03/2016 12:42',
@@ -69,6 +84,7 @@ var calls = [
      id: 3},
 
     {status: 'incoming',
+     callbegin: '03/07/2016 14:02:14',
      callanswer: '',
      elapsedTime: 0,
      endTime: '',
