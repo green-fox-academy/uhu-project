@@ -6,9 +6,12 @@ UHU.directive('listcalls', function () {
     scope: { calls: '=calls', callFilter: '=callFilter'},
     templateUrl: '../../template/listCalls.html',
     link: function(scope) {
+      scope.orderer = {value: '',
+                      isReverse: false};
       scope.ordering = function(columnName) {
         scope.orderer.value = columnName;
-        scope.orderer.reverse = !scope.orderer.reverse;
+        console.log(scope.orderer);
+        scope.orderer.isReverse = !scope.orderer.isReverse;
       }
     }
   };   

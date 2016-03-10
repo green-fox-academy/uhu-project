@@ -12,7 +12,7 @@
     <span ng-click="ordering('userId')" ng-class="{active: orderer.value==='userId'}" class="user-Id">user id</span>
     <span ng-click="ordering('gateway')" ng-class="{active: orderer.value==='gateway'}" class="gateway-call">gateway</span>
   </li>
-  <call ng-repeat="call in calls | filter: callFilter | orderBy: orderer.value" call="call"></call>
+  <call ng-repeat="call in calls | filter: callFilter | orderBy: orderer.value : orderer.isReverse" call="call"></call>
 </ul>
 <div ng-if="calls.length === 0">No calls received yet<div>
 </div>
