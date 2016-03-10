@@ -36,4 +36,5 @@ function arrayTransformator() {
       prev[1].push(callEndTimeCounter);
       return prev}, [[],[]]);
   }
+  
 });
