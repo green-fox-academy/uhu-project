@@ -25,16 +25,18 @@ UHU.controller('chartCtrl', function($scope, newCallService) {
 
 function arrayTransformator() {
   $scope.data = newCallService.getCalls().reduce(function(prev, call) {
-      var callBeginCounter = 0;
-      var callEndTimeCounter = 0;
-      if (moment().subtract(4, "hours").isSame(call.callbegin, "hours")) {
-          callBeginCounter ++;
-        } if (moment().subtract(4, "hours").isSame(call.endTime, "hours")) {
-          callEndTimeCounter ++;
-        }
-      prev[0].push(callBeginCounter);
-      prev[1].push(callEndTimeCounter);
-      return prev}, [[],[]]);
+  var callBeginCounter = 0;
+  var callEndTimeCounter = 0;
+  var hourCounter = [1, 2, 3, 4, 5, 6, 7]
+  hourCounter.forEach(function(hour) {
+    if (moment().subtract(hour, "hours").isSame(call.callbegin, "hours")) {
+        callBeginCounter ++;
+      } if (moment().subtract(hour, "hours").isSame(call.endTime, "hours")) {
+        callEndTimeCounter ++;
+      }
+    });
+    prev[0].push(callBeginCounter);
+    prev[1].push(callEndTimeCounter);
+    return prev}, [[],[]]);
   }
-  
 });
