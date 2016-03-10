@@ -11,18 +11,8 @@ UHU.service('newCallService', function(calls, $rootScope, $location) {
     };
     this.newCall = function(newCall) {
       var filteredCalls = calls.filter(function (call) { return call.id === newCall.callid });
-      if (filteredCalls.length === 0) {
-        var call = {};
-        call.id = newCall.callid;
-        call.callbegin = newCall.callbegin;
-        call.callanswer = newCall.callanswer;
-        call.status = 'incoming';
-        call.source = newCall.source;
-        call.destination = newCall.destination;
-        call.gateway = newCall.gateway;
-        call.userId = newCall.userId;
-        call.ellapsedTime = 0;
-        this.calls.push(call);
+      if (filteredCalls.length === 0) {   
+        this.calls.push(this.createACall(newCall));
       } else if (newCall.callanswer && newCall.callend) {
         call.status = 'past';
         call.callanswer = newCall.callanswer;
@@ -32,6 +22,19 @@ UHU.service('newCallService', function(calls, $rootScope, $location) {
         call.callanswer = newCall.callanswer;
       }
     };
+    this.createACall = function(newCall) {
+      var call = {};
+      call.id = newCall.callid;
+      call.callbegin = newCall.callbegin;
+      call.callanswer = newCall.callanswer;
+      call.status = 'incoming';
+      call.source = newCall.source;
+      call.destination = newCall.destination;
+      call.gateway = newCall.gateway;
+      call.userId = newCall.userId;
+      call.ellapsedTime = 0;
+      return call;
+    }
 
     function getBaseUrl() {
       return $location.protocol() + '://' + $location.host();
