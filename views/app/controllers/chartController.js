@@ -28,10 +28,11 @@ function arrayTransformator() {
   var callBeginCounter = 0;
   var callEndTimeCounter = 0;
   var hourCounter = [1, 2, 3, 4, 5, 6, 7]
+  var callTimeStatement = moment().subtract(hour, "hours").isSame(call.callbegin, "hours");
   hourCounter.forEach(function(hour) {
-    if (moment().subtract(hour, "hours").isSame(call.callbegin, "hours")) {
+    if (callTimeStatement) {
         callBeginCounter ++;
-      } if (moment().subtract(hour, "hours").isSame(call.endTime, "hours")) {
+      } if (callTimeStatement) {
         callEndTimeCounter ++;
       }
     });
