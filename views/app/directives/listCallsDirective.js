@@ -9,9 +9,11 @@ UHU.directive('listcalls', function () {
       scope.orderer = {value: '',
                       isReverse: false};
       scope.ordering = function(columnName) {
+        var icons = document.querySelectorAll('.icon');
         scope.orderer.value = columnName;
         console.log(scope.orderer);
         scope.orderer.isReverse = !scope.orderer.isReverse;
+        icons.innerText = scope.orderer.isReverse ? '▼' : '▲';
       }
     }
   };   
