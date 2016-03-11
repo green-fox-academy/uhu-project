@@ -14,14 +14,14 @@ function myServer(db) {
 
   app.use(logRequest);
   app.use(bodyParser.json());
-  app.use(express.static(__dirname + '/../views'));
+  app.use(express.static(__dirname + '/../client'));
 
   app.get('/heartbeat', heartbeat.heartBeat(db));
   app.post('/api/log', postLogs);
   app.post('/api/call', newCall);
 
   app.route('/*').get(function(req, res) {
-    res.sendFile(path.resolve(__dirname, '../views/index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/index.html'));
   });
 
   function newCall(req, res) {

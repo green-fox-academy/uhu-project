@@ -17,9 +17,9 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'https://cdn.socket.io/socket.io-1.4.5.js',
-        'views/app/bundle.js',
+        'client/app/bundle.js',
         'spec/frontend-test/*.js',
-        'views/**/*.html'
+        'client/**/*.html'
     ],
 
 
@@ -75,7 +75,7 @@ module.exports = function(config) {
 
     ngHtml2JsPreprocessor: {
       // strip this from the file path
-      stripPrefix: 'views/',
+      stripPrefix: 'client/',
       moduleName: 'templates',
       prependPrefix: '../../'
     }
