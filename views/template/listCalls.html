@@ -1,16 +1,16 @@
 <div>
 <ul class="calls" ng-if="calls.length" ng-init="orderer.value='id'">
   <li>
-    <span ng-click="ordering('id')" ng-class="{active: orderer.value==='id'}" class="call-id">id</span>
-    <span ng-click="ordering('status')" ng-class="{active: orderer.value==='status'}" class="call-status">status</span>
-    <span ng-click="ordering('startTime')" ng-class="{active: orderer.value==='startTime'}" class="start-time">start time</span>
-    <span ng-click="ordering('ringingTime')" ng-class="{active: orderer.value==='ringingTime'}"class="ringing-time">ringing time</span>
-    <span ng-click="ordering('elapsedTime')" ng-class="{active: orderer.value==='elapsedTime'}" class="elapsed-time">elapsed time</span>
-    <span ng-click="ordering('endTime')" ng-class="{active: orderer.value==='endTime'}" class="end-time">end time</span>
-    <span ng-click="ordering('source')" ng-class="{active: orderer.value==='source'}" class="source-number">source</span>
-    <span ng-click="ordering('destination')" ng-class="{active: orderer.value==='destination'}" class="destination-number">destination</span>
-    <span ng-click="ordering('userId')" ng-class="{active: orderer.value==='userId'}" class="user-Id">user id</span>
-    <span ng-click="ordering('gateway')" ng-class="{active: orderer.value==='gateway'}" class="gateway-call">gateway</span>
+    <span ng-click="ordering('id')" ng-class="{active: orderer.value==='id'}" class="call-id">id<span class="icon">▼</span></span>
+    <span ng-click="ordering('status')" ng-class="{active: orderer.value==='status'}" class="call-status">status<span class="icon">▼</span></span>
+    <span ng-click="ordering('startTime')" ng-class="{active: orderer.value==='startTime'}" class="start-time">start time<span class="icon">▼</span></span>
+    <span ng-click="ordering('ringingTime')" ng-class="{active: orderer.value==='ringingTime'}"class="ringing-time">ringing time<span class="icon">▼</span></span>
+    <span ng-click="ordering('elapsedTime')" ng-class="{active: orderer.value==='elapsedTime'}" class="elapsed-time">elapsed time<span class="icon">▼</span></span>
+    <span ng-click="ordering('endTime')" ng-class="{active: orderer.value==='endTime'}" class="end-time">end time<span class="icon">▼</span></span>
+    <span ng-click="ordering('source')" ng-class="{active: orderer.value==='source'}" class="source-number">source<span class="icon">▼</span></span>
+    <span ng-click="ordering('destination')" ng-class="{active: orderer.value==='destination'}" class="destination-number">destination<span class="icon">▼</span></span>
+    <span ng-click="ordering('userId')" ng-class="{active: orderer.value==='userId'}" class="user-Id">user id<span class="icon">▼</span></span>
+    <span ng-click="ordering('gateway')" ng-class="{active: orderer.value==='gateway'}" class="gateway-call">gateway<span class="icon">▼</span></span>
   </li>
   <call ng-repeat="call in calls | filter: callFilter | orderBy: orderer.value : orderer.isReverse" call="call"></call>
 </ul>
