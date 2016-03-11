@@ -101,7 +101,7 @@ describe('newCallService test', function () {
    });
 });
 
-describe('tab names', function() {
+describe('directive tests', function() {
   var $compile,
       $scope;
 
