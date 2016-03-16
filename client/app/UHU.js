@@ -8,19 +8,22 @@ require('./controllers/chartController');
 require('./directives/repeatCallDirective');
 require('./directives/listCallsDirective');
 
-UHU.controller('MainController', function($scope, $http, $location, newCallService) {
+UHU.controller('MainController', function ($scope, $http, $location, newCallService) {
 
-  $scope.successCbLoc = function() {
-    console.log( 'Page view:', location.href );
+  $scope.successCbLoc = function () {
+    console.log('Page view:', location.href);
   };
-  $scope.successCbRoute = function() {
-    console.log( 'Route Changed:', $location.path());
+
+  $scope.successCbRoute = function () {
+    console.log('Route Changed:', $location.path());
   };
-  $scope.errorCbLoc = function() {
-    console.log( 'Error at:', location.href );
+
+  $scope.errorCbLoc = function () {
+    console.log('Error at:', location.href);
   };
-  $scope.errorCbRoute = function() {
-    console.log( 'Route change ERROR at:', $location.path());
+
+  $scope.errorCbRoute = function () {
+    console.log('Route change ERROR at:', $location.path());
   };
 
   $scope.$on(
@@ -45,24 +48,24 @@ UHU.controller('MainController', function($scope, $http, $location, newCallServi
   };
 });
 
-UHU.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+UHU.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/index.html');
 
   $stateProvider
   .state('all', {
-    url: '/' ,
+    url: '/',
     templateUrl: 'all.html'
   })
   .state('past', {
-    url: '/past' ,
+    url: '/past',
     templateUrl: 'past.html'
   })
   .state('incoming', {
-    url: '/incoming' ,
+    url: '/incoming',
     templateUrl: 'incoming.html'
   })
   .state('ongoing', {
-    url: '/ongoing' ,
+    url: '/ongoing',
     templateUrl: 'ongoing.html'
   })
   .state('stats', {
