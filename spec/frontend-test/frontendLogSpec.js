@@ -1,20 +1,23 @@
 'use strict';
 
-describe('testing frontend logging', function() {
+describe('testing frontend logging', function () {
   beforeEach(module('UHU'));
 
-  describe('MainController', function() {
-    var scope, httpBackend, createController, newCallEndpoint;
+  describe('MainController', function () {
+    var scope;
+    var httpBackend;
+    var createController;
+    var newCallEndpoint;
 
-    beforeEach(inject(function($rootScope, $httpBackend, $controller, $injector) {
+    beforeEach(inject(function ($rootScope, $httpBackend, $controller, $injector) {
       scope = $rootScope.$new();
       httpBackend = $injector.get('$httpBackend');
 
       newCallEndpoint = $httpBackend.when('POST', '/api/log').respond(200, 'ok');
-      createController = $controller('MainController', {$scope:scope});
+      createController = $controller('MainController', { $scope:scope });
     }));
 
-    it('the test should work', function() {
+    it('the test should work', function () {
       expect(true).toBe(true);
       expect(true).not.toBe(false);
     });
@@ -34,7 +37,7 @@ describe('testing frontend logging', function() {
       expect(typeof scope.errorCbLoc).toBe('function');
     });
 
-    it('should post ok message', function() {
+    it('should post ok message', function () {
       httpBackend.expect('POST', '/api/log').respond(200, 'ok');
       httpBackend.flush();
     });

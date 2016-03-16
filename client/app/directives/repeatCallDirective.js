@@ -7,7 +7,7 @@ UHU.directive('call', function () {
     scope: { call: '=call' },
     templateUrl: '../../template/repeatCalls.html',
     link: function (scope) {
-      scope.statusChanger = function(call) {
+      scope.statusChanger = function (call) {
         var statusImageSrc = '/images/' + call.status + '.svg';
         return statusImageSrc;
       };
