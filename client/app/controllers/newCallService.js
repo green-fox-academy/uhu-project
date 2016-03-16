@@ -3,13 +3,13 @@
 var UHU = require('../app');
 var moment = require('moment');
 
-UHU.service('newCallService', function(calls, $rootScope, $location) {
+UHU.service('newCallService', function (calls, $rootScope, $location) {
     var _this = this;
     this.calls = calls;
     this.getCalls = function() {
       return this.calls;
     };
-    this.newCall = function(newCall) {
+    this.newCall = function (newCall) {
       var filteredCalls = calls.filter(function (call) { return call.id === newCall.callid });
       if (filteredCalls.length === 0) {
         var call = {};

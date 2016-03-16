@@ -1,19 +1,20 @@
 'use strict';
+
 var UHU = require('../app');
-var angularChart = require('angular-chart.js');
+var angularChart = require('angular-chart.js')
 var moment = require('moment');
 
-UHU.config( function (ChartJsProvider) {
+UHU.config(function (ChartJsProvider) {
     ChartJsProvider.setOptions({
-      colours: ['#FF5252', '#FF8A80'],
-      responsive: false
-    });
+    colours: ['#FF5252', '#FF8A80'],
+    responsive: false
+});
     ChartJsProvider.setOptions('Line', {
       datasetFill: false
     });
 });
 
-UHU.controller('chartCtrl', function($scope, newCallService) {
+UHU.controller('chartCtrl', function ($scope, newCallService) {
   $scope.calls = newCallService.getCalls();
   $scope.labels = ["Seven hours before", "Six hours before", "Five hours before", "Four hours before", "Three hours before", "Two hours before", "One hours before"];
   $scope.series = ['Incoming Calls', 'Ended calls'];
