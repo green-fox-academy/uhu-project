@@ -20,7 +20,7 @@ function myServer(db) {
   app.post('/api/log', postLogs);
   app.post('/api/call', newCall);
 
-  app.route('/*').get(function(req, res) {
+  app.route('/*').get(function (req, res) {
     res.sendFile(path.resolve(__dirname, '../client/index.html'));
   });
 
@@ -29,7 +29,7 @@ function myServer(db) {
     var newcall = new NewCall(req.body);
     res.send(newcall.returnCall());
     io.emit('calls', req.body);
-    console.log(newcall.returnCall())
+    console.log(newcall.returnCall());
   }
 
   function postLogs(req, res) {
@@ -41,12 +41,8 @@ function myServer(db) {
     logger.logInfo(req.method, req.originalUrl);
     next();
   }
-  
 
-
-  return {app: app, server: server};
+  return { app: app, server: server };
 }
 
-module.exports = {
-  myServer: myServer
-};
+module.exports = { myServer: myServer };

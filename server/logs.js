@@ -8,23 +8,23 @@ function Logs(loggerFunction, InnerDate, loggingLevel) {
   var InnerDate = InnerDate || Date;
   var loggingLevel = loggingLevel || defaultLevel;
 
-  this.logDebug = function(message, status) {
+  this.logDebug = function (message, status) {
     logCreator('DEBUG', message, status);
   };
 
-  this.logInfo = function(message, status) {
+  this.logInfo = function (message, status) {
     logCreator('INFO', message, status);
   };
 
-  this.logWarn = function(message, status) {
+  this.logWarn = function (message, status) {
     logCreator('WARN', message, status);
   };
 
-  this.logError = function(message, error) {
+  this.logError = function (message, error) {
     logCreator('ERROR', message, error);
   };
 
-  var logCreator = function(logMethod, message, status) {
+  var logCreator = function (logMethod, message, status) {
     var levels = ['DEBUG', 'INFO', 'WARN', 'ERROR'];
     if (levels.indexOf(logMethod) >= levels.indexOf(loggingLevel)) {
       var date = new InnerDate();
@@ -33,4 +33,5 @@ function Logs(loggerFunction, InnerDate, loggingLevel) {
     }
   };
 }
+
 module.exports = Logs;
