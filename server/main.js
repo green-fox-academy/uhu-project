@@ -6,8 +6,8 @@ var pg = require('pg');
 var url = require('./config.js').DATABASE_URL;
 
 function heartBeatQueryConnect(query, cb) {
-  pg.connect(url, function(err, client, done) {
-    client.query(query, function(err, result) {
+  pg.connect(url, function (err, client, done) {
+    client.query(query, function (err, result) {
       cb(err, result);
       done();
     });
