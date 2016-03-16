@@ -60,8 +60,8 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
 
 var calls = [
     {status: 'ongoing',
-     callbegin: '03/07/2016 10:20:19',
-     callanswer: '03/07/2016 10:24',
+     callbegin: '03/11/2016 09:40',
+     callanswer: '03/11/2016 09:41',
      elapsedTime: 0,
      endTime: '',
      source: '555-777-4',
@@ -71,10 +71,10 @@ var calls = [
      id: 1},
 
     {status: 'past',
-     callbegin: '02/12/2016 13:38:22',
-     callanswer: '02/12/2016 13:43',
+     callbegin: '03/10/2016 13:40',
+     callanswer: '03/10/2016 13:40',
      elapsedTime: 0,
-     endTime: '02/12/2016 15:53',
+     endTime: '03/10/2016 13:44',
      source: '555-777-5',
      destination: '888-999-0',
      userId: 'burger king',
@@ -82,8 +82,8 @@ var calls = [
      id: 2},
 
     {status: 'past',
-     callbegin: '01/03/2016 11:19:42',
-     callanswer: '01/03/2016 11:20',
+     callbegin: '01/03/2016 12:19',
+     callanswer: '01/03/2016 12:20',
      elapsedTime: 0,
      endTime: '01/03/2016 12:42',
      source: '555-777-1',
@@ -93,7 +93,7 @@ var calls = [
      id: 3},
 
     {status: 'incoming',
-     callbegin: '03/07/2016 14:02:14',
+     callbegin: '03/10/2016 11:02',
      callanswer: '',
      elapsedTime: 0,
      endTime: '',
@@ -101,7 +101,29 @@ var calls = [
      destination: '888-999-0',
      userId: 'kfc',
      gateway: 'UPCMobile',
-     id: 4}
+     id: 4},
+
+     {status: 'past',
+      callbegin: '03/10/2016 11:04',
+      callanswer: '03/10/2016 11:05',
+      elapsedTime: 0,
+      endTime: '03/10/2016 11:11',
+      source: '555-717-2',
+      destination: '888-999-0',
+      userId: 'kfc',
+      gateway: 'UPCMobile',
+      id: 5},
+
+      {status: 'past',
+       callbegin: '03/10/2016 13:09',
+       callanswer: '03/10/2016 13:10',
+       elapsedTime: 0,
+       endTime: '03/10/2016 13:20',
+       source: '555-717-2',
+       destination: '888-999-0',
+       userId: 'kfc',
+       gateway: 'UPCMobile',
+       id: 6},
 ];
 
 UHU.value('calls', calls);

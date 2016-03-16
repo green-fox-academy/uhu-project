@@ -10,21 +10,20 @@ function NewCall(data) {
     destination: data.destination,
     user: data.user,
     gateway: data.gateway,
-    status: ''
-  };
+    status: '', };
 }
+
 NewCall.prototype.isUndefined = function (key) {
-    return key === '' || key === undefined;
+  return key === '' || key === undefined;
 };
 
-NewCall.prototype.isValidObject =  function() {
+NewCall.prototype.isValidObject = function () {
   var _this = this;
-
-  function isNotInteger(){
+  function isNotInteger() {
     return typeof _this.callBone.callid !== 'number';
   }
 
-  function checkObjectIsUndefined(){
+  function checkObjectIsUndefined() {
     return _this.isUndefined(_this.callBone.callid) ||
            _this.isUndefined(_this.callBone.callbegin) ||
            _this.isUndefined(_this.callBone.source) ||
@@ -37,10 +36,9 @@ NewCall.prototype.isValidObject =  function() {
   if (checkObjectIsUndefined() || isNotInteger()) {
     return false;
   } else return true;
-
 };
 
-NewCall.prototype.setStatus = function() {
+NewCall.prototype.setStatus = function () {
 
   var incomingcall = !this.isUndefined(this.callBone.callbegin) &&
                     this.isUndefined(this.callBone.callanswer) &&
@@ -54,7 +52,7 @@ NewCall.prototype.setStatus = function() {
                  !this.isUndefined(this.callBone.callanswer) &&
                  !this.isUndefined(this.callBone.callend);
 
-  if(incomingcall) {
+  if (incomingcall) {
     this.callBone.status = 'incoming';
   } else if (ongoingcall) {
     this.callBone.status = 'ongoing';
@@ -68,7 +66,7 @@ NewCall.prototype.setStatus = function() {
 
 };
 
-NewCall.prototype.returnCall = function() {
+NewCall.prototype.returnCall = function () {
   return this.isValidObject() && this.callBone;
 };
 

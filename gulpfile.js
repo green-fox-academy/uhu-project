@@ -10,10 +10,10 @@ var sass = require('gulp-sass');
 var karma = require('karma').Server;
 
 gulp.task('browserify', function() {
-  browserify('./views/app/UHU.js')
+  browserify('./client/app/UHU.js')
   .bundle()
   .pipe(source('bundle.js'))
-  .pipe(gulp.dest('./views/app'));
+  .pipe(gulp.dest('./client/app'));
 });
 
 gulp.task('eslint', function() {
@@ -24,9 +24,9 @@ gulp.task('eslint', function() {
 });
 
 gulp.task('sass', function () {
-    return gulp.src('./views/style/*.sass')
+    return gulp.src('./client/style/*.sass')
     .pipe(sass.sync().on('error', sass.logError))
-    .pipe(gulp.dest('./views/style/'));
+    .pipe(gulp.dest('./client/style/'));
 });
 
 gulp.task('test', ['browserify'], function () {
@@ -47,7 +47,7 @@ gulp.task('watch', function() {
   //gulp.watch('./*.js', ['eslint']);
   gulp.watch('./*.js', ['test']);
   gulp.watch('./*.sass', ['sass']);
-  gulp.watch(['**/*.js', '!views/app/bundle.js'], ['browserify']);
+  gulp.watch(['**/*.js', '!client/app/bundle.js'], ['browserify']);
 });
 
 gulp.task('ci', ['sass', 'browserify', 'karma', 'test']);
