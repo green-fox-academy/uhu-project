@@ -6,11 +6,13 @@ var moment = require('moment');
 UHU.service('newCallService', function (calls, $rootScope, $location) {
     var _this = this;
     this.calls = calls;
-    this.getCalls = function() {
+    this.getCalls = function () {
       return this.calls;
     };
+
     this.newCall = function (newCall) {
-      var filteredCalls = calls.filter(function (call) { return call.id === newCall.callid });
+      var filteredCalls = calls.filter(function (call) { return call.id === newCall.callid; });
+
       if (filteredCalls.length === 0) {
         var call = {};
         call.id = newCall.callid;
@@ -41,7 +43,7 @@ UHU.service('newCallService', function (calls, $rootScope, $location) {
     var socket = io.connect('http://localhost:4200');
     console.log(getBaseUrl());
     console.log(getBaseUrl() + ':4200');
-    socket.on('calls', function(data) {
+    socket.on('calls', function (data) {
       $rootScope.$apply(function () {
         _this.newCall(data);
       });

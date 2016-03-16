@@ -4,7 +4,7 @@ var moment = require('moment');
 var UHU = require('../app');
 var numeral = require('numeral');
 
-UHU.controller('ListCtrl', function($scope, $interval, $location) {
+UHU.controller('ListCtrl', function ($scope, $interval, $location) {
   $scope.calls = calls;
   var elapsedTimer = $interval(updateTimes, 100);
 
@@ -14,22 +14,22 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
 
   function updateCallTime(call) {
     if (call.status === 'past') {
-        pastCallTimer(call);
+      pastCallTimer(call);
     } else if (call.status === 'incoming') {
-        incomingCallTimer(call);
-    } else if (call.status === 'ongoing'){
-        ongoingCallTimer(call);
+      incomingCallTimer(call);
+    } else if (call.status === 'ongoing') {
+      ongoingCallTimer(call);
     }
   };
 
   function timer(start, end) {
     var momentStart = moment(start);
     var momentEnd = moment(end);
-    var elapsedTime = (momentEnd - momentStart)/1000;
+    var elapsedTime = (momentEnd - momentStart) / 1000;
     return numeral(elapsedTime).format('00:00:00');
   };
 
-  function pastCallTimer(call){
+  function pastCallTimer(call) {
     call.ringingTime = timer(call.callbegin, call.callanswer);
     call.elapsedTime = timer(call.callanswer, call.endTime);
   }
@@ -39,15 +39,15 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
     call.ringingTime = timer(call.callbegin, timeNow);
   }
 
-  function ongoingCallTimer(call){
+  function ongoingCallTimer(call) {
     var timeNow = new Date();
     call.ringingTime = timer(call.callbegin, call.callanswer);
     call.elapsedTime = timer(call.callanswer, timeNow);
   }
 
-  $scope.$on("$destroy", function() {
+  $scope.$on('$destroy', function () {
     if (elapsedTimer) {
-        $interval.cancel(elapsedTimer);
+      $interval.cancel(elapsedTimer);
     }
   });
 
@@ -55,11 +55,10 @@ UHU.controller('ListCtrl', function($scope, $interval, $location) {
     userId: '',
     status: $location.path().substring(1)
   };
-
-  });
+});
 
 var calls = [
-    {status: 'ongoing',
+    { status: 'ongoing',
      callbegin: '03/11/2016 09:40',
      callanswer: '03/11/2016 09:41',
      elapsedTime: 0,
@@ -70,7 +69,7 @@ var calls = [
      gateway: 'PannonGSM',
      id: 1},
 
-    {status: 'past',
+    { status: 'past',
      callbegin: '03/10/2016 13:40',
      callanswer: '03/10/2016 13:40',
      elapsedTime: 0,
@@ -81,7 +80,7 @@ var calls = [
      gateway: 'Westel',
      id: 2},
 
-    {status: 'past',
+    { status: 'past',
      callbegin: '01/03/2016 12:19',
      callanswer: '01/03/2016 12:20',
      elapsedTime: 0,
@@ -92,7 +91,7 @@ var calls = [
      gateway: 'TescoMobile',
      id: 3},
 
-    {status: 'incoming',
+    { status: 'incoming',
      callbegin: '03/10/2016 11:02',
      callanswer: '',
      elapsedTime: 0,
@@ -103,7 +102,7 @@ var calls = [
      gateway: 'UPCMobile',
      id: 4},
 
-     {status: 'past',
+     { status: 'past',
       callbegin: '03/10/2016 11:04',
       callanswer: '03/10/2016 11:05',
       elapsedTime: 0,
@@ -114,7 +113,7 @@ var calls = [
       gateway: 'UPCMobile',
       id: 5},
 
-      {status: 'past',
+      { status: 'past',
        callbegin: '03/10/2016 13:09',
        callanswer: '03/10/2016 13:10',
        elapsedTime: 0,
