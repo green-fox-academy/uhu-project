@@ -1,20 +1,22 @@
 'use stict';
 
-describe("A suite", function() {
-  it("contains spec with an expectation", function() {
+describe('A suite', function () {
+  it('contains spec with an expectation', function () {
     expect(true).toBe(true);
   });
 });
 
 describe('MainController', function () {
-  var $scope, $controller, MainController;
+  var $scope;
+  var $controller;
+  var MainController;
 
   beforeEach(module('UHU'));
 
-  beforeEach(inject(function(_$controller_, $rootScope){
+  beforeEach(inject(function (_$controller_, $rootScope) {
     $scope = $rootScope.$new();
     $controller = _$controller_;
-    MainController = $controller('MainController', {'$scope': $scope});
+    MainController = $controller('MainController', { $scope: $scope });
   }));
 
   it('should exist', function () {
@@ -23,14 +25,16 @@ describe('MainController', function () {
 });
 
 describe('addNewCall', function () {
-  var $scope, $controller, addNewCall;
+  var $scope;
+  var $controller;
+  var addNewCall;
 
   beforeEach(module('UHU'));
 
-  beforeEach(inject(function(_$controller_, $rootScope){
+  beforeEach(inject(function (_$controller_, $rootScope) {
     $scope = $rootScope.$new();
     $controller = _$controller_;
-    addNewCall = $controller('addNewCall', {'$scope': $scope});
+    addNewCall = $controller('addNewCall', { $scope: $scope });
   }));
 
   it('should exist', function () {
@@ -39,14 +43,16 @@ describe('addNewCall', function () {
 });
 
 describe('ListCtrl', function () {
-  var $scope, $controller, ListCtrl;
+  var $scope;
+  var $controller;
+  var ListCtrl;
 
   beforeEach(module('UHU'));
 
-  beforeEach(inject(function(_$controller_, $rootScope){
+  beforeEach(inject(function (_$controller_, $rootScope) {
     $scope = $rootScope.$new();
     $controller = _$controller_;
-    ListCtrl = $controller('ListCtrl', {'$scope': $scope});
+    ListCtrl = $controller('ListCtrl', { $scope: $scope });
   }));
 
   it('should exist', function () {
@@ -65,7 +71,7 @@ describe('ListCtrl', function () {
 describe('newCallService test', function () {
   var newCallService;
   beforeEach(module('UHU'));
-  beforeEach(inject(function(_newCallService_) {
+  beforeEach(inject(function (_newCallService_) {
       newCallService = _newCallService_;
     }));
 
@@ -82,61 +88,60 @@ describe('newCallService test', function () {
   });
 
   it('newCall should push call to calls', function () {
-    var call = {id:5};
+    var call = { id:5 };
     newCallService.newCall(call);
     expect(newCallService.calls.length).toBe(5);
-   });
+  });
 
-
-   it('getCalls should be 5', function () {
-     var calls = newCallService.getCalls;
-     newCallService.getCalls();
-     expect(newCallService.calls.length).toBe(5);
-    });
+  it('getCalls should be 5', function () {
+    var calls = newCallService.getCalls;
+    newCallService.getCalls();
+    expect(newCallService.calls.length).toBe(5);
+  });
 
   it('newCall should not push call to calls', function () {
-    var call = {id:5};
+    var call = { id:5 };
     newCallService.newCall(call);
     expect(newCallService.calls.length).toBe(5);
-   });
+  });
 });
 
-describe('directive tests', function() {
-  var $compile,
-      $scope;
+describe('directive tests', function () {
+  var $compile;
+  var $scope;
 
   beforeEach(module('UHU'));
   beforeEach(module('templates'));
-  beforeEach(inject(function(_$compile_, _$rootScope_){
+  beforeEach(inject(function (_$compile_, _$rootScope_) {
     $compile = _$compile_;
     $scope = _$rootScope_.$new();
   }));
 
-  it('Replaces the element with the appropriate content', function() {
-    $scope.call = {userId: "mcdonalds"};
+  it('Replaces the element with the appropriate content', function () {
+    $scope.call = { userId: 'mcdonalds' };
     var element = $compile('<call call="call"></call>')($scope);
     $scope.$digest();
-    expect(element.html()).toContain("mcdonalds");
+    expect(element.html()).toContain('mcdonalds');
   });
 
-  it('Replaces the source phone number with the appropriate phone number', function() {
-    $scope.call = {source: "555-717-2"};
+  it('Replaces the source phone number with the appropriate phone number', function () {
+    $scope.call = { source: '555-717-2' };
     var element = $compile('<call call="call"></call>')($scope);
     $scope.$digest();
-    expect(element.html()).toContain("555-717-2");
+    expect(element.html()).toContain('555-717-2');
   });
 
-  it('Replaces the status element with the appropriate status image', function() {
-    $scope.call = {status: 'ongoing'};
+  it('Replaces the status element with the appropriate status image', function () {
+    $scope.call = { status: 'ongoing' };
     var element = $compile('<call call="call"></call>')($scope);
     $scope.$digest();
-    expect(element.html()).toContain("ongoing.svg");
+    expect(element.html()).toContain('ongoing.svg');
   });
 
-  it('Fill the object with the list of calls', function() {
+  it('Fill the object with the list of calls', function () {
     $scope.call = {};
     var element = $compile('<listcalls calls="calls"></listcalls>')($scope);
     $scope.$digest();
-    expect(element.html()).toContain("calls.length");
+    expect(element.html()).toContain('calls.length');
   });
 });
