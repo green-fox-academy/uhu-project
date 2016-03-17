@@ -21,7 +21,7 @@ function myServer(db) {
   app.post('/api/call', newCall);
 
   app.route('/*').get(function (req, res) {
-    res.sendFile(path.resolve(__dirname, '../client/index.html'));
+    res.sendFile(path.resolve(__dirname + '/../client/template/index.html'));
   });
 
   function newCall(req, res) {
