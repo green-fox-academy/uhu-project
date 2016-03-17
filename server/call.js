@@ -1,5 +1,8 @@
 'use strict';
 
+var Logs = require('./logs.js');
+var logger = new Logs();
+
 function NewCall(data) {
   this.callBone = {
     callid: data.callid,
@@ -19,6 +22,7 @@ NewCall.prototype.isUndefined = function (key) {
 
 NewCall.prototype.isValidObject = function () {
   var _this = this;
+
   function isNotInteger() {
     return typeof _this.callBone.callid !== 'number';
   }
@@ -59,7 +63,7 @@ NewCall.prototype.setStatus = function () {
   } else if (pastcall) {
     this.callBone.status = 'ended';
   } else {
-    console.log('something went wrong');
+    logger.logError('cant evaluate the call status');
   }
 
   return this.callBone.status;
