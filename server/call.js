@@ -15,7 +15,8 @@ function NewCall(data) {
     destination: data.destination,
     user: data.user,
     gateway: data.gateway,
-    status: '', };
+    status: '',
+  };
 
   this.schema = Joi.object().keys({
     callid: Joi.number().integer(),
@@ -26,21 +27,16 @@ function NewCall(data) {
     destination: Joi.any().required(),
     user: Joi.any().required(),
     gateway: Joi.any().required(),
-    status:  Joi.any(), });
+    status:  Joi.any(),
+  });
 }
 
 NewCall.prototype.isUndefined = function (key) {
   return key === '' || key === undefined;
 };
 
-NewCall.prototype.validateCb = function (err, value) {
-  if (err) {
-    throw 'validation error';
-  } else return true;
-};
-
 NewCall.prototype.isValidObject = function () {
-  return Joi.validate(this.callBone, this.schema, this.validateCb);
+  Joi.assert(this.callBone, this.schema, 'validation error');
 };
 
 NewCall.prototype.setStatus = function () {
@@ -72,13 +68,7 @@ NewCall.prototype.setStatus = function () {
 
 NewCall.prototype.returnCall = function () {
   this.setStatus();
-
-  try {
-    this.isValidObject();
-  }
-  catch (e) {
-    return false;
-  }
+  this.isValidObject();
 
   return this.callBone;
 };
