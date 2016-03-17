@@ -18,21 +18,18 @@ UHU.service('newCallService', function (calls, $rootScope, $location) {
         call.id = newCall.callid;
         call.callbegin = newCall.callbegin;
         call.callanswer = newCall.callanswer;
-        call.status = 'incoming';
+        call.status = newCall.status;
         call.source = newCall.source;
         call.destination = newCall.destination;
         call.gateway = newCall.gateway;
         call.userId = newCall.userId;
         call.ellapsedTime = 0;
         this.calls.push(call);
-      } else if (newCall.callanswer && newCall.callend) {
-        call.status = 'past';
+      } else if (newCall.callend || newCall.callanswer){
+        call.status = newCall.status;
         call.callanswer = newCall.callanswer;
-        call.endTime = newCall.callend;
-      } else if (newCall.callanswer && !newCall.callend) {
-        call.status = 'ongoing';
-        call.callanswer = newCall.callanswer;
-      }
+        call.callend = newCall.callend;        
+      } 
     };
 
     function getBaseUrl() {
