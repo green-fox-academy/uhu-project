@@ -88,21 +88,15 @@ describe('newCallService test', function () {
   });
 
   it('newCall should push call to calls', function () {
-    var call = { id:5 };
+    var call = { id:6 };
     newCallService.newCall(call);
-    expect(newCallService.calls.length).toBe(5);
+    expect(newCallService.calls.length).toBe(7);
   });
 
-  it('getCalls should be 5', function () {
+  it('getCalls should be 6', function () {
     var calls = newCallService.getCalls;
     newCallService.getCalls();
-    expect(newCallService.calls.length).toBe(5);
-  });
-
-  it('newCall should not push call to calls', function () {
-    var call = { id:5 };
-    newCallService.newCall(call);
-    expect(newCallService.calls.length).toBe(5);
+    expect(newCallService.calls.length).toBe(7);
   });
 });
 

@@ -49,28 +49,28 @@ UHU.controller('MainController', function ($scope, $http, $location, newCallServ
 });
 
 UHU.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/index.html');
+  $urlRouterProvider.otherwise('template/index.html');
 
   $stateProvider
   .state('all', {
     url: '/',
-    templateUrl: 'all.html'
+    templateUrl: 'template/all.html'
   })
   .state('past', {
     url: '/past',
-    templateUrl: 'past.html'
+    templateUrl: 'template/past.html'
   })
   .state('incoming', {
     url: '/incoming',
-    templateUrl: 'incoming.html'
+    templateUrl: 'template/incoming.html'
   })
   .state('ongoing', {
     url: '/ongoing',
-    templateUrl: 'ongoing.html'
+    templateUrl: 'template/ongoing.html'
   })
   .state('stats', {
     url: '/stats',
-    templateUrl: 'stats.html'
+    templateUrl: 'template/stats.html'
   });
   $locationProvider.html5Mode(true);
 });
