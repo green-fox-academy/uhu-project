@@ -14,17 +14,22 @@ UHU.config(function (ChartJsProvider) {
   });
 });
 
-UHU.controller('chartCtrl', function ($scope, newCallService) {
-  $scope.calls = newCallService.getCalls();
+UHU.controller('chartCtrl', function ($scope) {
+  //$scope.calls = newCallService.getCalls();
   $scope.labels = ['Seven hours before', 'Six hours before', 'Five hours before', 'Four hours before', 'Three hours before', 'Two hours before', 'One hours before'];
   $scope.series = ['Incoming Calls', 'Ended calls'];
-  arrayTransformator();
+  $scope.data = [
+    [22, 44, 55, 66, 11, 3, 66],
+    [11, 33, 54, 32, 11, 3, 70]
+];
+
+  //arrayTransformator();
 
   $scope.onClick = function (points, evt) {
     console.log(points, evt);
   };
 
-  function arrayTransformator() {
+  /*function arrayTransformator() {
     $scope.data = newCallService.getCalls().reduce(function(prev, call) {
       var callBeginCounter = 0;
       var callEndTimeCounter = 0;
@@ -43,5 +48,5 @@ UHU.controller('chartCtrl', function ($scope, newCallService) {
       prev[1].push(callEndTimeCounter);
       return prev;
     }, [[], []]);
-  }
+  }*/
 });
