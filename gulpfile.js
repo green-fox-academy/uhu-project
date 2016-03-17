@@ -10,7 +10,7 @@ var sass = require('gulp-sass');
 var karma = require('karma').Server;
 
 gulp.task('browserify', function() {
-  browserify('./client/app/UHU.js')
+  return browserify('./client/app/UHU.js')
   .bundle()
   .pipe(source('bundle.js'))
   .pipe(gulp.dest('./client/app'));
@@ -34,7 +34,7 @@ gulp.task('test', ['browserify'], function () {
     .pipe(jasmine());
 });
 
-gulp.task('karma', function(done) {
+gulp.task('karma', ['browserify'], function(done) {
     karma.start({
         configFile: __dirname + '/karma.conf.js',
         singleRun: true

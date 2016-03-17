@@ -19,7 +19,7 @@ module.exports = function(config) {
         'https://cdn.socket.io/socket.io-1.4.5.js',
         'client/app/bundle.js',
         'spec/frontend-test/*.js',
-        '**/*.html'
+        'client/**/*.html'
     ],
 
 
