@@ -26,6 +26,7 @@ UHU.controller('chartCtrl', function ($scope, newCallService) {
   };
 
   function arrayTransformator() {
+    var filledArrays = [Array(7).fill(0), Array(7).fill(0)];
     $scope.data = newCallService.getCalls().reduce(function (prev, call) {
       var hourCounter = [7, 6, 5, 4, 3, 2, 1];
       hourCounter.forEach(function (hour, index) {
@@ -41,6 +42,6 @@ UHU.controller('chartCtrl', function ($scope, newCallService) {
       });
 
       return prev;
-    }, [Array(7).fill(0), Array(7).fill(0)]);
+    }, filledArrays);
   }
 });
