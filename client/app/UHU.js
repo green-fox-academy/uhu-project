@@ -5,7 +5,7 @@ require('./controllers/listController');
 require('./controllers/newCallService');
 require('./controllers/addNewCallController');
 require('./controllers/chartController');
-require('./directives/repeatCallDirective');
+require('./directives/statusChangerDirective');
 require('./directives/listCallsDirective');
 
 UHU.controller('MainController', function ($scope, $http, $location, newCallService) {

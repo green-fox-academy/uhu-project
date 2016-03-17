@@ -26,7 +26,7 @@ UHU.controller('chartCtrl', function ($scope) {
   //arrayTransformator();
 
   $scope.onClick = function (points, evt) {
-    console.log(points, evt);
+    points, evt;
   };
 
   /*function arrayTransformator() {
