@@ -26,10 +26,16 @@ function myServer(db) {
 
   function newCall(req, res) {
     logger.logInfo('CALL', JSON.stringify(req.body));
-    var newcall = new NewCall(req.body);
-    res.send(newcall.returnCall());
+
+    try {
+      var newcall = new NewCall(req.body);
+      res.send(newcall.returnCall());
+    }
+    catch (e) {
+      logger.logInfo('ERROR', 'newcall validation error');
+    }
+
     io.emit('calls', req.body);
-    console.log(newcall.returnCall());
   }
 
   function postLogs(req, res) {
@@ -39,7 +45,7 @@ function myServer(db) {
 
   function logRequest(req, res, next) {
     logger.logInfo(req.method, req.originalUrl);
-    next();
+     next();
   }
 
   return { app: app, server: server };
