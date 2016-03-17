@@ -1,6 +1,8 @@
 'use strict';
 
 var Logs = require('./logs.js');
+var Joi = require('joi');
+
 var logger = new Logs();
 
 function NewCall(data) {
@@ -14,41 +16,31 @@ function NewCall(data) {
     user: data.user,
     gateway: data.gateway,
     status: '', };
+
+  this.schema = Joi.object().keys({
+    callid: Joi.number().integer(),
+    callbegin: Joi.any().required(),
+    callanswer: Joi.any(),
+    callend: Joi.any(),
+    source: Joi.any().required(),
+    destination: Joi.any().required(),
+    user: Joi.any().required(),
+    gateway: Joi.any().required(),
+    status:  Joi.any(), });
 }
 
 NewCall.prototype.isUndefined = function (key) {
   return key === '' || key === undefined;
 };
 
+NewCall.prototype.validateCb = function (err, value) {
+  if (err) {
+    throw 'validation error';
+  } else return true;
+};
+
 NewCall.prototype.isValidObject = function () {
-  var _this = this;
-
-  function isNotInteger() {
-    return typeof _this.callBone.callid !== 'number';
-  }
-
-  function checkObjectIsUndefined() {
-    var objectIndex = 0;
-    var isItTrue = false;
-
-    for (let list of this.callBone) {
-      if (objectIndex != 2 && objectIndex != 3) {
-        isItTrue =  _this.isUndefined(list);
-      }
-
-      if (isItTrue = true) {
-        return true;
-      }
-
-      objectIndex++;
-    }
-
-    return false;
-  }
-
-  this.setStatus();
-
-  return checkObjectIsUndefined() || isNotInteger() ? false : true;
+  return Joi.validate(this.callBone, this.schema, this.validateCb);
 };
 
 NewCall.prototype.setStatus = function () {
@@ -76,11 +68,19 @@ NewCall.prototype.setStatus = function () {
   }
 
   return this.callBone.status;
-
 };
 
 NewCall.prototype.returnCall = function () {
-  return this.isValidObject() && this.callBone;
+  this.setStatus();
+
+  try {
+    this.isValidObject();
+  }
+  catch (e) {
+    return false;
+  }
+
+  return this.callBone;
 };
 
 module.exports = NewCall;
