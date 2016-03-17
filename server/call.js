@@ -1,6 +1,8 @@
 'use strict';
 
 var Logs = require('./logs.js');
+var Joi = require('joi');
+
 var logger = new Logs();
 
 function NewCall(data) {
@@ -14,6 +16,19 @@ function NewCall(data) {
     user: data.user,
     gateway: data.gateway,
     status: '', };
+
+  this.scheme = Joi.object().keys({
+    callid: Joi.number().integer(),
+    callbegin: '',
+    callanswer: '',
+    callend: '',
+    source: '',
+    destination: '',
+    user: '',
+    gateway: '',
+    status: '', })
+    .with('callid', 'callbegin', 'source', 'destination', 'user', 'gateway')
+    .without('callanswer', 'callend', 'status');
 }
 
 NewCall.prototype.isUndefined = function (key) {
@@ -31,7 +46,7 @@ NewCall.prototype.isValidObject = function () {
     var objectIndex = 0;
     var isItTrue = false;
 
-    for (let list of this.callBone) {
+    for (let list of _this.callBone) {
       if (objectIndex != 2 && objectIndex != 3) {
         isItTrue =  _this.isUndefined(list);
       }
@@ -47,7 +62,6 @@ NewCall.prototype.isValidObject = function () {
   }
 
   this.setStatus();
-
   return checkObjectIsUndefined() || isNotInteger() ? false : true;
 };
 
