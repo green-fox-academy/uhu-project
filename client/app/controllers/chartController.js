@@ -8,45 +8,40 @@ UHU.config(function (ChartJsProvider) {
   ChartJsProvider.setOptions({
     colours: ['#FF5252', '#FF8A80'],
     responsive: false
-});
+  });
   ChartJsProvider.setOptions('Line', {
     datasetFill: false
   });
 });
 
-UHU.controller('chartCtrl', function ($scope) {
-  //$scope.calls = newCallService.getCalls();
+UHU.controller('chartCtrl', function ($scope, newCallService) {
+  $scope.calls = newCallService.getCalls();
   $scope.labels = ['Seven hours before', 'Six hours before', 'Five hours before', 'Four hours before', 'Three hours before', 'Two hours before', 'One hours before'];
   $scope.series = ['Incoming Calls', 'Ended calls'];
-  $scope.data = [
-    [22, 44, 55, 66, 11, 3, 66],
-    [11, 33, 54, 32, 11, 3, 70]
-];
-
-  //arrayTransformator();
+  arrayTransformator();
 
   $scope.onClick = function (points, evt) {
     points, evt;
   };
 
-  /*function arrayTransformator() {
-    $scope.data = newCallService.getCalls().reduce(function(prev, call) {
+  function arrayTransformator() {
+    $scope.data = newCallService.getCalls().reduce(function (prev, call) {
       var callBeginCounter = 0;
       var callEndTimeCounter = 0;
-      var hourCounter = [1, 2, 3, 4, 5, 6, 7];
-      hourCounter.forEach(function (hour) {
-        var timeStatement = moment().subtract(hour, 'hours').isSame(call.callbegin, 'hours')
-        if (timeStatement) {
-          callBeginCounter++;
-        } if (timeStatement) {
+      var hourCounter = [7, 6, 5, 4, 3, 2, 1];
+      hourCounter.forEach(function (hour, index) {
+        var beginTimeStatement = moment().subtract(hour, 'hours').isSame(call.callbegin, 'hours');
+        var endTimeStatement = moment().subtract(hour, 'hours').isSame(call.endTime, 'hours');
+        if (beginTimeStatement) {
+          prev[0][index]++;
+        }
 
-          callEndTimeCounter++;
+        if (endTimeStatement) {
+          prev[1][index]++;
         }
       });
 
-      prev[0].push(callBeginCounter);
-      prev[1].push(callEndTimeCounter);
       return prev;
-    }, [[], []]);
-  }*/
+    }, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]);
+  }
 });
