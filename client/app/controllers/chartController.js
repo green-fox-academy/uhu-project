@@ -26,8 +26,6 @@ UHU.controller('chartCtrl', function ($scope, newCallService) {
 
   function arrayTransformator() {
     $scope.data = newCallService.getCalls().reduce(function (prev, call) {
-      var callBeginCounter = 0;
-      var callEndTimeCounter = 0;
       var hourCounter = [7, 6, 5, 4, 3, 2, 1];
       hourCounter.forEach(function (hour, index) {
         var beginTimeStatement = moment().subtract(hour, 'hours').isSame(call.callbegin, 'hours');
