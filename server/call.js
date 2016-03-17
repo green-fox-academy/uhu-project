@@ -28,18 +28,27 @@ NewCall.prototype.isValidObject = function () {
   }
 
   function checkObjectIsUndefined() {
-    return _this.isUndefined(_this.callBone.callid) ||
-           _this.isUndefined(_this.callBone.callbegin) ||
-           _this.isUndefined(_this.callBone.source) ||
-           _this.isUndefined(_this.callBone.destination) ||
-           _this.isUndefined(_this.callBone.user) ||
-           _this.isUndefined(_this.callBone.gateway);
+    var objectIndex = 0;
+    var isItTrue = false;
+
+    for (let list of this.callBone) {
+      if (objectIndex != 2 && objectIndex != 3) {
+        isItTrue =  _this.isUndefined(list);
+      }
+
+      if (isItTrue = true) {
+        return true;
+      }
+
+      objectIndex++;
+    }
+
+    return false;
   }
 
   this.setStatus();
-  if (checkObjectIsUndefined() || isNotInteger()) {
-    return false;
-  } else return true;
+
+  return checkObjectIsUndefined() || isNotInteger() ? false : true;
 };
 
 NewCall.prototype.setStatus = function () {
