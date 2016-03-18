@@ -53,7 +53,7 @@ UHU.controller('ListCtrl', function ($scope, $interval, $location) {
 
   $scope.callFilter =  {
     userId: '',
-    status: $location.path().substring(1),
+    status: $location.path().substring(1)
   };
 });
 
@@ -70,10 +70,10 @@ var calls = [
      id: 1},
 
     { status: 'past',
-     callbegin: '03/17/2016 13:40',
-     callanswer: '03/17/2016 13:40',
+     callbegin: '03/18/2016 14:40',
+     callanswer: '03/18/2016 14:40',
      elapsedTime: 0,
-     endTime: '03/17/2016 16:23',
+     endTime: '03/18/2016 14:45',
      source: '555-777-5',
      destination: '888-999-0',
      userId: 'burger king',
@@ -81,10 +81,10 @@ var calls = [
      id: 2},
 
     { status: 'past',
-     callbegin: '03/17/2016 13:19',
-     callanswer: '03/17/2016 13:20',
+     callbegin: '03/18/2016 13:19',
+     callanswer: '03/18/2016 13:20',
      elapsedTime: 0,
-     endTime: '03/17/2016 15:42',
+     endTime: '03/18/2016 15:42',
      source: '555-777-1',
      destination: '888-999-0',
      userId: 'kfc',
@@ -103,10 +103,10 @@ var calls = [
      id: 4},
 
      { status: 'past',
-      callbegin: '03/17/2016 13:04',
-      callanswer: '03/17/2016 13:05',
+      callbegin: '03/18/2016 13:04',
+      callanswer: '03/18/2016 13:05',
       elapsedTime: 0,
-      endTime: '03/17/2016 13:11',
+      endTime: '03/18/2016 13:11',
       source: '555-717-2',
       destination: '888-999-0',
       userId: 'kfc',
@@ -114,10 +114,10 @@ var calls = [
       id: 5},
 
       { status: 'past',
-       callbegin: '03/17/2016 13:09',
-       callanswer: '03/17/2016 13:10',
+       callbegin: '03/18/2016 12:09',
+       callanswer: '03/18/2016 12:10',
        elapsedTime: 0,
-       endTime: '03/17/2016 13:20',
+       endTime: '03/18/2016 12:20',
        source: '555-717-2',
        destination: '888-999-0',
        userId: 'kfc',

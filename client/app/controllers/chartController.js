@@ -20,17 +20,10 @@ UHU.controller('chartCtrl', function ($scope, newCallService) {
   'Four hours before', 'Three hours before', 'Two hours before', 'One hours before', 'Fresh calls'];
   $scope.series = ['Incoming Calls', 'Ended calls'];
   $scope.chartdata = arrayTransformator();
-  //location.reload();
 
   $scope.onClick = function (points, evt) {
     points, evt;
   };
-
-  $scope.type = 'LineChart';
-  $scope.toggle = function () {
-   $scope.type = $scope.type === 'LineChart' ?
-     'Line' : 'LineChart';
- };
 
   function arrayTransformator() {
     var filledArrays = [Array(7).fill(0), Array(7).fill(0)];
