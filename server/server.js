@@ -45,7 +45,7 @@ function myServer(db) {
 
   function logRequest(req, res, next) {
     logger.logInfo(req.method, req.originalUrl);
-     next();
+    next();
   }
 
   return { app: app, server: server };

@@ -36,7 +36,7 @@ NewCall.prototype.isUndefined = function (key) {
 };
 
 NewCall.prototype.isValidObject = function () {
-  Joi.assert(this.callBone, this.schema, 'validation error');
+  Joi.assert(this.callBone, this.schema, 'ValidationError');
 };
 
 NewCall.prototype.setStatus = function () {

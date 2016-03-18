@@ -62,12 +62,7 @@ describe('new call tests', function () {
   });
 
   it('is an undefined object', function () {
-    try {
-      expect(badcall.returnCall()).toBe(false);
-    }
-    catch (e) {
-      console.log('error?');
-    }
+    expect(badcall.isValidObject).toThrowError(TypeError);
   });
 
   it('is a valid object', function () {
