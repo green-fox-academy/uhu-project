@@ -1,7 +1,7 @@
 'use strict';
 
 var moment = require('moment');
-var dateFormat = 'YYYY-MM-DD HH:mm:ss';
+var dateFormat = 'MM/DD/YYYY HH:mm:ss';
 var uniqueId = 21;
 var dates = ['callbegin', 'callanswer', 'callend'];
 var newCall = {};
