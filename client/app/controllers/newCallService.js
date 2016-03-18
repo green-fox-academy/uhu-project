@@ -3,6 +3,7 @@
 var UHU = require('../app');
 var moment = require('moment');
 
+
 UHU.service('newCallService', function (calls, $rootScope, $location) {
     var _this = this;
     this.calls = calls;
@@ -12,25 +13,32 @@ UHU.service('newCallService', function (calls, $rootScope, $location) {
 
     this.newCall = function (newCall) {
       var filteredCalls = calls.filter(function (call) { return call.id === newCall.callid; });
+      
+      var actualCallId = filteredCalls.length > 0 ? ((filteredCalls[0].id)-1) : 0;
 
       if (filteredCalls.length === 0) {
-        var call = {};
-        call.id = newCall.callid;
-        call.callbegin = newCall.callbegin;
-        call.callanswer = newCall.callanswer;
-        call.status = newCall.status;
-        call.source = newCall.source;
-        call.destination = newCall.destination;
-        call.gateway = newCall.gateway;
-        call.userId = newCall.userId;
-        call.ellapsedTime = 0;
-        this.calls.push(call);
-      } else if (newCall.callend || newCall.callanswer){
-        call.status = newCall.status;
-        call.callanswer = newCall.callanswer;
-        call.callend = newCall.callend;        
-      } 
+        this.calls.push(this.createACall(newCall));
+      } else if (newCall.callanswer && !newCall.callend){
+        calls[actualCallId].status = 'ongoing';
+        calls[actualCallId].callanswer = newCall.callanswer;       
+      } else if (newCall.callanswer && newCall.callend){ 
+        calls[actualCallId].status = 'past';
+        calls[actualCallId].endTime = newCall.callend;
+      }
     };
+  
+   this.createACall = function(newCall) {
+     var call = {};
+     call.id = newCall.callid;
+     call.callbegin = newCall.callbegin;
+     call.status = 'incoming';
+     call.source = newCall.source;
+     call.destination = newCall.destination;
+     call.gateway = newCall.gateway;
+     call.userId = newCall.userId;
+     return call;
+   };
+    
 
     function getBaseUrl() {
       return $location.protocol() + '://' + $location.host();
