@@ -16,7 +16,8 @@ UHU.config(function (ChartJsProvider) {
 
 UHU.controller('chartCtrl', function ($scope, newCallService) {
   $scope.calls = newCallService.getCalls();
-  $scope.labels = ['Seven hours before', 'Six hours before', 'Five hours before', 'Four hours before', 'Three hours before', 'Two hours before', 'One hours before'];
+  $scope.labels = ['Seven hours before', 'Six hours before', 'Five hours before',
+  'Four hours before', 'Three hours before', 'Two hours before', 'One hours before'];
   $scope.series = ['Incoming Calls', 'Ended calls'];
   arrayTransformator();
 
@@ -25,6 +26,7 @@ UHU.controller('chartCtrl', function ($scope, newCallService) {
   };
 
   function arrayTransformator() {
+    var filledArrays = [Array(7).fill(0), Array(7).fill(0)];
     $scope.data = newCallService.getCalls().reduce(function (prev, call) {
       var hourCounter = [7, 6, 5, 4, 3, 2, 1];
       hourCounter.forEach(function (hour, index) {
@@ -40,6 +42,6 @@ UHU.controller('chartCtrl', function ($scope, newCallService) {
       });
 
       return prev;
-    }, [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]);
+    }, filledArrays);
   }
 });
