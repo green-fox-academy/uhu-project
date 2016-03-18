@@ -1,6 +1,7 @@
 'use strict';
 
 var UHU = require('./app');
+var callGenerator = require('./callGenerator');
 require('./controllers/listController');
 require('./controllers/newCallService');
 require('./controllers/addNewCallController');
@@ -44,7 +45,7 @@ UHU.controller('MainController', function ($scope, $http, $location, newCallServ
   );
 
   $scope.addNewCall = function (call) {
-    newCallService.newCall(call);
+    newCallService.newCall(call || callGenerator().next().value);
   };
 });
 
