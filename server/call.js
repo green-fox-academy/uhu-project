@@ -53,15 +53,7 @@ NewCall.prototype.setStatus = function () {
                  !this.isUndefined(this.callBone.callanswer) &&
                  !this.isUndefined(this.callBone.callend);
 
-  if (incomingcall) {
-    this.callBone.status = 'incoming';
-  } else if (ongoingcall) {
-    this.callBone.status = 'ongoing';
-  } else if (pastcall) {
-    this.callBone.status = 'ended';
-  } else {
-    logger.logError('cant evaluate the call status');
-  }
+  incomingcall ? this.callBone.status = 'incoming' : ongoingcall ? this.callBone.status = 'ongoing' : pastcall ? this.callBone.status = 'ended' : logger.logError('cant get the status');
 
   return this.callBone.status;
 };
