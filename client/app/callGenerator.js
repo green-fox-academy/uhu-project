@@ -24,7 +24,6 @@ function* callGenerator() {
       newCall.callid = Math.floor(uniqueId++/3);
       newCall[dates[rest]] = moment().format(dateFormat);
     } 
-    console.log(newCall);
     yield newCall;
   }
 }
