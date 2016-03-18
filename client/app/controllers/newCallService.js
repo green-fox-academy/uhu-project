@@ -18,10 +18,10 @@ UHU.service('newCallService', function (calls, $rootScope, $location) {
 
       if (filteredCalls.length === 0) {
         this.calls.push(this.createACall(newCall));
-      } else if (newCall.callanswer && !newCall.callend){
+      } else if (filteredCalls.length != 0 && newCall.callanswer && !newCall.callend){
         calls[actualCallId].status = 'ongoing';
         calls[actualCallId].callanswer = newCall.callanswer;       
-      } else if (newCall.callanswer && newCall.callend){ 
+      } else if (filteredCalls.length != 0 && newCall.callanswer && newCall.callend){ 
         calls[actualCallId].status = 'past';
         calls[actualCallId].endTime = newCall.callend;
       }
