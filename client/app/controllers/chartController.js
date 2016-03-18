@@ -16,19 +16,27 @@ UHU.config(function (ChartJsProvider) {
 
 UHU.controller('chartCtrl', function ($scope, newCallService) {
   $scope.calls = newCallService.getCalls();
-  $scope.labels = ['Seven hours before', 'Six hours before', 'Five hours before',
-  'Four hours before', 'Three hours before', 'Two hours before', 'One hours before'];
+  $scope.labels = ['Six hours before', 'Five hours before',
+  'Four hours before', 'Three hours before', 'Two hours before', 'One hours before', 'Fresh calls'];
   $scope.series = ['Incoming Calls', 'Ended calls'];
-  arrayTransformator();
+  $scope.chartdata = arrayTransformator();
+  //location.reload();
 
   $scope.onClick = function (points, evt) {
     points, evt;
   };
 
+  $scope.type = 'LineChart';
+  $scope.toggle = function () {
+   $scope.type = $scope.type === 'LineChart' ?
+     'Line' : 'LineChart';
+ };
+
   function arrayTransformator() {
     var filledArrays = [Array(7).fill(0), Array(7).fill(0)];
-    $scope.data = newCallService.getCalls().reduce(function (prev, call) {
-      var hourCounter = [7, 6, 5, 4, 3, 2, 1];
+    var allCalls =  newCallService.getCalls();
+    var chartData = allCalls.reduce(function (prev, call) {
+      var hourCounter = [6, 5, 4, 3, 2, 1, 0];
       hourCounter.forEach(function (hour, index) {
         var beginTimeStatement = moment().subtract(hour, 'hours').isSame(call.callbegin, 'hours');
         var endTimeStatement = moment().subtract(hour, 'hours').isSame(call.endTime, 'hours');
@@ -43,5 +51,7 @@ UHU.controller('chartCtrl', function ($scope, newCallService) {
 
       return prev;
     }, filledArrays);
+
+    return chartData;
   }
 });

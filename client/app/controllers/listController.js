@@ -53,7 +53,7 @@ UHU.controller('ListCtrl', function ($scope, $interval, $location) {
 
   $scope.callFilter =  {
     userId: '',
-    status: $location.path().substring(1)
+    status: $location.path().substring(1),
   };
 });
 
