@@ -1,14 +1,15 @@
 <div ng-controller="chartCtrl">
-<canvas id="line" class="chart chart-line" chart-data="chartdata"
+<canvas id="line" class="chart chart-line" chart-data="getData()"
   chart-labels="labels" chart-legend="true" chart-series="series"
-  chart-click="onClick" chart-type="type" height="400" width="600" >
+  chart-click="onClick" height="400" width="600" >
 </canvas>
+<button ng-click="clear()">reset</button>
 </div>
 <form name="myForm" ng-controller="chartCtrl">
   <label>Incoming Calls:
-    <input type="checkbox" ng-model="checkboxModel.value1">
+    <input type="checkbox" ng-change="incoming(checkboxModel.incoming)" ng-model="checkboxModel.incoming">
   </label><br/>
   <label>Ended calls:
-    <input type="checkbox" ng-model="checkboxModel.value2">
+    <input type="checkbox" ng-change="ended(checkboxModel.ended)" ng-model="checkboxModel.ended">
   </label><br/>   </label><br/>
  </form>

@@ -139,3 +139,26 @@ describe('directive tests', function () {
     expect(element.html()).toContain('calls.length');
   });
 });
+
+describe('chart test', function () {
+  var $scope;
+  var $controller;
+  var chartCtrl;
+  var arrayTransformator;
+
+  beforeEach(module('UHU'));
+
+  beforeEach(inject(function (_$controller_, $rootScope) {
+    $scope = $rootScope.$new();
+    $controller = _$controller_;
+    chartCtrl = $controller('chartCtrl', { $scope: $scope });
+  }));
+
+  it('should exist', function () {
+    expect(chartCtrl).toBeDefined();
+  });
+
+  it('should call newcall method as chartdata', function () {
+    expect($scope.chartdata).toEqual([[ 0, 1, 0, 0, 0, 0, 1 ], [ 0, 1, 0, 0, 0, 0, 1 ]]);
+  });
+});
